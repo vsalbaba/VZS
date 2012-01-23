@@ -1,0 +1,17 @@
+<h2>Přihlášení</h2>
+
+<%= form_for @user_session do |form| %>  
+	<%= form.error_messages %>  
+	<p>  
+		<%= form.label :login, "Přihlašovací jméno" %>  
+		<%= form.text_field :login %>  
+	</p>  
+	<p>  
+		<%= form.label :password, "Heslo" %>  
+		<%= form.password_field :password %>  
+	</p>  
+	<p>  
+		<%= form.submit "Přihlásit" %>  
+	</p>  
+<% end %>  
+
