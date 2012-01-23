@@ -37,3 +37,9 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug'
+
+gem 'authlogic'
+gem 'nifty-generators', :group => :development
+
+
+gem "mocha", :group => :test
