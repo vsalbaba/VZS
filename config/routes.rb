@@ -2,6 +2,13 @@ Vzs::Application.routes.draw do
   get "user_sessions/new"
 
   resources :users
+  resources :user_sessions
+
+  # authlogic veci
+  match 'login' => 'UserSessions#new', :as => :login
+  match 'logout' => 'UserSessions#destroy', :as => :logout
+
+  root :to => 'Application#welcome'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -50,14 +57,9 @@ Vzs::Application.routes.draw do
   #     resources :products
   #   end
 
-  # authlogic veci
-  match 'login' => 'UserSessions#new', :as => :login
-  match 'logout' => 'UserSessions#destroy', :as => :logout
-  resources :user_sessions
-
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'Application#welcome'
+  # root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 
