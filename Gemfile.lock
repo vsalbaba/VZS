@@ -110,12 +110,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  authlogic
+  authlogic (~> 3.1.0)
   coffee-rails (~> 3.2.1)
   jquery-rails
   json
   mocha
-  nifty-generators
+  nifty-generators (~> 0.4.6)
   rails (= 3.2.0)
   sass-rails (~> 3.2.3)
   sqlite3

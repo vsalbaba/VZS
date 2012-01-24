@@ -38,8 +38,8 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug'
 
-gem 'authlogic'
-gem 'nifty-generators', :group => :development
+gem 'authlogic', '~> 3.1.0'
+gem 'nifty-generators', '~> 0.4.6', :group => :development
 
 
 gem "mocha", :group => :test
