@@ -1,16 +1,10 @@
-<%= form_for @user do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :login, "Přihlašovací jméno" %><br />
-    <%= f.text_field :login %>
-  </p>
-  <p>
-    <%= f.label :password, "Heslo" %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation, "Potvrzení hesla" %><br />
-    <%= f.password_field :password_confirmation %>
-  </p>
-  <p><%= f.submit "Registrovat" %></p>
+<%= semantic_form_for @user do |f| %>
+	<%= f.inputs do %>
+		<%= f.input :login, :label => 'Přihlašovací jméno' %>
+		<%= f.input :password, :label => 'Heslo' %>
+		<%= f.input :password_confirmation, :label => 'Potvrzení hesla' %>
+	<% end %>
+	<%= f.buttons do %>
+		<%= f.commit_button :label => @user.id.nil? ? 'Registrovat' : 'Uložit'  %>
+	<% end %>
 <% end %>
