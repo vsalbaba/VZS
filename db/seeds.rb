@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
+
+Group.create( :ident => 'outsider', :name => 'Nečlen' )
+Group.create( :ident => 'member', :name => 'Člen' )
+Group.create( :ident => 'board', :name => 'Výbor' )
+Group.create( :ident => 'admin', :name => 'Administrátor' )
+

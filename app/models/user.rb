@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
-  #attr_accessible :login, :password
   acts_as_authentic
+
+  belongs_to :group
+
+  validates :group_id, :presence => true
+  validates :login, :presence => true
 end
