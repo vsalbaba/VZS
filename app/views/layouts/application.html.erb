@@ -14,10 +14,10 @@
 		<h1><%= link_to 'Vodní záchranná služba Českého červeného kříže - Místní skupina Třebíč', root_path %></h1>
 		<div id="user_nav">
 			<% if current_user %>
-				<%= link_to 'Upravit profil', edit_user_path(current_user) %>
-				<%= link_to "Odhlásit", logout_path %>
+                Uživatel: <%= link_to current_user.login, edit_user_path(current_user), :title => 'Upravit profil' %>
+				(<%= link_to "odhlásit", logout_path %>)
 			<% else %>
-				<%= link_to "Přihlásit", login_path %>
+				<%= link_to "Přihlásit", login_path %> /
 				<%= link_to "Registrovat", new_user_path %>
 			<% end %>
 		</div>
