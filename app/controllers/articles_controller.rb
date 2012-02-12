@@ -8,6 +8,8 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    @article.group_id = current_user.group.id
+    @article.user_id = current_user.id
   end
 
   def create
