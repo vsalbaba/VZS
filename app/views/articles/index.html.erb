@@ -2,20 +2,20 @@
 
 <table>
   <tr>
-    <th>Title</th>
-    <th>Content</th>
-    <th>User</th>
+    <th>Nadpis</th>
+    <th>Autor</th>
+    <th>Požadovaná skupina</th>
   </tr>
   <% for article in @articles %>
     <tr>
       <td><%= article.title %></td>
-      <td><%= article.content %></td>
-      <td><%= article.user_id %></td>
-      <td><%= link_to "Show", article %></td>
-      <td><%= link_to "Edit", edit_article_path(article) %></td>
-      <td><%= link_to "Destroy", article, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= article.user.login %></td>
+      <td><%= article.group.name %></td>
+      <td><%= link_to "Zobrazit", article %></td>
+      <td><%= link_to "Upravit", edit_article_path(article) %></td>
+      <td><%= link_to "Smazat", article, :confirm => 'Opravdu odstranit článek '+article.title+'?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
 
-<p><%= link_to "New Article", new_article_path %></p>
+<p><%= link_to "Nový článek", new_article_path %></p>
