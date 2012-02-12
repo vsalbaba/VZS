@@ -2,27 +2,24 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    # Define abilities for the passed in user here. For example:
-    #
-    #   user ||= User.new # guest user (not logged in)
-    #   if user.admin?
-    #     can :manage, :all
-    #   else
-    #     can :read, :all
-    #   end
-    #
-    # The first argument to `can` is the action you are giving the user permission to do.
-    # If you pass :manage it will apply to every action. Other common actions here are
-    # :read, :create, :update and :destroy.
-    #
-    # The second argument is the resource the user can perform the action on. If you pass
-    # :all it will apply to every resource. Otherwise pass a Ruby class of the resource.
-    #
-    # The third argument is an optional hash of conditions to further filter the objects.
-    # For example, here the user can only update published articles.
-    #
-    #   can :update, Article, :published => true
-    #
-    # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
+    user ||= User.new
+
+    if user.group.ident == 'admin'
+      can :manage, :all
+    else
+      case user.group.ident
+      when 'board'
+        can [:read], Article, :group_id => [1,2,3]
+        can [:create,:update,:save,:destroy], Article, :group_id => [1,2,3], :user_id => user.id
+        # FIXME: nemohou nahodou osoby z vyboru menit cizi clanky apod?
+      when 'member'
+        can [:read], Article, :group_id => [1,2]
+        can [:create,:update,:save,:destroy], Article, :group_id => [1,2], :user_id => user.id
+      when 'outsider'
+        can :read, Article, :group_id => 1
+      else
+        can :read, Article, :group_id => 1 # nyni smi i neregistrovany cist clanky pro 'necleny'
+      end
+    end
   end
 end
