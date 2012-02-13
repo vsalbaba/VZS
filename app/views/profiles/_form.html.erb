@@ -1,0 +1,40 @@
+<%= form_for @profile do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </p>
+  <p>
+    <%= f.label :second_name %><br />
+    <%= f.text_field :second_name %>
+  </p>
+  <p>
+    <%= f.label :street %><br />
+    <%= f.text_field :street %>
+  </p>
+  <p>
+    <%= f.label :house_number %><br />
+    <%= f.text_field :house_number %>
+  </p>
+  <p>
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= f.label :postal_code %><br />
+    <%= f.number_field :postal_code %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :telephone %><br />
+    <%= f.text_field :telephone %>
+  </p>
+  <p>
+    <%= f.label :im_jabber %><br />
+    <%= f.text_field :im_jabber %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
