@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
   belongs_to :group
   has_many :articles
 
-  has_one :profile
+  has_one :profile, :dependent => :destroy
   accepts_nested_attributes_for :profile
 
-  #validates :group_id, :presence => true
+  validates :group_id, :presence => true
   validates :login, :presence => true
 end
