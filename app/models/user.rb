@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+
+  after_create :create_user_profile
   acts_as_authentic
 
   belongs_to :group
@@ -9,4 +11,10 @@ class User < ActiveRecord::Base
 
   validates :group_id, :presence => true
   validates :login, :presence => true
+
+
+  private
+    def create_user_profile
+      self.build_profile
+    end
 end
