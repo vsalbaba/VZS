@@ -4,7 +4,17 @@
 		<%= f.input :password, :label => 'Heslo' %>
 		<%= f.input :password_confirmation, :label => 'Potvrzení hesla' %>
     <%= f.input :group, :label => 'Skupina' %>
-    <%= f.inputs :first_name, :second_name, :street, :postal_code, :city, :telephone, :email, :im_jabber, :for => :profile%>
+    <%= f.semantic_fields_for :profile do |p| %>
+      <%= p.input :first_name, :label => "Křestní jméno" %>
+      <%= p.input :second_name, :label => "Příjmení" %>
+      <%= p.input :email, :label => "Email" %>
+      <%= p.input :telephone, :label => "Telefonní číslo" %>
+      <%= p.input :im_jabber, :label => "IM Jabber" %>
+      <%= p.input :street, :label => "Ulice" %>
+      <%= p.input :house_number, :label => "č.p." %>
+      <%= p.input :postal_code, :label => "PSč" %>
+      <%= p.input :city, :label => "Město" %>
+    <% end %>
 	<% end %>
 	<%= f.buttons do %>
 		<%= f.commit_button :label => @user.id.nil? ? 'Registrovat' : 'Uložit'  %>
