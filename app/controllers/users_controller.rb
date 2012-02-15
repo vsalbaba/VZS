@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.build_profile
     if @user.save
-      redirect_to root_url, :notice => 'Registrace úspěšně dokončna'
+       redirect_to root_url, :notice => 'Registrace úspěšně dokončna'
     else
       render :action => 'new'
     end
@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 
   def edit
   end
+
 
   def update
     if @user.update_attributes(params[:user])
