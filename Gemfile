@@ -46,4 +46,14 @@ gem 'formtastic', '~> 2.0.2'
 gem 'cancan', '~> 1.6.7'
 
 
+group :development, :test do
+  gem "rspec-rails", "~> 2.8"
+  gem "syntax"
+  gem "ruby-debug", :platforms => :mri_18
+  gem "guard"
+  gem "guard-rspec"
+  gem "factory_girl_rails", "~> 1.2"
+  gem "timecop"
+  gem "shoulda"
+end
 gem "mocha", :group => :test
