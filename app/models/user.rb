@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_one :profile, :dependent => :destroy
   accepts_nested_attributes_for :profile
 
-  validates :group_id, :presence => true
+  validates :group, :presence => true
   validates :login, :presence => true
 
 
