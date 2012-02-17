@@ -12,9 +12,8 @@ class User < ActiveRecord::Base
   validates :group, :presence => true
   validates :login, :presence => true
 
-
   private
-    def create_user_profile
-      self.build_profile
-    end
+  def create_user_profile
+    self.build_profile
+  end
 end
