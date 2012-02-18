@@ -6,4 +6,6 @@ class Article < ActiveRecord::Base
   validates :content, :length => { :minimum => 10 }
 
   attr_accessible :title, :content, :user_id, :group_id
+
+  self.per_page = 10
 end

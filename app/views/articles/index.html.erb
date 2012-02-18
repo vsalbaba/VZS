@@ -21,3 +21,5 @@
 <% if can? :create, Article %>
 <p><%= link_to "Nový článek", new_article_path %></p>
 <% end %>
+
+<%= will_paginate @articles %>

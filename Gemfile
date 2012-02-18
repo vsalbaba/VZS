@@ -42,6 +42,7 @@ gem 'authlogic', '~> 3.1.0'
 gem 'nifty-generators', '~> 0.4.6', :group => :development
 gem 'formtastic', '~> 2.0.2'
 gem 'cancan', '~> 1.6.7'
+gem 'will_paginate'
 
 
 gem "mocha", :group => :test
