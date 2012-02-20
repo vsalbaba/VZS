@@ -44,6 +44,7 @@ gem 'authlogic', '~> 3.1.0'
 gem 'nifty-generators', '~> 0.4.6', :group => :development
 gem 'formtastic', '~> 2.0.2'
 gem 'cancan', '~> 1.6.7'
+#gem 'validation_reflection'
 
 
 group :development, :test do
@@ -51,6 +52,7 @@ group :development, :test do
   gem "syntax"
   gem "ruby-debug", :platforms => :mri_18
   gem "guard"
+  gem "libnotify" # test pro libnotify upozornovani...
   gem "guard-rspec"
   gem "factory_girl_rails", "~> 1.2"
   gem "timecop"
