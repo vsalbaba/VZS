@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-
   after_create :create_user_profile
   acts_as_authentic
 
