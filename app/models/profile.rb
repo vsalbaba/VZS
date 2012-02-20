@@ -9,7 +9,18 @@ class Profile < ActiveRecord::Base
 
   private
     def is_member_or_more?
-      user.group.id > 1
+      if user.nil?  or user.group.nil?
+        return false
+      end
+      user.group.id > 1 
+    end
+    
+  public
+    def user_age 
+      if birthdate.nil?
+        return nil 
+      end
+      (Time.now.to_date - birthdate.to_date).to_i / 365
     end
 end
 

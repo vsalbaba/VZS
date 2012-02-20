@@ -8,7 +8,9 @@
   <strong>Password:</strong>
   <%= @user.password %>
 </p>
-
+<p>
+  <strong>Věk uživatele</strong>
+  <%= @user.profile.user_age || "Nezadán"%>
 <p>
   <%= link_to "Edit", edit_user_path(@user) %> |
   <%= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete %> |
