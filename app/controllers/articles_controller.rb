@@ -7,6 +7,11 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    # FIXME: je vůbec přijatelné zde zakládat komentář?
+    # není lepší zavolat metodu CommentsController#new apod?
+    @comment = Comment.new
+    @comment.article_id = @article.id
+    @comment.user = current_user
   end
 
   def new

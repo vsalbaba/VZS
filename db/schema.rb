@@ -10,15 +10,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120212221015) do
+ActiveRecord::Schema.define(:version => 20120221215923) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.text     "content"
     t.integer  "user_id"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.integer  "group_id",   :default => 1
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "group_id",    :default => 1
+    t.boolean  "commentable"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "article_id"
+    t.integer  "user_id"
+    t.text     "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "groups", :force => true do |t|

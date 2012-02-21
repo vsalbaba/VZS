@@ -1,4 +1,6 @@
 Vzs::Application.routes.draw do
+  resources :comments
+
   resources :articles
 
   get "user_sessions/new"
