@@ -5,12 +5,14 @@
     <th>Nadpis</th>
     <th>Autor</th>
     <th>Požadovaná skupina</th>
+    <th>Komentářů</th>
   </tr>
   <% for article in @articles %>
     <tr>
       <td><%= article.title %></td>
       <td><%= article.user.login %></td>
       <td><%= article.group.name %></td>
+      <td><%= link_to "#{article.comments.length}", article_path(article, :anchor => 'comments') %></td>
       <% if can? :read, article %><td><%= link_to "Zobrazit", article %></td><% end %>
       <% if can? :update, article %><td><%= link_to "Upravit", edit_article_path(article) %></td><% end %>
       <% if can? :destroy, article %><td><%= link_to "Smazat", article, :confirm => 'Opravdu odstranit článek '+article.title+'?', :method => :delete %></td><% end %>
