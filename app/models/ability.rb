@@ -28,7 +28,7 @@ class Ability
     can :read, Comment
     if ['board','member', 'outsider'].include? user.group.ident
       # vsichni registrovani smi psat komentare
-      can :create, Comment
+      can :create, Comment, :article => { :commentable => true }
     end
   end
 end
