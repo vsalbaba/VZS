@@ -15,3 +15,16 @@
   <% end %>
   <%= link_to "Výpis všech článků", articles_path %>
 </p>
+
+<div class="comments">
+  <h3>Komentáře:</h3>
+  <% if @article.comments.empty? %>
+    Zatím nejsou žádné komentáře k tomuto článku - Váš může být první.
+  <% else %>
+    <%= render @article.comments %>
+  <% end %>
+  <% if can? :create, Comment %>
+  <%= render 'comments/form' %>
+  <% end %>
+</div>
+

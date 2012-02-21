@@ -1,0 +1,27 @@
+
+#new_comment {
+  margin-top: 1em;
+}
+#new_comment .label {
+  width: 150px;
+}
+#new_comment #comment_message {
+  width: 400px;
+  height: 100px;
+}
+
+.comment {
+  margin-left: 10px;
+  margin-top: 5px;
+}
+.comment .user { font-weight:bold; }
+.comment .date {
+  font-style:italic;
+  font-size:80%;
+  color:gray;
+  background-color:inherit;
+}
+.comment .message {
+  display:block;
+  padding-left:1em;
+}

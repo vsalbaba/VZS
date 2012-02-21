@@ -1,6 +1,7 @@
 class Article < ActiveRecord::Base
   belongs_to :user
   belongs_to :group
+  has_many :comments
 
   validates :title, :content, :user_id, :presence => true
   validates :content, :length => { :minimum => 10 }

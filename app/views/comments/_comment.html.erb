@@ -1,0 +1,13 @@
+
+    <div class="comment">
+      <strong class="user"><%= comment.user.login %></strong>
+      <em class="date"><%= comment.created_at %></em>
+      <% if can? :manage, comment %>
+      <%= link_to "Upravit", edit_comment_path(comment) %>
+      <%= link_to "Odstranit", comment, :confirm => 'Opravdu komentář "'+comment.message+'"?', :method => :delete %>
+      <% end %>
+      <div class="message">
+        <%= comment.message %>
+      </div>
+    </div>
+

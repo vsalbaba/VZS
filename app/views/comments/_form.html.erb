@@ -1,0 +1,8 @@
+<%= semantic_form_for @comment do |f| %>
+	<%= f.semantic_errors %>
+	<%= f.inputs do %>
+    <%= f.input :message, :label => 'Váš komentář:' %>
+    <%= f.input :article_id, :as => :hidden %>
+  <% end %>
+	<%= f.buttons %>
+<% end %>
