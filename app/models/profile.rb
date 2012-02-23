@@ -1,26 +1,45 @@
 class Profile < ActiveRecord::Base
-  attr_accessible :first_name, :second_name, :street, :house_number, :city, :postal_code, :email, :telephone, :im_jabber, :birthdate, :birthnumber
+  attr_accessible :first_name, :second_name, 
+    :email, :telephone,
+    :im_jabber, :birthdate,
+    :birthnumber, :address_id
 
   belongs_to :user
+  belongs_to :address, :dependent => :destroy
 
-  validates :first_name, :second_name, :email, :presence => :true
-  validates :street, :house_number, :city, :postal_code, :email, :telephone, :birthdate, :birthnumber, :presence => :true, :if => :is_member_or_more?
-  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  validates :first_name, :presence => :true
+  validates :second_name, :presence => true
+  validates :user, 
+    :presence => true
+
+  validates :email, 
+    :presence => true, 
+    :format => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
+    :if => :is_member_or_more?
+
+  validates :telephone,
+    :presence => true, 
+    :if => :is_member_or_more?
+
+  validates :birthdate, 
+    :presence => true,
+    :if => :is_member_or_more?
+
+  validates :birthnumber, 
+    :presence => :true, 
+    :if => :is_member_or_more?
+
+  def user_age 
+    return nil if birthdate.nil?
+    (Time.now.to_date - birthdate.to_date).to_i / 365
+  end
 
   private
-    def is_member_or_more?
-      if user.nil?  or user.group.nil?
-        return false
-      end
-      user.group.id > 1 
+  def is_member_or_more?
+    if user.nil?  or user.group.nil?
+      return false
     end
-    
-  public
-    def user_age 
-      if birthdate.nil?
-        return nil 
-      end
-      (Time.now.to_date - birthdate.to_date).to_i / 365
-    end
+    user.group.id > 1 
+  end
 end
 
