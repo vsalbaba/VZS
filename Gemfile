@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.0'
 
+gem 'therubyracer'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -45,4 +47,14 @@ gem 'cancan', '~> 1.6.7'
 gem 'will_paginate'
 
 
+group :development, :test do
+  gem "rspec-rails", "~> 2.8"
+  gem "syntax"
+  gem "ruby-debug", :platforms => :mri_18
+  gem "guard"
+  gem "guard-rspec"
+  gem "factory_girl_rails", "~> 1.2"
+  gem "timecop"
+  gem "shoulda"
+end
 gem "mocha", :group => :test
