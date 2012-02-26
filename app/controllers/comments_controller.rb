@@ -1,19 +1,23 @@
 class CommentsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :except => :create
 
   def index
     authorize! :manage, Comment
   end
 
   def create
+    authorize! :create, Comment
+
+    @comment = Comment.new
     @comment.user = current_user
+    @comment.article_id = params[:article_id]
+    @comment.message = params[:comment][:message]
+
     if @comment.save
       redirect_to @comment.article, :notice => "Váš komentář byl úspěšně přijat."
     else
-      redirect_to @comment.article
-      # TODO: jak zde předat parametry a chybové hlášky zpět?
-      # resp. jak správně vyvolat tuto metodu z ArticlesController#show ...
-      # nebo jak s ní správně interagovat?
+      @article = @comment.article
+      render 'articles/show'
     end
   end
 

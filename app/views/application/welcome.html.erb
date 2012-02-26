@@ -3,9 +3,6 @@
 
 <ul>
 	<li><%= link_to 'Seznam článků', articles_path %></li>
-  <% if can? :manage, Comment %>
-	<li><%= link_to 'Seznam všech komentářů', comments_path %></li>
-  <% end %>
 </ul>
 
 
