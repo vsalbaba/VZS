@@ -8,10 +8,7 @@ class CommentsController < ApplicationController
   def create
     authorize! :create, Comment
 
-    @comment = Comment.new
-    @comment.user = current_user
-    @comment.article_id = params[:article_id]
-    @comment.message = params[:comment][:message]
+    @comment = current_user.comments.new(params[:comment].merge(:article_id => params[:article_id]))
 
     if @comment.save
       redirect_to @comment.article, :notice => "Váš komentář byl úspěšně přijat."
