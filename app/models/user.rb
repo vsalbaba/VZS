@@ -5,6 +5,6 @@ class User < ActiveRecord::Base
   has_many :articles
   has_many :comments
 
-  validates :group_id, :presence => true
+  validates :group, :presence => true
   validates :login, :presence => true
 end
