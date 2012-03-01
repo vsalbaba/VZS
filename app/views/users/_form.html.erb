@@ -10,12 +10,14 @@
       <%= p.input :email, :label => "Email" %>
       <%= p.input :telephone, :label => "Telefonní číslo" %>
       <%= p.input :im_jabber, :label => "IM Jabber" %>
-      <%= p.input :street, :label => "Ulice" %>
-      <%= p.input :house_number, :label => "č.p." %>
-      <%= p.input :postal_code, :label => "PSČ" %>
-      <%= p.input :city, :label => "Město" %>
-      <%= p.input :birthdate, :label => "Datum narození" %>
+      <%= p.input :birthdate, :as => :date, :label => "Datum narození", :start_year => Time.now.year-100 %>
       <%= p.input :birthnumber, :label => "Rodné číslo" %>
+      <%= p.semantic_fields_for :address do |a| %>
+        <%= a.input :street, :label => "Ulice" %>
+        <%= a.input :house_number, :label => "Číslo popisné" %>
+        <%= a.input :city, :label => "Město" %>
+        <%= a.input :postcode, :label => "PSČ" %>
+      <% end %>
     <% end %>
   <% end %>
 	<%= f.buttons do %>
