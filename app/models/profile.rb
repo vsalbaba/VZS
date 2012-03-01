@@ -1,11 +1,13 @@
 class Profile < ActiveRecord::Base
+  after_create :create_address
   attr_accessible :first_name, :second_name, 
     :email, :telephone,
     :im_jabber, :birthdate,
-    :birthnumber, :address_id
+    :birthnumber, :address_id, :address_attributes
 
   belongs_to :user
-  belongs_to :address, :dependent => :destroy
+  has_one :address, :dependent => :destroy
+  accepts_nested_attributes_for :address
 
   validates :first_name, :presence => :true
   validates :second_name, :presence => true
@@ -35,6 +37,9 @@ class Profile < ActiveRecord::Base
   end
 
   private
+  def create_address
+    self.build_address
+  end
   def is_member_or_more?
     if user.nil?  or user.group.nil?
       return false

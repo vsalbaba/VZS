@@ -1,4 +1,6 @@
 Vzs::Application.routes.draw do
+  resources :addresses
+
   #resources :profiles # nested_forms => @users
 
   resources :articles

@@ -1,0 +1,24 @@
+<%= form_for @address do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :street %><br />
+    <%= f.text_field :street %>
+  </p>
+  <p>
+    <%= f.label :house_number %><br />
+    <%= f.text_field :house_number %>
+  </p>
+  <p>
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= f.label :postcode %><br />
+    <%= f.text_field :postcode %>
+  </p>
+  <p>
+    <%= f.label :profile_id %><br />
+    <%= f.number_field :profile_id %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
