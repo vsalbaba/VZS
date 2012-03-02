@@ -11,8 +11,9 @@ class Profile < ActiveRecord::Base
 
   validates :first_name, :presence => :true
   validates :second_name, :presence => true
-  validates :user, 
-    :presence => true
+
+  validates :user, :presence => true
+  validates :user_id, :uniqueness => true
 
   validates :email, 
     :presence => true, 
