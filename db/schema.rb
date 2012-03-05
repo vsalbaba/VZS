@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(:version => 20120301121421) do
     t.integer  "user_id"
     t.date     "birthdate"
     t.integer  "birthnumber"
-    t.string   "house_numbe"
   end
 
   create_table "users", :force => true do |t|
