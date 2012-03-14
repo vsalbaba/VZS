@@ -1,0 +1,28 @@
+<% title "Address" %>
+
+<p>
+  <strong>Street:</strong>
+  <%= @address.street %>
+</p>
+<p>
+  <strong>House Number:</strong>
+  <%= @address.house_number %>
+</p>
+<p>
+  <strong>City:</strong>
+  <%= @address.city %>
+</p>
+<p>
+  <strong>Postcode:</strong>
+  <%= @address.postcode %>
+</p>
+<p>
+  <strong>Profile:</strong>
+  <%= @address.profile_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_address_path(@address) %> |
+  <%= link_to "Destroy", @address, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", addresses_path %>
+</p>

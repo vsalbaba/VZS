@@ -3,8 +3,9 @@
 		<%= f.input :login, :label => 'Přihlašovací jméno' %>
 		<%= f.input :password, :label => 'Heslo' %>
 		<%= f.input :password_confirmation, :label => 'Potvrzení hesla' %>
-		<%= f.input :group, :label => 'Skupina' %>
-	<% end %>
+    <%= f.input :group, :label => 'Skupina' %>
+    <%= render 'profiles/form', :f=>f %>
+  <% end %>
 	<%= f.buttons do %>
 		<%= f.commit_button :label => @user.id.nil? ? 'Registrovat' : 'Uložit'  %>
 	<% end %>
