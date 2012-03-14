@@ -1,8 +1,8 @@
 Vzs::Application.routes.draw do
 
-  #resources :articles do
-  #  resources :comments
-  #end
+  resources :articles do
+    resources :comments
+  end
 
   resources :addresses
   #resources :profiles # nested_forms => @users
