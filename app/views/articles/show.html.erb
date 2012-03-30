@@ -2,7 +2,7 @@
 
 <div>
   <em>Autor:</em> <%= @article.user.login %><br />
-  <em>Min. požadované oprávnění:</em> <%= @article.group.name %><br />
+  <em>Min. požadované oprávnění:</em> <%= group_name(@article.group) %><br />
 </div>
 <div style="border:1px dashed gray;margin:1em 0em 1em 0em;color:#555;padding:1em;line-spacing:3px;">
   <%= @article.content %>

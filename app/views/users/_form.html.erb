@@ -3,7 +3,7 @@
 		<%= f.input :login, :label => 'Přihlašovací jméno' %>
 		<%= f.input :password, :label => 'Heslo' %>
 		<%= f.input :password_confirmation, :label => 'Potvrzení hesla' %>
-    <%= f.input :group, :label => 'Skupina' %>
+        <%= f.input :group, :as => :select, :collection => group_names, :label => 'Skupina' %>
     <%= render 'profiles/form', :f=>f %>
   <% end %>
 	<%= f.buttons do %>

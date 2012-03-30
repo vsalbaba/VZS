@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120301121421) do
+ActiveRecord::Schema.define(:version => 20120330133811) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -26,23 +26,16 @@ ActiveRecord::Schema.define(:version => 20120301121421) do
     t.string   "title"
     t.text     "content"
     t.integer  "user_id"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.integer  "group_id",    :default => 1
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.boolean  "commentable"
+    t.integer  "group"
   end
 
   create_table "comments", :force => true do |t|
     t.integer  "article_id"
     t.integer  "user_id"
     t.text     "message"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "groups", :force => true do |t|
-    t.string   "ident"
-    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -65,9 +58,9 @@ ActiveRecord::Schema.define(:version => 20120301121421) do
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
-    t.integer  "group_id",          :default => 1
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "group"
   end
 
 end
