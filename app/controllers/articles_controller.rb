@@ -1,10 +1,13 @@
 class ArticlesController < ApplicationController
   load_and_authorize_resource
 
+
   def index
+    @articles = @articles.paginate(:page => params[:page])
   end
 
   def show
+    @comment = current_user.comments.new :article_id => @article.id if current_user
   end
 
   def new

@@ -42,17 +42,17 @@ gem 'jquery-rails'
 
 gem 'authlogic', '~> 3.1.0'
 gem 'nifty-generators', '~> 0.4.6', :group => :development
-gem 'formtastic', '~> 2.0.2'
+gem 'formtastic', '~> 2.1.0'
 gem 'cancan', '~> 1.6.7'
-#gem 'validation_reflection'
 
+gem 'will_paginate'
+#gem 'validation_reflection'
 
 group :development, :test do
   gem "rspec-rails", "~> 2.8"
   gem "syntax"
   gem "ruby-debug", :platforms => :mri_18
   gem "guard"
-  gem "libnotify" # test pro libnotify upozornovani...
   gem "guard-rspec"
   gem "factory_girl_rails", "~> 1.2"
   gem "timecop"

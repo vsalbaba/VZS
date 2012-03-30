@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   belongs_to :group
 
   has_many :articles
+  has_many :comments
 
   has_one :profile, :dependent => :destroy
 

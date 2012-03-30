@@ -1,0 +1,19 @@
+<% title "Komentáře" %>
+
+<table>
+  <tr>
+    <th>Článek</th>
+    <th>Autor</th>
+    <th>Zpráva</th>
+  </tr>
+  <% for comment in @comments %>
+    <tr>
+      <td><%= link_to comment.article.title, comment.article %></td>
+      <td><%= comment.user.login %></td>
+      <td><%= comment.message %></td>
+      <td><%= link_to "Edit", edit_comment_path(comment) %></td>
+      <td><%= link_to "Destroy", comment, :confirm => 'Opravdu odstranit komentář?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
