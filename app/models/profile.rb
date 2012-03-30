@@ -44,7 +44,7 @@ class Profile < ActiveRecord::Base
     if user.nil?  or user.group.nil?
       return false
     end
-    user.group.id > 1 
+    user.group >= User::GROUP[:MEMBER]
   end
 end
 

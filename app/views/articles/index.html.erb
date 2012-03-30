@@ -11,7 +11,7 @@
     <tr>
       <td><%= article.title %></td>
       <td><%= article.user.login %></td>
-      <td><%= article.group.name %></td>
+      <td><%= group_name(article.group) %></td>
       <td><%= link_to "#{article.comments.length}", article_path(article, :anchor => 'comments') %></td>
       <% if can? :read, article %><td><%= link_to "Zobrazit", article %></td><% end %>
       <% if can? :update, article %><td><%= link_to "Upravit", edit_article_path(article) %></td><% end %>
