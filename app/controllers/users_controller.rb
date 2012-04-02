@@ -14,6 +14,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    p @user
+    p @user.profile
+    p @user.profile.address
     if @user.save
        redirect_to root_url, :notice => 'Registrace úspěšně dokončna'
     else
