@@ -13,6 +13,9 @@ Vzs::Application.routes.draw do
   resources :users
   resources :user_sessions
 
+  # vypis osob
+  match 'clenove' => 'Profiles#list', :as => :members
+
   # authlogic veci
   match 'login' => 'UserSessions#new', :as => :login
   match 'logout' => 'UserSessions#destroy', :as => :logout

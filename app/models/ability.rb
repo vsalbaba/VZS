@@ -34,5 +34,10 @@ class Ability
       # vsichni registrovani smi psat komentare
       can :create, Comment, :article => { :commentable => true }
     end
+
+    # pouze pro cleny
+    if user.group and user.group >= MEMBER
+      can :read_members, Profile
+    end
   end
 end

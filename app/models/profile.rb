@@ -36,15 +36,16 @@ class Profile < ActiveRecord::Base
     (Time.now.to_date - birthdate.to_date).to_i / 365
   end
 
-  private
-  def create_address
-    self.build_address
-  end
   def is_member_or_more?
     if user.nil?  or user.group.nil?
       return false
     end
     user.group >= User::GROUP[:MEMBER]
+  end
+
+  private
+  def create_address
+    self.build_address
   end
 end
 
