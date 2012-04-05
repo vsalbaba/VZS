@@ -18,7 +18,7 @@
 				(<%= link_to "odhlásit", logout_path %>)
 			<% else %>
 				<%= link_to "Přihlásit", login_path %> /
-				<%= link_to "Registrovat", new_user_path %>
+				<%= link_to "Registrovat", register_path %>
 			<% end %>
 		</div>
       <% flash.each do |name, msg| %>

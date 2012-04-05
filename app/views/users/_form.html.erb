@@ -10,3 +10,8 @@
 		<%= f.commit_button :label => @user.id.nil? ? 'Registrovat' : 'Uložit'  %>
 	<% end %>
 <% end %>
+<hr />
+<%= @user.errors %>
+<hr />
+<%= @user.errors.inspect %>
+<hr />
