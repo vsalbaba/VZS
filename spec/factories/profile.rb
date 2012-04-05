@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :profile do
-    user 
+    association :user, :skip_profile => true
     first_name 'rspec'
     second_name 'user'
     sequence(:email) { |n| "user_${n}@example.org" }
