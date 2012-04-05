@@ -8,6 +8,7 @@ describe Profile do
   before :each do 
     @profile = Factory :profile 
   end
+
   describe 'validations' do
     it 'should be unique to user (one user, one profile)' do
       user = Factory :user
