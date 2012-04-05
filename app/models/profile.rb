@@ -1,5 +1,4 @@
 class Profile < ActiveRecord::Base
-  after_initialize :create_address
   attr_accessible :first_name, :second_name, 
     :email, :telephone,
     :im_jabber, :birthdate,
@@ -39,11 +38,6 @@ class Profile < ActiveRecord::Base
 
   def is_member_or_more?
     user and user.is_member_or_more?
-  end
-
-  private
-  def create_address
-    self.build_address if self.address.nil?
   end
 
 end

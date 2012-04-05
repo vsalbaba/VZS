@@ -10,6 +10,8 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.build_profile
+    @user.profile.build_address
   end
 
   def create

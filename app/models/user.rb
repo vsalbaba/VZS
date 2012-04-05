@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   validates :login, :presence => true
 
   attr_accessible :login, :group,
+    :password, :password_confirmation,
     :crypted_password, :password_salt, :persistence_token,
     :profile, :profile_attributes
 
@@ -30,7 +31,6 @@ class User < ActiveRecord::Base
 
   private
   def init_user
-    self.build_profile if self.profile.nil?
     self.group = GROUP[:OUTSIDER] if self.group.nil?
   end
 end
