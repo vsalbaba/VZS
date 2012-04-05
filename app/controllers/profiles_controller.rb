@@ -4,12 +4,14 @@ class ProfilesController < ApplicationController
   end
 
   def list
+
+    authorize! :read_members, Profile
+
     @profiles = {
       :members => { :younger15 => [], :younger18 => [], :adults => [] },
       :outsiders => { :younger15 => [], :younger18 => [], :adults => [] }
     }
     Profile.all.each do |p|
-      p p.first_name.to_s + p.second_name.to_s + p.user_age.to_s
       byage = :adults
       if p.user_age.to_i < 15
         byage = :younger15
@@ -23,7 +25,6 @@ class ProfilesController < ApplicationController
         @profiles[:outsiders][byage] << p
       end
     end
-    p @profiles
   end
 
   def show
