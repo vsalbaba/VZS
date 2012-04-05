@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  GROUP_ADMIN = 0
+
   GROUP = {
     :OUTSIDER => 0,
     :MEMBER => 1,
