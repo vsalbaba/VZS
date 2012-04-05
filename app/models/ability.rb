@@ -1,32 +1,36 @@
 class Ability
   include CanCan::Ability
 
+  ADMIN = User::GROUP[:ADMIN]
+  BOARD = User::GROUP[:BOARD]
+  MEMBER = User::GROUP[:MEMBER]
+  OUTSIDER = User::GROUP[:OUTSIDER]
+
   def initialize(user)
     user ||= User.new
 
-    if user.group.ident == 'admin'
+    if user.group == ADMIN
       can :manage, :all
       return
     end
 
-    # clanky
-    case user.group.ident
-    when 'board'
-      can :read, Article, :group_id => [1,2,3]
-      can [:create,:update,:save,:destroy], Article, :group_id => [1,2,3], :user_id => user.id
-      # FIXME: nemohou nahodou osoby z vyboru menit cizi clanky apod?
-    when 'member'
-      can :read, Article, :group_id => [1,2]
-      can [:create,:update,:save,:destroy], Article, :group_id => [1,2], :user_id => user.id
-    when 'outsider'
-      can :read, Article, :group_id => 1 # registrovany neclen
+    if user.group == BOARD
+      can :read, Article, :group => [OUTSIDER, MEMBER, BOARD]
+      can :create, Article, :group => [nil, OUTSIDER, MEMBER, BOARD], :user_id => user.id
+      can [:update, :save, :destroy], Article, :group => [OUTSIDER, MEMBER, BOARD], :user_id => user.id
+    elsif user.group == MEMBER
+      can :read, Article, :group => [OUTSIDER, MEMBER]
+      can :create, Article, :group => [nil, OUTSIDER, MEMBER], :user_id => user.id
+      can [:update, :save, :destroy], Article, :group => [OUTSIDER, MEMBER], :user_id => user.id
+    elsif user.group == OUTSIDER
+      can :read, Article, :group => OUTSIDER
     else
-      can :read, Article, :group_id => 1 # neregistrovany smi cist clanky pro 'necleny'
+      can :read, Article, :group => OUTSIDER # neprihlaseni smi cist clanky pro necleny
     end
 
     # komentare
     can :read, Comment
-    if ['board','member', 'outsider'].include? user.group.ident
+    if [BOARD,MEMBER,OUTSIDER].include? user.group
       # vsichni registrovani smi psat komentare
       can :create, Comment, :article => { :commentable => true }
     end

@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article.group_id = current_user.group.id
+    @article.group = current_user.group
     @article.user_id = current_user.id
   end
 

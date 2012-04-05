@@ -59,3 +59,5 @@ group :development, :test do
   gem "shoulda"
 end
 gem "mocha", :group => :test
+gem 'wirble', :group => :development
+

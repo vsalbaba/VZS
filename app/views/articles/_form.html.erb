@@ -1,5 +1,11 @@
 <%= semantic_form_for @article do |f| %>
 	<%= f.semantic_errors %>
-	<%= f.inputs %>
+    <%= f.inputs do %>
+      <%= f.input :user %>
+      <%= f.input :title %>
+      <%= f.input :content %>
+      <%= f.input :commentable %>
+      <%= f.input :group, :as => :select, :collection => group_names, :label => 'Skupina', :include_blank => false %>
+    <% end %>
 	<%= f.buttons %>
 <% end %>
