@@ -6,7 +6,8 @@
 
 # Ignore bundler config
 /.bundle
-.bump
+
+# Ignore deploy configuration
 /config/deploy.rb
 
 # Ignore the default SQLite database.
