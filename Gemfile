@@ -2,14 +2,15 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.0'
 
-gem 'therubyracer'
-
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
 
 gem 'json'
+
+gem "mocha", :group => :test
+gem 'wirble', :group => :development
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -18,7 +19,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
+  gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
 end
@@ -35,7 +36,11 @@ gem 'jquery-rails'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+group :deploy do
+ gem 'capistrano'
+ gem 'capistrano-ext'
+ gem 'rvm-capistrano'
+end
 
 # To use debugger
 # gem 'ruby-debug'
@@ -58,6 +63,4 @@ group :development, :test do
   gem "timecop"
   gem "shoulda"
 end
-gem "mocha", :group => :test
-gem 'wirble', :group => :development
 
