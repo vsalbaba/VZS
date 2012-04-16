@@ -1,0 +1,8 @@
+cs:
+    user_groups:
+        members: 'Členové'
+        outsiders: 'Nečlenové'
+        younger15: 'Mladší 15 let'
+        younger18: 'Mladší 18 let'
+        adults: 'Dospělí'
+

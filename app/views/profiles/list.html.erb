@@ -22,16 +22,13 @@
 
 </style>
 
-<h2>Clenove</h2>
-<% if @profiles[:members].nil? %>
-  <p>Žádní členové</p>
-<% else %>
-  <%= render 'profiles/list_block', :profiles => @profiles[:members] %>
+<% @profiles.each do |group_key,group| %>
+  <h2><%=t group_key, :scope => :user_groups %></h2>
+  <% group.each do |age_key, age_group| %>
+    <h3><%=t age_key, :scope => :user_groups %></h3>
+    <% age_group.each do |p| %>
+      <%= render 'profiles/list_person', :profile => p %>
+    <% end %>
+  <% end %>
 <% end %>
 
-<h2>Neclenove</h2>
-<% if @profiles[:members].nil? %>
-  <p>Žádní nečlenové</p>
-<% else %>
-  <%= render 'profiles/list_block', :profiles => @profiles[:outsiders] %>
-<% end %>
