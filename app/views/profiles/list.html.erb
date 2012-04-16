@@ -1,27 +1,6 @@
 <% title "Seznam clenu" %>
-<style type="text/css">
-  /* po dotvoreni teto sablony presunout do css souboru */
-  .person {
-    border: 1px solid #ccc;
-  }
-  .person div {
-    display: inline-block;
-    padding: 2px;
-  }
-  .person .name {
-    width: 200px;
-    font-weight: bold;
-  }
-  .person .age {
-    width: 100px;
-    border: 1px solid #ddd;
-    border-top: none;
-    border-bottom: none;
-    text-align: right;
-  }
 
-</style>
-
+<div class="personList">
 <% @profiles.each do |group_key,group| %>
   <h2><%=t group_key, :scope => :user_groups %></h2>
   <% group.each do |age_key, age_group| %>
@@ -31,4 +10,4 @@
     <% end %>
   <% end %>
 <% end %>
-
+</div>
