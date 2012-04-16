@@ -23,7 +23,15 @@
 </style>
 
 <h2>Clenove</h2>
-<%= render 'profiles/list_block', :profiles => @profiles[:members] %>
+<% if @profiles[:members].nil? %>
+  <p>Žádní členové</p>
+<% else %>
+  <%= render 'profiles/list_block', :profiles => @profiles[:members] %>
+<% end %>
 
 <h2>Neclenove</h2>
-<%= render 'profiles/list_block', :profiles => @profiles[:outsiders] %>
+<% if @profiles[:members].nil? %>
+  <p>Žádní nečlenové</p>
+<% else %>
+  <%= render 'profiles/list_block', :profiles => @profiles[:outsiders] %>
+<% end %>

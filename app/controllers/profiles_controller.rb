@@ -7,24 +7,10 @@ class ProfilesController < ApplicationController
 
     authorize! :read_members, Profile
 
-    @profiles = {
-      :members => { :younger15 => [], :younger18 => [], :adults => [] },
-      :outsiders => { :younger15 => [], :younger18 => [], :adults => [] }
-    }
-    Profile.all.each do |p|
-      byage = :adults
-      if p.user_age.to_i < 15
-        byage = :younger15
-      elsif p.user_age.to_i < 18
-        byage = :younger18
-      end
-
-      if p.is_member_or_more?
-        @profiles[:members][byage] << p
-      else
-        @profiles[:outsiders][byage] << p
-      end
-    end
+    @profiles = { }
+    profiles = Profile.order('birthdate DESC').group_by(&:is_member_or_more?)
+    @profiles[:members] = profiles[true].group_by( &:user_age_group ) unless profiles[true].nil?
+    @profiles[:outsiders] = profiles[false].group_by( &:user_age_group ) unless profiles[false].nil?
   end
 
   def show

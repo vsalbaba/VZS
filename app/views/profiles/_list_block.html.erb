@@ -1,18 +1,18 @@
-<% unless profiles[:younger15].empty? %>
+<% unless profiles[:younger15].nil? %>
   <h3>Do 15 let</h3>
   <% profiles[:younger15].each do |p| %>
     <%= render 'profiles/list_person', :profile => p %>
   <% end %>
 <% end %>
 
-<% unless profiles[:younger18].empty? %>
+<% unless profiles[:younger18].nil? %>
   <h3>Do 18 let</h3>
   <% profiles[:younger18].each do |p| %>
     <%= render 'profiles/list_person', :profile => p %>
   <% end %>
 <% end %>
 
-<% unless profiles[:adults].empty? %>
+<% unless profiles[:adults].nil? %>
   <h3>Dospeli</h3>
   <% profiles[:adults].each do |p| %>
     <%= render 'profiles/list_person', :profile => p %>
