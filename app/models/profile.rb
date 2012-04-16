@@ -36,6 +36,15 @@ class Profile < ActiveRecord::Base
     (Time.now.to_date - birthdate.to_date).to_i / 365
   end
 
+  def user_age_group
+    if user_age.to_i < 15
+      return :younger15
+    elsif user_age.to_i < 18
+      return :younger18
+    end
+    return :adults
+  end
+
   def is_member_or_more?
     if user.nil?  or user.group.nil?
       return false
