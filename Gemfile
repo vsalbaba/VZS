@@ -49,6 +49,8 @@ gem 'authlogic', '~> 3.1.0'
 gem 'nifty-generators', '~> 0.4.6', :group => :development
 gem 'formtastic', '~> 2.1.0'
 gem 'cancan', '~> 1.6.7'
+gem 'twitter-bootstrap-rails'
+gem 'less', '~> 2.0.9'
 
 gem 'will_paginate'
 #gem 'validation_reflection'
