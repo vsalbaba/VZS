@@ -1,0 +1,13 @@
+<% title "Seznam clenu" %>
+
+<div class="personList">
+<% @profiles.each do |group_key,group| %>
+  <h2><%=t group_key, :scope => :user_groups %></h2>
+  <% group.each do |age_key, age_group| %>
+    <h3><%=t age_key, :scope => :user_groups %></h3>
+    <% age_group.each do |p| %>
+      <%= render 'profiles/list_person', :profile => p %>
+    <% end %>
+  <% end %>
+<% end %>
+</div>
