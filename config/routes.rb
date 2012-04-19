@@ -12,6 +12,7 @@ Vzs::Application.routes.draw do
 
   resources :users
   resources :user_sessions
+  match 'register' => 'Users#new', :as => :register
 
   # vypis osob
   match 'clenove' => 'Profiles#list', :as => :members

@@ -1,18 +1,20 @@
 class Profile < ActiveRecord::Base
-  after_create :create_address
   attr_accessible :first_name, :second_name, 
     :email, :telephone,
     :im_jabber, :birthdate,
-    :birthnumber, :address_id, :address_attributes
+    :birthnumber,
+    :address, :address_attributes
 
-  belongs_to :user
-  has_one :address, :dependent => :destroy
+  belongs_to :user, :inverse_of => :profile
+
+  has_one :address, :dependent => :destroy, :inverse_of => :profile
   accepts_nested_attributes_for :address
 
   validates :first_name, :presence => :true
   validates :second_name, :presence => true
-  validates :user, 
-    :presence => true
+
+  validates :user, :presence => true
+  validates :user_id, :uniqueness => true
 
   validates :email, 
     :presence => true, 
@@ -46,15 +48,12 @@ class Profile < ActiveRecord::Base
   end
 
   def is_member_or_more?
-    if user.nil?  or user.group.nil?
-      return false
-    end
-    user.group >= User::GROUP[:MEMBER]
+    user and user.is_member_or_more?
   end
 
-  private
-  def create_address
-    self.build_address
+  def full_name
+    return first_name.to_s + ' ' + second_name.to_s
   end
+
 end
 
