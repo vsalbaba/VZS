@@ -52,7 +52,10 @@
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Menu</li>
-	            <li><%= link_to 'Seznam článků', articles_path %></li>
+	            <li><%= link_to 'Úvodní stránka', root_path %></li>
+                <% if can? :create, Article %>
+                  <li><%= link_to 'Správa článků', articles_path %></li>
+                <% end %>
                 <% if can? :read_members, Profile %>
                   <li><%= link_to 'Seznam členů VZS', members_path %></li>
                 <% end %>

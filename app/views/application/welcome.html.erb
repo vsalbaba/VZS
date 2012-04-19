@@ -3,3 +3,12 @@
   <h2>Vodní záchranná služba Českého červeného kříže<span class="invisible"> - </span><span class="subtitle">Místní skupina Třebíč</span></h2>
 </div>
 
+<% @articles.each do |article| %>
+  <div>
+    <strong><%= link_to article.title, article %></strong> ~ <%= full_name(article.user) %><br />
+    <div>
+      <em><%= article.content[0,50] %>...</em>
+      <%= link_to 'Více', article %>
+    </div>
+  </div>
+<% end %>

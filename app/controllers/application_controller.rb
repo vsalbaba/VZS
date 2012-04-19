@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def welcome
+    @articles = Article.accessible_by(current_ability).order('created_at DESC').limit(10)
   end
 
   private
