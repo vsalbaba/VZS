@@ -4,13 +4,15 @@
     Vodní záchranná služba ČČK <small>MS Třebíč</small>
   </h1>
 </div>
+<%if @articles.first %>
 <div class="hero-unit">
   <h1><%=@articles.first.try(:title)%></h1>
-  <p><%= @articles.first.try(:content).truncate(150) %> </p>
+  <p><%= @articles.first.try(:content).try(:truncate, 150) %> </p>
   <p>
   <%= link_to 'Více  »', @articles.first, :class =>  "btn btn-primary btn-large" %>
   <p>
 </div>
+<% end %>
 
 <div class="row-fluid">
 <% @articles.each do |article| %>
