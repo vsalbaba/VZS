@@ -8,18 +8,23 @@
 <br />
 <div class=row-fluid">
   <% @articles.each do |article| %>
-    <div class=span5>
+    <div class="span5 well">
       <h2><%= article.title %>
         <%= link_to article_path(article, :anchor => 'comments'), :class => "badge badge-info" do %>
           <%=article.comments.count%>
           <i class="icon-comment"></i>
         <% end %>
       </h2>
-      <p><em><%= article.user.profile.full_name %> <%= l article.created_at, :format => :long %></em></p>
+      <p>
+      <em>
+        <%= article.user.profile.full_name %>
+        <%= l article.created_at, :format => :long %>
+      </em>
+      </p>
       <p><%= simple_format article.content.truncate(300) %></p>
       <div class="btn-group pull-right">
         <% if can? :read, article %>
-          <%= link_to article, :class => "btn btn-primary" do %>
+          <%= link_to article, :class => "btn" do %>
             Zobrazit »
           <% end %>
         <% end %>

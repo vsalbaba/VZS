@@ -32,15 +32,24 @@
           </a>
           <%= link_to 'VZS ČČK Třebíč', root_path, :class => 'brand' %>
           <div class="container-fluid nav-collapse">
+            <ul class="nav">
+              <li> <a href="#"> O nás </a> </li>
+              <li> <a href="#"> Kontakty </a> </li>
+            </ul>
             <ul class="nav pull-right">
               <% if current_user %>
                 <li><%= link_to full_name(current_user), edit_user_path(current_user), :title => 'Upravit profil' %></li>
-                <li><%= link_to "Odhlásit", logout_path %></li>
+                <li>
+                  <%= link_to logout_path do %>
+                    Odhlásit
+                  <% end %>
+                </li>
+
               <% else %>
                 <li><%= link_to "Přihlásit", login_path %></li>
                 <li><%= link_to "Registrovat", register_path %></li>
               <% end %>
-            </ul>
+            </ul> <!--/.nav pullright -->
           </div><!--/.nav-collapse -->
         </div>
       </div>
