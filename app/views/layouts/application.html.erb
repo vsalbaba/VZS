@@ -32,24 +32,7 @@
           </a>
           <%= link_to 'VZS ČČK Třebíč', root_path, :class => 'brand' %>
           <div class="container-fluid nav-collapse">
-            <ul class="nav">
-              <li> <a href="#"> O nás </a> </li>
-              <li> <a href="#"> Kontakty </a> </li>
-            </ul>
-            <ul class="nav pull-right">
-              <% if current_user %>
-                <li><%= link_to full_name(current_user), edit_user_path(current_user), :title => 'Upravit profil' %></li>
-                <li>
-                  <%= link_to logout_path do %>
-                    Odhlásit
-                  <% end %>
-                </li>
-
-              <% else %>
-                <li><%= link_to "Přihlásit", login_path %></li>
-                <li><%= link_to "Registrovat", register_path %></li>
-              <% end %>
-            </ul> <!--/.nav pullright -->
+            <%= render 'layouts/navbar' %>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -68,24 +51,15 @@
           </div>
           <div class="row">
             <div class="well sidebar-nav">
-              <ul class="nav nav-list">
-                <li class="nav-header">Menu</li>
-                <li><%= link_to 'Úvodní stránka', root_path %></li>
-                  <% if can? :create, Article %>
-                    <li><%= link_to 'Správa článků', articles_path %></li>
-                  <% end %>
-                  <% if can? :read_members, Profile %>
-                    <li><%= link_to 'Seznam členů VZS', members_path %></li>
-                  <% end %>
-              </ul>
+              <%= render 'layouts/menu' %>
             </div><!--/.well -->
           </div>
         </div><!--/span-->
         <div class="span10">
-        <% flash.each do |name, msg| %>
-          <%= content_tag :div, msg, :id => "flash_#{name}" %>
-        <% end %>
-        <%= content_tag :h1, yield(:title) if show_title? %>
+          <% flash.each do |name, msg| %>
+            <%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert" %>
+          <% end %>
+          <%= content_tag :h1, yield(:title) if show_title? %>
           <%= yield %>
         </div>
       </div><!--/row-->
