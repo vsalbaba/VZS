@@ -1,14 +1,26 @@
-
-<div class="hero-unit">
-  <h2>Vodní záchranná služba Českého červeného kříže<span class="invisible"> - </span><span class="subtitle">Místní skupina Třebíč</span></h2>
+<div class="page-header">
+  <h1>
+    Vodní záchranná služba ČČK <small>MS Třebíč</small>
+  </h1>
 </div>
+<%if @articles.first %>
+<div class="hero-unit">
+  <h1><%=@articles.first.try(:title)%></h1>
+  <p><%= @articles.first.try(:content).try(:truncate, 150) %> </p>
+  <p>
+  <%= link_to 'Více  »', @articles.first, :class =>  "btn btn-primary btn-large" %>
+  <p>
+</div>
+<% end %>
 
+<div class="row-fluid">
 <% @articles.each do |article| %>
-  <div>
-    <strong><%= link_to article.title, article %></strong> ~ <%= full_name(article.user) %><br />
-    <div>
-      <em><%= article.content[0,50] %>...</em>
-      <%= link_to 'Více', article %>
-    </div>
+  <div class=span4>
+    <h2><%= link_to article.title, article %></h2>
+      <p><%= article.content.truncate(150) %></p>
+      <p>
+        <%= link_to 'Více »', article, :class =>  "btn" %>
+      </p>
   </div>
 <% end %>
+</div>

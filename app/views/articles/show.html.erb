@@ -1,20 +1,28 @@
 <% title @article.title %>
+<%= link_to articles_path, :class => "btn pull-right btn-primary btn-large" do %>
+<i class="icon-arrow-left icon-white"></i> Výpis všech článků
+<%end %>
 
+<div class="span12">
 <div>
-  <em>Autor:</em> <%= @article.user.login %><br />
+  <em>Autor:</em> <%= @article.user.profile.full_name %><br />
   <em>Min. požadované oprávnění:</em> <%= group_name(@article.group) %><br />
 </div>
 <div style="border:1px dashed gray;margin:1em 0em 1em 0em;color:#555;padding:1em;line-spacing:3px;">
-  <%= @article.content %>
+  <%= simple_format @article.content %>
 </div>
 
-<p>
+<div class="btn-group pull-right">
   <% if can? :edit, @article %>
-  <%= link_to "Upravit", edit_article_path(@article) %> |
-  <%= link_to "Smazat", @article, :confirm => 'Opravdu odstranit tento článek?', :method => :delete %> |
+    <%= link_to edit_article_path(@article), :class => "btn" do %>
+    <i class="icon-edit"></i> Upravit
+    <% end %>
+    <%= link_to @article, :confirm => 'Opravdu odstranit tento článek?', :method => :delete, :class => "btn btn-danger" do %>
+    <i class="icon-trash"></i> Smazat
+    <% end %>
+
   <% end %>
-  <%= link_to "Výpis všech článků", articles_path %>
-</p>
+</div>
 
 <div class="comments">
   <h3 id="comments">Komentáře:</h3>
@@ -33,5 +41,6 @@
   <% else %>
     <div class="info">U tohoto článku byly komentáře uzamčeny.</div>
   <% end %>
+</div>
 </div>
 
