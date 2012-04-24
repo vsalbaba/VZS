@@ -6,7 +6,7 @@
 <%if @articles.first %>
 <div class="hero-unit">
   <h1><%=@articles.first.try(:title)%></h1>
-  <p><%= @articles.first.try(:content).try(:truncate, 150) %> </p>
+  <p><%= @articles.first.try(:content).try(:truncate, 300) %> </p>
   <p>
   <%= link_to 'Více  »', @articles.first, :class =>  "btn btn-primary btn-large" %>
   <p>
