@@ -1,3 +1,6 @@
+.comments {
+  width: 600px;
+}
 
 #new_comment {
   margin-top: 1em;
@@ -6,8 +9,9 @@
   width: 150px;
 }
 #new_comment #comment_message {
-  width: 400px;
+  width: 600px;
   height: 100px;
+  display:block;
 }
 
 .comment {

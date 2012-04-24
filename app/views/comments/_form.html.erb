@@ -3,5 +3,7 @@
 	<%= f.inputs do %>
     <%= f.input :message, :label => 'Váš komentář:' %>
   <% end %>
-	<%= f.buttons %>
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :button, :button_html => { :class => 'btn btn-success' } %>
+  <% end %>
 <% end %>

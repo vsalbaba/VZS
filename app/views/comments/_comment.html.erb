@@ -1,11 +1,25 @@
 
     <div class="comment">
+      <% if can? :manage, comment %>
+        <div class="btn-group pull-right">
+          <a class="btn btn-mini" href="#"><i class="icon-user"></i> Admin</a>
+          <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+            <%= link_to edit_article_comment_path(comment.article, comment) do %>
+              <i class="icon-edit"></i> Upravit
+              <% end %>
+            </li>
+            <li>
+              <%= link_to article_comment_path(comment.article, comment), :confirm => 'Opravdu komentář "'+comment.message+'"?', :method => :delete do %>
+              <i class="icon-trash"></i> Odstranit
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
       <strong class="user"><%= comment.user.login %></strong>
       <em class="date"><%= comment.created_at %></em>
-      <% if can? :manage, comment %>
-      <%= link_to "Upravit", edit_article_comment_path(comment.article, comment) %>
-      <%= link_to "Odstranit", article_comment_path(comment.article, comment), :confirm => 'Opravdu komentář "'+comment.message+'"?', :method => :delete %>
-      <% end %>
       <div class="message">
         <%= comment.message %>
       </div>
