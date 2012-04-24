@@ -5,7 +5,6 @@
     <h2><%=t group_key, :scope => :user_groups %></h2>
     <% group.each do |age_key, age_group| %>
       <h3><%=t age_key, :scope => :user_groups %></h3>
-      <% age_group.each do |profile| %>
         <table class="table">
           <thead>
             <tr>
@@ -16,10 +15,11 @@
             </tr>
           </thead>
           <tbody>
+      <% age_group.each do |profile| %>
             <%= render 'profiles/list_person', :profile => profile %>
+      <% end %>
           </tbody>
         </table>
-      <% end %>
     <% end %>
   <% end %>
 </div>
