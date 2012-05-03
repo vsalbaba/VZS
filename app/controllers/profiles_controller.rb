@@ -3,16 +3,6 @@ class ProfilesController < ApplicationController
     @profiles = Profile.all
   end
 
-  def list
-
-    authorize! :read_members, Profile
-
-    @profiles = { }
-    profiles = Profile.order('birthdate DESC').group_by(&:is_member_or_more?)
-    @profiles[:members] = profiles[true].group_by( &:user_age_group ) unless profiles[true].nil?
-    @profiles[:outsiders] = profiles[false].group_by( &:user_age_group ) unless profiles[false].nil?
-  end
-
   def show
     @profile = Profile.find(params[:id])
   end

@@ -52,7 +52,7 @@ class Ability
 
     if user.group >= MEMBER
       # clenove smi ...
-      can :read_members, Profile # ... prohlizet seznam clenu
+      can :read_members, User # ... prohlizet seznam clenu
       can :update_extended, Profile, :user_id => user.id # ... upravovat svuj profil
     end
 

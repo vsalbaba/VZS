@@ -15,7 +15,7 @@ Vzs::Application.routes.draw do
   match 'register' => 'Users#new', :as => :register
 
   # vypis osob
-  match 'clenove' => 'Profiles#list', :as => :members
+  match 'clenove' => 'Users#index', :as => :members
 
   # authlogic veci
   match 'login' => 'UserSessions#new', :as => :login

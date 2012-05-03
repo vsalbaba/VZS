@@ -3,8 +3,12 @@ class UsersController < ApplicationController
   before_filter :authorize_update, :except => [:new, :create, :index, :show]
 
   def index
-    authorize! :manage, User
-    @users = User.all
+    authorize! :read_members, User
+    @users = {}
+
+    users = User.joins(:profile).order('birthdate DESC').group_by(&:is_member_or_more?)
+    @users[:members] = users[true].group_by { |u| u.profile.user_age_group } unless users[true].nil?
+    @users[:outsiders] = users[false].group_by { |u| u.profile.user_age_group } unless users[false].nil?
   end
 
   def show
