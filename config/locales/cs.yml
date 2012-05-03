@@ -30,6 +30,8 @@ cs:
         edit: 'Upravit'
         delete: 'Odstranit'
         login: 'Přihlásit'
+        logout: 'Odhlásit'
+        edit_profile: 'Upravit profil'
         register: 'Registrovat'
 
     label:
