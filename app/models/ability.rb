@@ -46,16 +46,21 @@ class Ability
   end
 
   def user_rules(user)
+    can :create, User
+    can [:update, :save], User, :id => user.id
+    can [:update, :save], Profile, :user_id => user.id
+
     if user.group >= MEMBER
       # clenove smi ...
       can :read_members, Profile # ... prohlizet seznam clenu
-      can :manage, Profile, :user_id => user.id # ... upravovat svuj profil
+      can :update_extended, Profile, :user_id => user.id # ... upravovat svuj profil
     end
 
     if user.group >= BOARD
       # clenove vyboru a vyssi smi spravovat uzivatele a rozsirujici atributy
       # profilu (RC, Adresa, Skupina apod)
       can :manage, User
+      can :update_extended, Profile
     end
   end
 end

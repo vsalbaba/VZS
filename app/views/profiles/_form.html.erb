@@ -4,7 +4,7 @@
   <%= p.input :email, :label => "Email" %>
   <%= p.input :telephone, :label => "Telefonní číslo" %>
   <%= p.input :im_jabber, :label => "IM Jabber" %>
-  <% if can? :update, @user.profile %>
+  <% if can? :update_extended, @user.profile %>
     <%= p.input :birthdate, :as => :date, :label => "Datum narození", :start_year => Time.now.year-100 %>
     <%= p.input :birthnumber, :label => "Rodné číslo" %>
     <%= render 'addresses/form', :f => p %>

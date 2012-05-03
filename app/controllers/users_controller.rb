@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_filter :find_user, :only => [:show, :edit, :update, :destroy]
+  before_filter :authorize_update, :except => [:new, :create, :index, :show]
 
   def index
+    authorize! :manage, User
     @users = User.all
   end
 
@@ -43,6 +45,11 @@ class UsersController < ApplicationController
   end
   
   protected
+
+  def authorize_update
+    authorize! :update, @user
+  end
+
   def find_user
     @user = User.find(params[:id])
   end
