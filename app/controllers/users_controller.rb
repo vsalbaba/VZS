@@ -34,6 +34,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    authorize! :update, @user
   end
 
 
