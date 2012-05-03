@@ -12,8 +12,12 @@ cs:
             age_empty: 'Nezadán'
             password: 'Heslo'
             password_confirmation: 'Potvrzení hesla'
-            birthnumber: 'Datum narození'
+            birthdate: 'Datum narození'
             birthnumber: 'Rodné číslo'
+            street: 'Ulice'
+            housenumber: 'Číslo popisné'
+            city: 'Město'
+            postcode: 'PSČ'
 
         groups:
             members: 'Členové'
@@ -28,3 +32,8 @@ cs:
         login: 'Přihlásit'
         register: 'Registrovat'
 
+    label:
+        user:
+            login: 'Přihlášení'
+            new: 'Registrace'
+            edit: 'Editace profilu'

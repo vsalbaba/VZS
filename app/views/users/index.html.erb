@@ -2,9 +2,9 @@
 
 <div class="personList">
   <% @users.each do |group_key,group| %>
-    <h2><%=t group_key, :scope => :user_groups %></h2>
+    <h2><%=t group_key, :scope => 'user.groups' %></h2>
     <% group.each do |age_key, age_group| %>
-      <h3><%=t age_key, :scope => :user_groups %></h3>
+      <h3><%=t age_key, :scope => 'user.groups' %></h3>
         <table class="table">
           <thead>
             <tr>
