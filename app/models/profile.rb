@@ -16,10 +16,7 @@ class Profile < ActiveRecord::Base
   validates :user, :presence => true
   validates :user_id, :uniqueness => true
 
-  validates :email, 
-    :presence => true, 
-    :format => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i,
-    :if => :is_member_or_more?
+  validates :email, :format => /\A(([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,}))?\Z/i
 
   validates :telephone,
     :presence => true, 
