@@ -3,15 +3,15 @@
 <%= form_for @user_session do |form| %>  
 	<%= form.error_messages %>  
 	<p>  
-		<%= form.label :login, "Přihlašovací jméno" %>  
+		<%= form.label :login, t('user.attr.login') %>  
 		<%= form.text_field :login %>  
 	</p>  
 	<p>  
-		<%= form.label :password, "Heslo" %>  
+		<%= form.label :password, t('user.attr.password') %>  
 		<%= form.password_field :password %>  
 	</p>  
 	<p>  
-		<%= form.submit "Přihlásit" %>  
+		<%= form.submit t('btn.login') %>  
 	</p>  
 <% end %>  
 

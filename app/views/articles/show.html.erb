@@ -3,44 +3,44 @@
 <i class="icon-arrow-left icon-white"></i> Výpis všech článků
 <%end %>
 
-<div class="span12">
-<div>
-  <em>Autor:</em> <%= @article.user.profile.full_name %><br />
-  <em>Min. požadované oprávnění:</em> <%= group_name(@article.group) %><br />
-</div>
-<div style="border:1px dashed gray;margin:1em 0em 1em 0em;color:#555;padding:1em;line-spacing:3px;">
-  <%= simple_format @article.content %>
-</div>
+<div class="row-fluid span12">
+  <div>
+    <em>Autor:</em> <%= @article.user.profile.full_name %><br />
+    <em>Min. požadované oprávnění:</em> <%= group_name(@article.group) %><br />
+  </div>
+  <div>
+    <%= simple_format @article.content %>
+  </div>
 
-<div class="btn-group pull-right">
-  <% if can? :edit, @article %>
-    <%= link_to edit_article_path(@article), :class => "btn" do %>
-    <i class="icon-edit"></i> Upravit
+  <div class="btn-group pull-right">
+    <% if can? :edit, @article %>
+      <%= link_to edit_article_path(@article), :class => "btn" do %>
+      <i class="icon-edit"></i> Upravit
+      <% end %>
+      <%= link_to @article, :confirm => 'Opravdu odstranit tento článek?', :method => :delete, :class => "btn btn-danger" do %>
+      <i class="icon-trash"></i> Smazat
+      <% end %>
+
     <% end %>
-    <%= link_to @article, :confirm => 'Opravdu odstranit tento článek?', :method => :delete, :class => "btn btn-danger" do %>
-    <i class="icon-trash"></i> Smazat
+  </div>
+
+  <div class="comments">
+    <h3 id="comments">Komentáře:</h3>
+
+
+    <% if not @article.comments.empty? %>
+      <%= render @article.comments %>
+    <% elsif @article.commentable %>
+      <div>Zatím nejsou žádné komentáře k tomuto článku - Váš může být první.</div>
     <% end %>
 
-  <% end %>
-</div>
-
-<div class="comments">
-  <h3 id="comments">Komentáře:</h3>
-
-
-  <% if not @article.comments.empty? %>
-    <%= render @article.comments %>
-  <% elsif @article.commentable %>
-    <div>Zatím nejsou žádné komentáře k tomuto článku - Váš může být první.</div>
-  <% end %>
-
-  <% if @article.commentable %>
-    <% if can? :create, @comment %>
-      <%= render 'comments/form' %>
+    <% if @article.commentable %>
+      <% if can? :create, @comment %>
+        <%= render 'comments/form' %>
+      <% end %>
+    <% else %>
+      <div class="info">U tohoto článku byly komentáře uzamčeny.</div>
     <% end %>
-  <% else %>
-    <div class="info">U tohoto článku byly komentáře uzamčeny.</div>
-  <% end %>
-</div>
+  </div>
 </div>
 

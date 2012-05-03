@@ -1,14 +1,14 @@
 <%= semantic_form_for @user do |f| %>
 	<%= f.inputs do %>
-		<%= f.input :login, :label => 'Přihlašovací jméno' %>
-		<%= f.input :password, :label => 'Heslo' %>
-		<%= f.input :password_confirmation, :label => 'Potvrzení hesla' %>
+      <%= f.input :login, :label => t('user.attr.login') %>
+      <%= f.input :password, :label => t('user.attr.password') %>
+		<%= f.input :password_confirmation, :label => t('user.attr.password_confirmation') %>
         <% if can? :manage, User %>
           <%= f.input :group, :as => :select, :collection => group_names, :label => 'Skupina' %>
         <% end %>
     <%= render 'profiles/form', :f=>f %>
   <% end %>
 	<%= f.buttons do %>
-		<%= f.commit_button :label => @user.id.nil? ? 'Registrovat' : 'Uložit'  %>
+		<%= f.commit_button :label => @user.id.nil? ? t('btn.register') : t('btn.save')  %>
 	<% end %>
 <% end %>

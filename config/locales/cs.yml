@@ -1,8 +1,30 @@
 cs:
-    user_groups:
-        members: 'Členové'
-        outsiders: 'Nečlenové'
-        younger15: 'Mladší 15 let'
-        younger18: 'Mladší 18 let'
-        adults: 'Dospělí'
+    user:
+        attr:
+            login: 'Přihlašovací jméno'
+            first_name: 'Křestní jméno'
+            second_name: 'Příjmení'
+            fullname: 'Celé jméno'
+            email: 'E-Mail'
+            phonenumber: 'Telefonní číslo'
+            im_jabber: 'IM Jabber'
+            age: 'Věk'
+            age_empty: 'Nezadán'
+            password: 'Heslo'
+            password_confirmation: 'Potvrzení hesla'
+            birthnumber: 'Datum narození'
+            birthnumber: 'Rodné číslo'
+
+        groups:
+            members: 'Členové'
+            outsiders: 'Nečlenové'
+            younger15: 'Mladší 15 let'
+            younger18: 'Mladší 18 let'
+            adults: 'Dospělí'
+    btn:
+        save: 'Uložit'
+        edit: 'Upravit'
+        delete: 'Odstranit'
+        login: 'Přihlásit'
+        register: 'Registrovat'
 

@@ -1,15 +1,21 @@
-    <tr>
-      <td><%= profile.first_name %></td>
-      <td><%= profile.second_name %></td>
-      <td><%= profile.street %></td>
-      <td><%= profile.house_number %></td>
-      <td><%= profile.city %></td>
-      <td><%= profile.postal_code %></td>
-      <td><%= profile.email %></td>
-      <td><%= profile.telephone %></td>
-      <td><%= profile.im_jabber %></td>
-      <td><%= link_to "Show", profile %></td>
-      <td><%= link_to "Edit", edit_profile_path(profile) %></td>
-      <td><%= link_to "Destroy", profile, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
+<tr>
+  <th><%=t 'user.attr.fullname' %>:</th>
+  <td><%= profile.first_name %> <%= profile.second_name %></td>
+</tr>
+<tr>
+  <th><%=t 'user.attr.email' %>:</th>
+  <td><%= profile.email %></td>
+</tr>
+<tr>
+  <th><%=t 'user.attr.phonenumber' %>:</th>
+  <td><%= profile.telephone %></td>
+</tr>
+<tr>
+  <th><%=t 'user.attr.im_jabber' %>:</th>
+  <td><%= profile.im_jabber %></td>
+</tr>
+<tr>
+  <th><%=t 'user.attr.age' %></th>
+  <td><%= profile.user_age || t('user.attr.age_empty') %></td>
+</tr>
 
