@@ -60,6 +60,7 @@ class Ability
       
       # ... prohlizet seznam clenu
       can :read_members, User
+      can :read, User
 
       # ... upravovat rozsirujici atributy sveho profil
       can :update_extended, Profile, :user_id => user.id
