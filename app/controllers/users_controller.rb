@@ -16,6 +16,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    # adresa je nepovinna ale chceme ji mit alespon prazdnou
+    @user.profile.build_address unless @user.profile.address 
     if @user.save
        redirect_to root_url, :notice => 'Registrace úspěšně dokončna'
     else
