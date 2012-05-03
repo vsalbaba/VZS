@@ -12,4 +12,11 @@ class Address < ActiveRecord::Base
     profile and profile.is_member_or_more?
   end
 
+  def ==(addr)
+    self.street == addr.street and
+    self.house_number == addr.house_number and
+    self.city == addr.city and
+    self.postcode == addr.postcode
+  end
+
 end
