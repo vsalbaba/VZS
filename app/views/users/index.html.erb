@@ -1,25 +1,18 @@
 <% title "Seznam členů" %>
 
-<div class="personList">
-  <% @users.each do |group_key,group| %>
-    <h2><%=t group_key, :scope => 'user.groups' %></h2>
-    <% group.each do |age_key, age_group| %>
-      <h3><%=t age_key, :scope => 'user.groups' %></h3>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Jméno</th>
-              <th>Věk</th>
-              <th>E-mail</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-      <% age_group.each do |user| %>
-            <%= render 'profiles/list_person', :profile => user.profile %>
+<div class="row-fluid" id="userList">
+
+  <div class="tabbable">
+    <ul class="nav nav-tabs">
+      <% @users.keys.each do |group_key| %>
+        <li><a href="#<%= group_key %>" data-toggle="tab"><%=t group_key, :scope => 'user.groups' %></a></li>
       <% end %>
-          </tbody>
-        </table>
-    <% end %>
-  <% end %>
+    </ul>
+
+    <div class="tab-content">
+      <% @users.each do |group_key,group| %>
+        <%= render 'index_tab', :group_key => group_key, :group => group %>
+      <% end %>
+    </div>
+  </div>
 </div>
