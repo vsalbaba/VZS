@@ -4,8 +4,6 @@ Vzs::Application.routes.draw do
     resources :comments
   end
 
-  resources :addresses
-  #resources :profiles # nested_forms => @users
   resources :articles
 
   get "user_sessions/new"
@@ -15,7 +13,7 @@ Vzs::Application.routes.draw do
   match 'register' => 'Users#new', :as => :register
 
   # vypis osob
-  match 'clenove' => 'Profiles#list', :as => :members
+  match 'clenove' => 'Users#index', :as => :members
 
   # authlogic veci
   match 'login' => 'UserSessions#new', :as => :login

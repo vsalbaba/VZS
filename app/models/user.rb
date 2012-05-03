@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
     self.group.to_i >= User::GROUP[:MEMBER]
   end
 
+  def group?(g)
+    g == self.group
+  end
+
   private
   def init_user
     self.group = GROUP[:OUTSIDER] if self.group.nil?

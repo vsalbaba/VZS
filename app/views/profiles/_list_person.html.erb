@@ -1,9 +1,14 @@
 <tr>
   <td><%= profile.full_name %></td>
-  <td><%= profile.user_age%></td>
   <td><%= profile.email %></td>
+  <td><%= profile.user_age%></td>
+  <td><%= group_name(profile.user.group) %></td>
   <td>
-    <%= link_to "#", :class => "btn" do %>
-      <i class="icon-search"></i> Zobrazit
-    <% end %>
+    <div class="btn-group">
+      <%= link_to profile.user, :class => "btn" do %>
+        <i class="icon-search"></i> Zobrazit
+      <% end %>
+      <%= render 'users/change_buttons', :user => profile.user %>
+    </div>
+  </td>
 </tr>

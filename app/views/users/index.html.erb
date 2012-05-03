@@ -1,19 +1,18 @@
-<% title "Users" %>
+<% title "Seznam členů" %>
 
-<table>
-  <tr>
-    <th>Login</th>
-    <th>Password</th>
-  </tr>
-  <% for user in @users %>
-    <tr>
-      <td><%= user.login %></td>
-      <td><%= user.password %></td>
-      <td><%= link_to "Show", user %></td>
-      <td><%= link_to "Edit", edit_user_path(user) %></td>
-      <td><%= link_to "Destroy", user, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="row-fluid" id="userList">
 
-<p><%= link_to "New User", new_user_path %></p>
+  <div class="tabbable">
+    <ul class="nav nav-tabs">
+      <% @users.keys.each do |group_key| %>
+        <li><a href="#<%= group_key %>" data-toggle="tab"><%=t group_key, :scope => 'user.groups' %></a></li>
+      <% end %>
+    </ul>
+
+    <div class="tab-content">
+      <% @users.each do |group_key,group| %>
+        <%= render 'index_tab', :group_key => group_key, :group => group %>
+      <% end %>
+    </div>
+  </div>
+</div>

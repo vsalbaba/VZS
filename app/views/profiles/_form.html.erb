@@ -1,10 +1,12 @@
 <%= f.semantic_fields_for :profile do |p| %>
-  <%= p.input :first_name, :label => "Křestní jméno" %>
-  <%= p.input :second_name, :label => "Příjmení" %>
-  <%= p.input :email, :label => "Email" %>
-  <%= p.input :telephone, :label => "Telefonní číslo" %>
-  <%= p.input :im_jabber, :label => "IM Jabber" %>
-  <%= p.input :birthdate, :as => :date, :label => "Datum narození", :start_year => Time.now.year-100 %>
-  <%= p.input :birthnumber, :label => "Rodné číslo" %>
-  <%= render 'addresses/form', :f => p %>
+  <%= p.input :first_name, :label => t('user.attr.first_name') %>
+  <%= p.input :second_name, :label => t('user.attr.second_name') %>
+  <%= p.input :email, :label => t('user.attr.email') %>
+  <%= p.input :telephone, :label => t('user.attr.phonenumber') %>
+  <%= p.input :im_jabber, :label => t('user.attr.im_jabber') %>
+  <% if can? :update_extended, @user.profile %>
+    <%= p.input :birthdate, :as => :date, :label => t('user.attr.birthdate'), :start_year => Time.now.year-100 %>
+    <%= p.input :birthnumber, :label => t('user.attr.birthnumber') %>
+    <%= render 'addresses/form', :f => p %>
+  <% end %>
 <% end %>

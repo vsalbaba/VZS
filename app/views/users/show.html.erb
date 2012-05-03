@@ -1,19 +1,19 @@
-<% title "User" %>
+<% title @user.profile.full_name %>
+<% if can? :read_members, User %>
+  <%= link_to users_path, :class => "btn pull-right btn-primary btn-large" do %>
+  <i class="icon-arrow-left icon-white"></i> Seznam členů
+  <%end %>
+<% end %>
 
-<p>
-  <strong>Login:</strong>
-  <%= @user.login %>
-</p>
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
-<p>
-  <strong>Věk uživatele</strong>
-  <%= @user.profile.user_age || "Nezadán"%>
-<p>
-  <%= link_to "Edit", edit_user_path(@user) %> |
-  <%= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", users_path %>
-</p>
+<table class="table">
+  <tr>
+  <th><%=t 'user.attr.login' %>:</th>
+  <td><%= @user.login %></td>
 
+  <%= render @user.profile %>
+
+</table>
+
+<div class="btn-group pull-right">
+  <%= render 'change_buttons', :user => @user %>
+</div>
