@@ -3,6 +3,9 @@ FactoryGirl.define do
     sequence(:login) {|n| "user#{n}"}
     password 'ahoj'
     password_confirmation 'ahoj'
-    group User::GROUP[:OUTSIDER]
+
+    factory :user_member do
+      group User::GROUP[:MEMBER]
+    end
   end
 end

@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe Address do
 
   before :each do
-    @address = Factory :address
+    @address = Factory :address_for_member
   end
 
   describe 'validations' do
