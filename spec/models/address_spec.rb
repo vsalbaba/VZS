@@ -31,6 +31,17 @@ describe Address do
       @address.errors[:postcode].should_not be_blank
     end
   end
+
+  describe '#is_member_or_more?' do
+    it 'should be false when addres has no profile' do
+      @address.profile = nil
+      @address.is_member_or_more?.should_not be_true
+    end
+    it 'should be true when address has a profile which belongs to a member' do
+      @address.profile.user.group = User::GROUP[:MEMBER]
+      @address.is_member_or_more?.should be_true
+    end
+  end
 end
   
 

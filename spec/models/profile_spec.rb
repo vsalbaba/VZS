@@ -92,7 +92,13 @@ describe Profile do
   end
 
   describe '#is_member_or_more?' do
-    it 'should be false when user is not a member'
-    it 'should be true when user is a member'
+    it 'should be false when profile has no user' do
+      @profile.user = nil
+      @profile.is_member_or_more?.should_not be_true
+    end
+    it 'should be true when profile has a user which is a member' do
+      @profile.user.group = User::GROUP[:MEMBER]
+      @profile.is_member_or_more?.should be_true
+    end
   end
 end
