@@ -37,6 +37,7 @@ describe Address do
       @address.profile = nil
       @address.is_member_or_more?.should_not be_true
     end
+
     it 'should be true when address has a profile which belongs to a member' do
       @address.profile.user.group = User::GROUP[:MEMBER]
       @address.is_member_or_more?.should be_true
@@ -44,12 +45,36 @@ describe Address do
   end
 
   describe 'address equality comparison' do
-    it 'should equal itself'
-    it 'should equal address with same attributes'
-    it 'should not equal when street varies'
-    it 'should not equal when city varies'
-    it 'should not equal when house number varies'
-    it 'should not equal when postcode varies'
+    it 'should equal itself' do
+      @address.==(@address).should be_true
+    end
+
+    it 'should equal address with same attributes' do
+      second_address = Factory :address
+      second_address.street = @address.street
+      second_address.house_number = @address.house_number
+      second_address.city = @address.city
+      second_address.postcode = @address.postcode
+
+      @address.==(second_address).should be_true
+    end
+      
+    it 'should not equal when street varies' do
+      second_address = Factory :address, :street => 'rozdilna ulice'
+      @address.==(second_address).should_not be_true
+    end
+    it 'should not equal when city varies' do
+      second_address = Factory :address, :city => 'rozdilne mesto'
+      @address.==(second_address).should_not be_true
+    end
+    it 'should not equal when house number varies' do
+      second_address = Factory :address, :house_number => '42jina'
+      @address.==(second_address).should_not be_true
+    end
+    it 'should not equal when postcode varies' do
+      second_address = Factory :address, :postcode => '86869'
+      @address.==(second_address).should_not be_true
+    end
   end
 end
   
