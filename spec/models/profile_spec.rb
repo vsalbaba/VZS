@@ -91,6 +91,15 @@ describe Profile do
     end
   end
 
+  describe '#user_age_group' do
+    it 'should return :younger15 when age is nil'
+    it 'should return :younger15 when age is lower then 15'
+    it 'should return :younger18 when age is equal to 15'
+    it 'should return :younger18 when age is lower then 18'
+    it 'should return :adults when age equal to 18'
+    it 'should return :adults when age is greater then 18'
+  end
+
   describe '#is_member_or_more?' do
     it 'should be false when profile has no user' do
       @profile.user = nil
@@ -100,5 +109,12 @@ describe Profile do
       @profile.user.group = User::GROUP[:MEMBER]
       @profile.is_member_or_more?.should be_true
     end
+  end
+
+  describe '#full_name' do
+    it 'should return concatenation of first and second name'
+    # fixme: incomplete spec
+    # consider moving UsersHelper#full_name to User
+    # model and better spec coverage of this method
   end
 end

@@ -14,6 +14,18 @@ describe User do
     end
   end
 
+  describe 'validations' do
+    it 'should allow defined groups' do
+      User::GROUP.each_value do |group_id|
+        should allow_value(group_id).for(:group)
+      end
+    end
+    it 'should not allow unknown groups' do
+      should_not allow_value(nil).for(:group)
+      should_not allow_value(-1).for(:group)
+    end
+  end
+
   describe '#is_member_or_more?' do
     it 'should be false when user is not a member' do
       @user.group = User::GROUP[:OUTSIDER]
@@ -31,5 +43,11 @@ describe User do
       @user.group = User::GROUP[:ADMIN]
       @user.is_member_or_more?.should be_true
     end
+  end
+
+  describe '#group?' do
+    it 'should be true on users own group'
+    it 'should be true when group is same as users one'
+    it 'should not be true when group is different to users one'
   end
 end

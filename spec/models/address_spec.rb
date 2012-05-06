@@ -42,6 +42,15 @@ describe Address do
       @address.is_member_or_more?.should be_true
     end
   end
+
+  describe 'address equality comparison' do
+    it 'should equal itself'
+    it 'should equal address with same attributes'
+    it 'should not equal when street varies'
+    it 'should not equal when city varies'
+    it 'should not equal when house number varies'
+    it 'should not equal when postcode varies'
+  end
 end
   
 
