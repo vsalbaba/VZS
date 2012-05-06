@@ -46,8 +46,16 @@ describe User do
   end
 
   describe '#group?' do
-    it 'should be true on users own group'
-    it 'should be true when group is same as users one'
-    it 'should not be true when group is different to users one'
+    it 'should be true on users own group' do
+      @user.group?(@user.group).should be_true
+    end
+    it 'should be true when group is same as users one' do
+      @user.group = User::GROUP[:MEMBER]
+      @user.group?(User::GROUP[:MEMBER]).should be_true
+    end
+    it 'should not be true when group is different to users one' do
+      @user.group = User::GROUP[:OUTSIDER]
+      @user.group?(User::GROUP[:MEMBER]).should_not be_true
+    end
   end
 end
