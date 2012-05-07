@@ -49,6 +49,10 @@ describe Address do
       @address.==(@address).should be_true
     end
 
+    it 'should not equal for nil address' do
+      @address.==(nil).should_not be_true
+    end
+
     it 'should equal address with same attributes' do
       second_address = Factory :address
       second_address.street = @address.street
