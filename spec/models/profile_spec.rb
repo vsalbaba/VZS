@@ -47,7 +47,11 @@ describe Profile do
         @profile.should be_valid
         @profile.errors[:email].should be_blank
       end
-      it 'should not be valid without address'
+      it 'should not be valid without address' do
+        @profile.address = nil
+        @profile.should_not be_valid
+        @profile.errors[:address].should_not be_blank
+      end
     end
 
     context 'when user is not a member' do
@@ -76,7 +80,11 @@ describe Profile do
         @profile.valid? #vyhodnotit validaci, jinak jsou errors vzdy emtpy
         @profile.errors[:email].should be_blank
       end
-      it 'should be valid without address'
+      it 'should be valid without address' do
+        @profile.address = nil
+        @profile.should be_valid
+        @profile.errors[:address].should be_blank
+      end
     end
   end
   describe '#user_age' do

@@ -9,8 +9,11 @@ class Profile < ActiveRecord::Base
 
   has_one :address, :dependent => :destroy, :inverse_of => :profile
   accepts_nested_attributes_for :address
+  validates :address,
+    :presence => true,
+    :if => :is_member_or_more?
 
-  validates :first_name, :presence => :true
+  validates :first_name, :presence => true
   validates :second_name, :presence => true
 
   validates :user, :presence => true
