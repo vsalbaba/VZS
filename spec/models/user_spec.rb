@@ -58,4 +58,23 @@ describe User do
       @user.group?(User::GROUP[:MEMBER]).should_not be_true
     end
   end
+
+  describe '#full_name' do
+    it 'should return login if profile is nil' do
+      @user.profile = nil
+      @user.full_name.should == @user.login
+    end
+
+    it 'should return login if first and second name is empty' do
+      @user.profile = Factory :profile
+      @user.profile.first_name = ''
+      @user.profile.second_name = ''
+      @user.full_name.should == @user.login
+    end
+
+    it 'should return concatenation of first and second name' do
+      @user.profile = Factory :profile
+      @user.full_name.should == @user.profile.first_name + ' ' + @user.profile.second_name
+    end
+  end
 end

@@ -142,10 +142,4 @@ describe Profile do
     end
   end
 
-  describe '#full_name' do
-    it 'should return concatenation of first and second name'
-    # fixme: incomplete spec
-    # consider moving UsersHelper#full_name to User
-    # model and better spec coverage of this method
-  end
 end

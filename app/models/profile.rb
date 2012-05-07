@@ -51,9 +51,5 @@ class Profile < ActiveRecord::Base
     user and user.is_member_or_more?
   end
 
-  def full_name
-    return first_name.to_s + ' ' + second_name.to_s
-  end
-
 end
 

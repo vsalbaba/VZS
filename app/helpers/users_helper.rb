@@ -14,10 +14,5 @@ module UsersHelper
     GROUP_NAMES[ group_id ]
   end
 
-  def full_name(user)
-    fn = user.profile.full_name
-    return user.login if fn == ' '
-    return fn
-  end
 end
 

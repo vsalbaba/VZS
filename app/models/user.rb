@@ -33,6 +33,11 @@ class User < ActiveRecord::Base
     g == self.group
   end
 
+  def full_name
+    return login if profile.nil? or ( profile.first_name.empty? and profile.second_name.empty? )
+    return profile.first_name + ' ' + profile.second_name
+  end
+
   private
   def init_user
     self.group = GROUP[:OUTSIDER] if self.group.nil?
