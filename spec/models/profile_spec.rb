@@ -92,12 +92,35 @@ describe Profile do
   end
 
   describe '#user_age_group' do
-    it 'should return :younger15 when age is nil'
-    it 'should return :younger15 when age is lower then 15'
-    it 'should return :younger18 when age is equal to 15'
-    it 'should return :younger18 when age is lower then 18'
-    it 'should return :adults when age equal to 18'
-    it 'should return :adults when age is greater then 18'
+    it 'should return :younger15 when age is nil' do
+      @profile.birthdate = nil
+      @profile.user_age_group.should == :younger15
+    end
+
+    it 'should return :younger15 when age is lower then 15' do
+      @profile.birthdate = 10.years.ago
+      @profile.user_age_group.should == :younger15
+    end
+
+    it 'should return :younger18 when age is equal to 15' do
+      @profile.birthdate = 15.years.ago
+      @profile.user_age_group.should == :younger18
+    end
+
+    it 'should return :younger18 when age is lower then 18' do
+      @profile.birthdate = 17.years.ago
+      @profile.user_age_group.should == :younger18
+    end
+
+    it 'should return :adults when age equal to 18' do
+      @profile.birthdate = 18.years.ago
+      @profile.user_age_group.should == :adults
+    end
+
+    it 'should return :adults when age is greater then 18' do
+      @profile.birthdate = 999.years.ago
+      @profile.user_age_group.should == :adults
+    end
   end
 
   describe '#is_member_or_more?' do
