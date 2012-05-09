@@ -42,11 +42,15 @@ describe Profile do
         @profile.should_not be_valid
         @profile.errors[:telephone].should_not be_blank
       end
-      it 'should not be valid without address'
-      it 'should not be valid without email' do
+      it 'should be valid without email' do
         @profile.email = nil
+        @profile.should be_valid
+        @profile.errors[:email].should be_blank
+      end
+      it 'should not be valid without address' do
+        @profile.address = nil
         @profile.should_not be_valid
-        @profile.errors[:email].should_not be_blank
+        @profile.errors[:address].should_not be_blank
       end
     end
 
@@ -71,11 +75,15 @@ describe Profile do
         @profile.valid? #vyhodnotit validaci, jinak jsou errors vzdy emtpy
         @profile.errors[:telephone].should be_blank
       end
-      it 'should be valid without address'
       it 'should be valid without email' do
         @profile.email = nil
         @profile.valid? #vyhodnotit validaci, jinak jsou errors vzdy emtpy
         @profile.errors[:email].should be_blank
+      end
+      it 'should be valid without address' do
+        @profile.address = nil
+        @profile.should be_valid
+        @profile.errors[:address].should be_blank
       end
     end
   end
@@ -91,8 +99,47 @@ describe Profile do
     end
   end
 
-  describe '#is_member_or_more?' do
-    it 'should be false when user is not a member'
-    it 'should be true when user is a member'
+  describe '#user_age_group' do
+    it 'should return :younger15 when age is nil' do
+      @profile.birthdate = nil
+      @profile.user_age_group.should == :younger15
+    end
+
+    it 'should return :younger15 when age is lower then 15' do
+      @profile.birthdate = 10.years.ago
+      @profile.user_age_group.should == :younger15
+    end
+
+    it 'should return :younger18 when age is equal to 15' do
+      @profile.birthdate = 15.years.ago
+      @profile.user_age_group.should == :younger18
+    end
+
+    it 'should return :younger18 when age is lower then 18' do
+      @profile.birthdate = 17.years.ago
+      @profile.user_age_group.should == :younger18
+    end
+
+    it 'should return :adults when age equal to 18' do
+      @profile.birthdate = 18.years.ago
+      @profile.user_age_group.should == :adults
+    end
+
+    it 'should return :adults when age is greater then 18' do
+      @profile.birthdate = 999.years.ago
+      @profile.user_age_group.should == :adults
+    end
   end
+
+  describe '#is_member_or_more?' do
+    it 'should be false when profile has no user' do
+      @profile.user = nil
+      @profile.is_member_or_more?.should_not be_true
+    end
+    it 'should be true when profile has a user which is a member' do
+      @profile.user.group = User::GROUP[:MEMBER]
+      @profile.is_member_or_more?.should be_true
+    end
+  end
+
 end

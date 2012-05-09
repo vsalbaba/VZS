@@ -13,6 +13,7 @@ class Address < ActiveRecord::Base
   end
 
   def ==(addr)
+    return false if addr.nil?
     self.street == addr.street and
     self.house_number == addr.house_number and
     self.city == addr.city and

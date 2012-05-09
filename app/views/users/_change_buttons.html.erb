@@ -7,7 +7,7 @@
 
   <% if can? :destroy, user %>
     <%= link_to user, 
-      :confirm => 'Opravdu odstranit uživatele ' + user.profile.full_name + '?',
+      :confirm => 'Opravdu odstranit uživatele ' + user.full_name + '?',
       :method => :delete, :class => "btn btn-danger" do %>
         <i class="icon-trash"></i> <%=t 'btn.delete' %>
     <% end %>
