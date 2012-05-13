@@ -16,6 +16,7 @@ class Ability
 
     article_rules(user)
     comments_rules(user)
+    attachments_rules(user)
     user_manager_rules(user)
     user_rules(user)
 
@@ -43,6 +44,17 @@ class Ability
     if [BOARD,MEMBER,OUTSIDER].include? user.group
       # vsichni registrovani smi psat komentare
       can :create, Comment, :article => { :commentable => true }
+    end
+  end
+
+  def attachments_rules(user)
+    can :create, Attachment do |att|
+      att.user_id == user.id and
+      att.article.group <= user.group
+    end
+    can [:update, :save, :destroy], Attachment, :user_id => user.id
+    if user.group >= BOARD
+      can :manage, Attachment
     end
   end
 

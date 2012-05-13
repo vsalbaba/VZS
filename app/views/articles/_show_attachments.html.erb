@@ -1,0 +1,14 @@
+
+  <div class="attachments span6">
+    <% unless @article.attachments.empty? %>
+      <h3>Přílohy</h3>
+      <ul>
+        <%= render @article.attachments %>
+      </ul>
+    <% end %>
+    <% if can? :create, @attachment %>
+      <div id="new-attachment">
+        <%= render 'attachments/form' %>
+      </div>
+    <% end %>
+  </div>

@@ -1,0 +1,19 @@
+
+  <div class="comments">
+    <h3 id="comments">Komentáře:</h3>
+
+
+    <% if not @article.comments.empty? %>
+      <%= render @article.comments %>
+    <% elsif @article.commentable %>
+      <div>Zatím nejsou žádné komentáře k tomuto článku - Váš může být první.</div>
+    <% end %>
+
+    <% if @article.commentable %>
+      <% if can? :create, @comment %>
+        <%= render 'comments/form' %>
+      <% end %>
+    <% else %>
+      <div class="info">U tohoto článku byly komentáře uzamčeny.</div>
+    <% end %>
+  </div>

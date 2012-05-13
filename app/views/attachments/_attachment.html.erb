@@ -1,0 +1,13 @@
+<li>
+<%= link_to attachment.name, attachment.file.url %>
+- <%= attachment.size %>B
+- by <%= attachment.user.full_name %>
+  <% if can? :delete, attachment %>
+    <%= link_to article_attachment_path(attachment.article, attachment),
+      :confirm => 'Opravdu odstranit soubor ' + attachment.name + '?',
+      :method => :delete,
+      :class => "btn btn-mini btn-danger" do %>
+      <i class="icon-trash"></i> 
+    <% end %>
+  <% end %>
+</li>
