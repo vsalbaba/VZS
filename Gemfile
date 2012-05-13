@@ -12,6 +12,7 @@ gem 'twitter-bootstrap-rails', '~> 2.0.4'
 gem 'less', '~> 2.0.9'
 gem 'will_paginate', '~> 3.0.3'
 #gem 'validation_reflection'
+gem 'paperclip', '~> 2.0'
 
 gem 'wirble', :group => :development
 gem 'nifty-generators', '~> 0.4.6', :group => :development
