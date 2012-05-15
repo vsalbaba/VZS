@@ -15,6 +15,7 @@ gem 'will_paginate', '~> 3.0.3'
 gem 'paperclip', '~> 2.0'
 
 gem 'wirble', :group => :development
+gem 'quiet_assets', :group => :development
 gem 'nifty-generators', '~> 0.4.6', :group => :development
 
 gem "mocha", :group => :test

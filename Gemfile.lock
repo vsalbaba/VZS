@@ -109,6 +109,8 @@ GEM
       cocaine (>= 0.0.2)
       mime-types
     polyglot (0.3.3)
+    quiet_assets (1.0.1)
+      railties (~> 3.1)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -211,6 +213,7 @@ DEPENDENCIES
   mocha
   nifty-generators (~> 0.4.6)
   paperclip (~> 2.0)
+  quiet_assets
   rails (= 3.2.0)
   rails-i18n (~> 0.6.3)
   rspec-rails (~> 2.8)
