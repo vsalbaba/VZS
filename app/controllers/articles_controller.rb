@@ -7,7 +7,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @comment = current_user.comments.new :article_id => @article.id if current_user
   end
 
   def new

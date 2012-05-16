@@ -24,23 +24,10 @@
     <% end %>
   </div>
 
-  <div class="comments">
-    <h3 id="comments">Komentáře:</h3>
+  <% @comment ||= current_user.comments.new :article_id => @article.id if current_user %>
+  <% @attachment ||= current_user.attachments.new :article_id => @article.id if current_user %>
+  <%= render 'articles/show_attachments' %>
+  <%= render 'articles/show_comments' %>
 
-
-    <% if not @article.comments.empty? %>
-      <%= render @article.comments %>
-    <% elsif @article.commentable %>
-      <div>Zatím nejsou žádné komentáře k tomuto článku - Váš může být první.</div>
-    <% end %>
-
-    <% if @article.commentable %>
-      <% if can? :create, @comment %>
-        <%= render 'comments/form' %>
-      <% end %>
-    <% else %>
-      <div class="info">U tohoto článku byly komentáře uzamčeny.</div>
-    <% end %>
-  </div>
 </div>
 

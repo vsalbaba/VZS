@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120330133811) do
+ActiveRecord::Schema.define(:version => 20120513105034) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -30,6 +30,18 @@ ActiveRecord::Schema.define(:version => 20120330133811) do
     t.datetime "updated_at",  :null => false
     t.boolean  "commentable"
     t.integer  "group"
+  end
+
+  create_table "attachments", :force => true do |t|
+    t.integer  "article_id"
+    t.integer  "user_id"
+    t.string   "name"
+    t.integer  "file_file_size"
+    t.string   "file_file_name"
+    t.datetime "file_updated_at"
+    t.string   "file_content_type"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "comments", :force => true do |t|
