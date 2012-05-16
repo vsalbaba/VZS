@@ -1,19 +1,19 @@
 
-  <div class="comments">
-    <h3 id="comments">Komentáře:</h3>
+<div class="row-fluid vzs-article-comments">
+  <h3 id="comments">Komentáře:</h3>
 
+  <% if not @article.comments.empty? %>
+    <%= render @article.comments %>
+  <% elsif @article.commentable %>
+    <div>Zatím nejsou žádné komentáře k tomuto článku - Váš může být první.</div>
+  <% end %>
 
-    <% if not @article.comments.empty? %>
-      <%= render @article.comments %>
-    <% elsif @article.commentable %>
-      <div>Zatím nejsou žádné komentáře k tomuto článku - Váš může být první.</div>
+  <% if @article.commentable %>
+    <% if can? :create, @comment %>
+      <% @comment ||= current_user.comments.new :article_id => @article.id if current_user %>
+      <%= render 'comments/form' %>
     <% end %>
-
-    <% if @article.commentable %>
-      <% if can? :create, @comment %>
-        <%= render 'comments/form' %>
-      <% end %>
-    <% else %>
-      <div class="info">U tohoto článku byly komentáře uzamčeny.</div>
-    <% end %>
-  </div>
+  <% else %>
+    <div class="info">U tohoto článku byly komentáře uzamčeny.</div>
+  <% end %>
+</div>

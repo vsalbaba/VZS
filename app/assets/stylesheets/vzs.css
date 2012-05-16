@@ -7,6 +7,9 @@
 #vzs-main-content {}
 #vzs-page-content {}
 
-.vzs-note {
-    color: rgb(153,153,153);
-}
+.vzs-note { color: rgb(153,153,153); }
+
+.vzs-article {}
+.vzs-article-content { text-align: justify; }
+.vzs-article-comments {}
+.vzs-article-attachments {}
