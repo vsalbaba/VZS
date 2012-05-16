@@ -1,33 +1,46 @@
 <% title @article.title %>
-<%= link_to articles_path, :class => "btn pull-right btn-primary btn-large" do %>
-<i class="icon-arrow-left icon-white"></i> Výpis všech článků
-<%end %>
+<div class="row-fluid">
 
-<div class="row-fluid span12">
-  <div>
-    <em>Autor:</em> <%= @article.user.full_name %><br />
-    <em>Min. požadované oprávnění:</em> <%= group_name(@article.group) %><br />
+  <div class="row-fluid">
+    <div class="span8">
+      <%= render 'articles/meta_info', :article => @article %>
+
+      <br />
+
+      <div class="row-fluid">
+        <%= simple_format @article.content %>
+      </div>
+
+      <div class="row-fluid">
+        <% @comment ||= current_user.comments.new :article_id => @article.id if current_user %>
+        <%= render 'articles/show_comments' %>
+      </div>
+
+    </div>
+
+    <div class="span4">
+      <div>
+        <%= link_to articles_path, :class => "btn btn-primary btn-large" do %>
+          <i class="icon-arrow-left icon-white"></i> Výpis všech článků
+        <%end %>
+      </div>
+      <br />
+      <div class="btn-group">
+        <% if can? :edit, @article %>
+          <%= link_to edit_article_path(@article), :class => "btn" do %>
+            <i class="icon-edit"></i> Upravit
+          <% end %>
+          <%= link_to @article, :confirm => 'Opravdu odstranit tento článek?', :method => :delete, :class => "btn btn-danger" do %>
+            <i class="icon-trash"></i> Smazat
+          <% end %>
+        <% end %>
+      </div>
+      <br />
+
+      <% @attachment ||= current_user.attachments.new :article_id => @article.id if current_user %>
+      <%= render 'articles/show_attachments' %>
+    </div>
   </div>
-  <div>
-    <%= simple_format @article.content %>
-  </div>
-
-  <div class="btn-group pull-right">
-    <% if can? :edit, @article %>
-      <%= link_to edit_article_path(@article), :class => "btn" do %>
-      <i class="icon-edit"></i> Upravit
-      <% end %>
-      <%= link_to @article, :confirm => 'Opravdu odstranit tento článek?', :method => :delete, :class => "btn btn-danger" do %>
-      <i class="icon-trash"></i> Smazat
-      <% end %>
-
-    <% end %>
-  </div>
-
-  <% @comment ||= current_user.comments.new :article_id => @article.id if current_user %>
-  <% @attachment ||= current_user.attachments.new :article_id => @article.id if current_user %>
-  <%= render 'articles/show_attachments' %>
-  <%= render 'articles/show_comments' %>
 
 </div>
 

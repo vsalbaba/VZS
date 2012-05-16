@@ -1,0 +1,10 @@
+
+      <div class="row-fluid vzs-note">
+        <small>
+          <span title="Autor"><i class="icon-user"></i> <%= article.user.full_name %></a>
+          <span title="Vznik článku"><i class="icon-calendar"></i> <%= l article.created_at, :format => :long %></span>
+          <% if current_user.group >= User::GROUP[:BOARD] %>
+            <span title="Minimální požadované oprávnění"><i class="icon-eye-open"></i> <%= group_name(article.group) %></span>
+          <% end %>
+        </small>
+      </div>

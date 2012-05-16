@@ -1,5 +1,5 @@
 
-    <div class="comment">
+    <blockquote class="comment">
       <% if can? :manage, comment %>
         <div class="btn-group pull-right">
           <a class="btn btn-mini" href="#"><i class="icon-user"></i> Admin</a>
@@ -18,10 +18,19 @@
           </ul>
         </div>
       <% end %>
-      <strong class="user"><%= comment.user.login %></strong>
-      <em class="date"><%= comment.created_at %></em>
-      <div class="message">
-        <%= comment.message %>
-      </div>
-    </div>
+
+      <%= comment.message %>
+
+      <% if false and comment.id == 1 %>
+      <small>
+        <i class="icon-user"></i> <strong><%= comment.user.login %></strong>
+        <i class="icon-time"></i> <%= l comment.created_at, :format => :long %>
+      </small>
+    <% else %>
+      <small>
+        <strong><%= comment.user.login %></strong>
+        @ <%= l comment.created_at, :format => :long %>
+      </small>
+    <% end %>
+    </blockquote>
 
