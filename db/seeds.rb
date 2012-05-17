@@ -6,20 +6,26 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 
-
-admin_address = Address.create()
-
-admin_profile = Profile.create(
-  :first_name => 'Admin',
-  :second_name => 'Administrátor',
-  :email => 'admin@example.org',
-  :address => admin_address
-)
-
-admin = User.create(
-  :login => 'admin',
-  :group => User::GROUP[:ADMIN],
+admin = User.find_or_create_by_login(
+  'admin',
   :password => 'admin',
   :password_confirmation => 'admin',
-  :profile => admin_profile
+  :group => 3
 )
+
+admin_profile = Profile.find_or_create_by_user_id(
+  admin.id,
+  :first_name => 'Admin',
+  :second_name => 'Adminovič',
+  :email => 'admin@example.com',
+  :telephone => '906060606',
+  :birthdate => '1.1.2000',
+  :birthnumber => '0123456789'
+)
+
+if admin_profile.id.nil?
+  admin_address = Address.create( :street => 'street', :house_number => '0', :city => 'city', :postcode => 'psc' )
+  admin_profile.address = admin_address
+  admin_profile.save
+end
+

@@ -55,12 +55,11 @@ ActiveRecord::Schema.define(:version => 20120513105034) do
   create_table "profiles", :force => true do |t|
     t.string   "first_name"
     t.string   "second_name"
-    t.string   "house_number"
     t.string   "email"
     t.string   "telephone"
     t.string   "im_jabber"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "user_id"
     t.date     "birthdate"
     t.integer  "birthnumber"
