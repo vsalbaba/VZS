@@ -6,3 +6,20 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 
+
+admin_address = Address.create()
+
+admin_profile = Profile.create(
+  :first_name => 'Admin',
+  :second_name => 'Administrátor',
+  :email => 'admin@example.org',
+  :address => admin_address
+)
+
+admin = User.create(
+  :login => 'admin',
+  :group => User::GROUP[:ADMIN],
+  :password => 'admin',
+  :password_confirmation => 'admin',
+  :profile => admin_profile
+)
