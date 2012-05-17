@@ -1,12 +1,12 @@
 $(function () {
-	var newAttachment = $('#new-attachment');
+	var newAttachment = $('#vzs-new-attachment');
 	if(newAttachment.length) {
 		if($('.error', newAttachment).length) {
 			return;
 		}
 		$(newAttachment).hide();
 		$(newAttachment).after(''
-			+'<div id="new-attachment-link">'
+			+'<div id="vzs-new-attachment-link">'
 			+'<a href="#" class="btn">'
 			+'<i class="icon-file"></i> '
 			+'Nová příloha &hellip;'
@@ -15,11 +15,11 @@ $(function () {
 			);
 		$('button[type=reset]', newAttachment).click( function() {
 			newAttachment.hide();
-			$('#new-attachment-link').show();
+			$('#vzs-new-attachment-link').show();
 		});
-		$('#new-attachment-link a').click( function() {
+		$('#vzs-new-attachment-link a').click( function() {
 			newAttachment.show();
-			$('#new-attachment-link').hide();
+			$('#vzs-new-attachment-link').hide();
 			return false;
 		});
 	}
