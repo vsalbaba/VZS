@@ -7,7 +7,7 @@
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 
 admin = User.find_or_create_by_login(
-  'admin',
+  :login => 'admin',
   :password => 'admin',
   :password_confirmation => 'admin',
   :group => 3
@@ -23,9 +23,10 @@ admin_profile = Profile.find_or_create_by_user_id(
   :birthnumber => '0123456789'
 )
 
-if admin_profile.id.nil?
+if admin_profile.address.nil?
   admin_address = Address.create( :street => 'street', :house_number => '0', :city => 'city', :postcode => 'psc' )
   admin_profile.address = admin_address
-  admin_profile.save
 end
+
+admin_profile.save
 
