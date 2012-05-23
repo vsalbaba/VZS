@@ -11,7 +11,8 @@
 #load 'deploy/assets'
 
 ### specify your server
-server "", :web, :app, :db
+server "", :web, :app, :db, { :primary => true }
+
 ### or if you have separate machines:
 #role :web, ""
 #role :app, ""
