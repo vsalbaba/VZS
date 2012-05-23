@@ -1,32 +1,42 @@
-#
-# copy this file into config/deploy/your_server.rb and specify following options
-#   your_server can be whatever you want 
-#   you will use it to identify deploy target in capistrano execution as:
-#   $ cap your_server deploy
-#
-# if you need, you can override here anything from config/deploy.rb
-#
+###
+### copy this file into config/deploy/your_server.rb and specify following options
+###   your_server can be whatever you want 
+###   you will use it to identify deploy target in capistrano execution as:
+###   $ cap your_server deploy
+###
+### if you need, you can override here anything from config/deploy.rb
+###
 
-role :web, ""                          # Your HTTP server, Apache/etc
-role :app, ""                          # This may be the same as your `Web` server
-role :db,  "", :primary => true # This is where Rails migrations will run
+### uncomment if you want to use precompiled assets (production only!)
+#load 'deploy/assets'
 
-# for ssh to target server
+### specify your server
+server "", :web, :app, :db
+### or if you have separate machines:
+#role :web, ""
+#role :app, ""
+#role :db,  "", :primary => true
+
+### where this app will be deployed at tarteg machine (folder path)
+### dont use "~" here or db/setup will fail
+### use plain #{application} instead (home dir is base of this path)
+### or better use absolute path
+set :deploy_to, "#{application}"
+
+### for ssh to target server
 set :user, ""
 set :password, ""
 set :use_sudo, false
 
 set :rails_env, :development
 
-# usable to get full blown production/development stack
+### usable to get full blown development/test set of gems
 # set :bundle_without, []
 # set :bundle_flags, "--quiet"
-# and to keep gems only in rvm
+### and to keep gems only in rvm
 # set :bundle_dir, ""
 
-set :deploy_to, "~/#{application}"
-
-# use this for passenger (otherwise comment it out)
+### use this for passenger (otherwise comment it out)
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
