@@ -99,6 +99,14 @@ Capistrano::Configuration.instance.load do
 
     namespace :db do
 
+      desc "Check if deploy_to path is sufficient for deploy:db:setup"
+      task :setup_check, :except => { :no_release => true } do
+        if "#{shared_path}".start_with? '~/'
+          raise Capistrano::Error, "Your deploy_to path starts with ~/ which is not supported! Please change it to absolute path."
+        end
+        puts "Deploy_to path is ok"
+      end
+
       desc <<-DESC
         Creates the database.yml configuration file in shared path.
 
@@ -139,7 +147,7 @@ Capistrano::Configuration.instance.load do
         run "mkdir -p #{shared_path}/db" 
         run "mkdir -p #{shared_path}/config" 
         put config.result(binding), "#{shared_path}/config/database.yml"
-        Capistrano::CLI.ui.say("Database configuration created\n - now you can modify it inside #{shared_path}/config/")
+        puts "Database configuration created\n - now you can modify it inside #{shared_path}/config/"
       end
 
       desc <<-DESC
@@ -151,7 +159,9 @@ Capistrano::Configuration.instance.load do
 
     end
 
-    after "deploy:setup",           "deploy:db:setup"   unless fetch(:skip_db_setup, false)
+    before "deploy:setup",          "deploy:db:setup_check" unless fetch(:skip_db_setup, false)
+
+    after "deploy:setup",           "deploy:db:setup"       unless fetch(:skip_db_setup, false)
     after "deploy:finalize_update", "deploy:db:symlink"
 
   end
