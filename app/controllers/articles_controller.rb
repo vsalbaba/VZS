@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
   def new
     @article.group = current_user.group
     @article.user_id = current_user.id
+    @article.commentable = true
   end
 
   def create
