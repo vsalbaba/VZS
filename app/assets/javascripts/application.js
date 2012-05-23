@@ -13,4 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require_tree .
+//= require_self
+//= require user_list
+//= require attachments
+// DISABLED require bootstrap.js.coffee
+// DISABLED require user_sessions.js.coffee
+
