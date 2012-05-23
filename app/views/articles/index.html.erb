@@ -10,10 +10,11 @@
   <% @articles.each do |article| %>
     <div class="span5 well">
       <h2><%= link_to article.title, article %>
-        <%= link_to article_path(article, :anchor => 'comments'), :class => "badge badge-info" do %>
-          <%=article.comments.count%>
-          <i class="icon-comment"></i>
-        <% end %>
+
+        <%= link_to article_path(article, :anchor => 'comments'),
+          :class => "badge badge-info" do
+          %><%=article.comments.count%> <i class="icon-comment"></i><%
+          end %>
       </h2>
 
       <%= render 'articles/meta_info', :article => article %>
@@ -22,7 +23,8 @@
       <div class="btn-group pull-right">
         <% if can? :read, article %>
           <%= link_to article, :class => "btn" do %>
-            Zobrazit »
+            <i class="icon-eye-open"></i>
+            Zobrazit
           <% end %>
         <% end %>
         <% if can? :update, article %>
