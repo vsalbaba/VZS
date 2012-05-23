@@ -4,7 +4,7 @@ class Article < ActiveRecord::Base
   has_many :attachments
 
   validates :title, :content, :user_id, :presence => true
-  validates :content, :length => { :minimum => 10 }
+  validates :content, :presence => true
   validates :group, :presence => true, :inclusion => { :in => User::GROUP.values }
 
   attr_accessible :title, :content, :user_id, :group, :commentable
