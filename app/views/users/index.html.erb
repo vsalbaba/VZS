@@ -1,5 +1,11 @@
 <% title "Seznam členů" %>
 
+<% if can? :manage, User %>
+  <%= link_to new_user_path, :class => "btn btn-large btn-primary pull-right" do %>
+    <i class="icon-pencil icon-white"></i> Nový Člen
+  <% end %>
+<% end %>
+
 <div class="row-fluid" id="userList">
 
   <div class="tabbable">
