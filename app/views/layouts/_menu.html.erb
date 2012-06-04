@@ -1,10 +1,11 @@
 <ul class="nav nav-list">
   <li class="nav-header">Menu</li>
   <li><%= link_to 'Úvodní stránka', root_path %></li>
-    <% if can? :create, Article %>
-      <li><%= link_to 'Správa článků', articles_path %></li>
-    <% end %>
-    <% if can? :read_members, User %>
-      <li><%= link_to 'Seznam členů VZS', members_path %></li>
-    <% end %>
+  <% if can? :create, Article %>
+    <li><%= link_to 'Správa článků', articles_path %></li>
+  <% end %>
+  <li><%= link_to 'Fotogalerie', galleries_path %></li>
+  <% if can? :read_members, User %>
+    <li><%= link_to 'Seznam členů VZS', members_path %></li>
+  <% end %>
 </ul>

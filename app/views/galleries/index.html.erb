@@ -1,0 +1,18 @@
+<% title "Fotogalerie" %>
+
+<% if can? :create, Gallery %>
+  <%= link_to new_gallery_path, :class => "btn btn-large btn-primary pull-right" do %>
+    <i class="icon-pencil icon-white"></i> Nová galerie
+  <% end %>
+<% end %>
+
+<div class="row-fluid">
+  <% @galleries.each do |gallery| %>
+    <div class="span5 well">
+      <h2><%= link_to gallery.name, gallery%></h2>
+      <small><%= gallery.description %></small>
+    </div>
+  <% end %>
+</div>
+
+<%= will_paginate @galleries %>

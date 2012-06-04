@@ -1,0 +1,15 @@
+<% existing ||= false %>
+<%= semantic_form_for [photo.gallery, photo] do |f| %>
+  <%= f.semantic_errors %>
+  <%= f.inputs do %>
+    <%= f.input :name, :label => 'Název:' %>
+    <%= f.input :image, :label => 'Soubor' unless existing %>
+  <% end %>
+  <%= f.actions do %>
+    <% if existing %>
+      <%= f.action :submit, :label => 'Přejmenovat', :as => :button, :button_html => { :class => 'btn btn-mini btn-success' } %>
+    <% else %>
+      <%= f.action :submit, :label => 'Přiložit', :as => :button, :button_html => { :class => 'btn btn-success' } %>
+    <% end %>
+  <% end %>
+<% end %>

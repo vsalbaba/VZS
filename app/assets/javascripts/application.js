@@ -16,6 +16,7 @@
 //= require_self
 //= require user_list
 //= require attachments
+//= require photos
 // DISABLED require bootstrap.js.coffee
 // DISABLED require user_sessions.js.coffee
 

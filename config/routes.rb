@@ -5,7 +5,12 @@ Vzs::Application.routes.draw do
     resources :attachments
   end
 
+  resources :galleries do
+    resources :photos
+  end
+
   resources :articles
+  resources :galleries
 
   get "user_sessions/new"
 

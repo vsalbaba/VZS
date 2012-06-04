@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120513105034) do
+ActiveRecord::Schema.define(:version => 20120604143750) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -36,10 +36,10 @@ ActiveRecord::Schema.define(:version => 20120513105034) do
     t.integer  "article_id"
     t.integer  "user_id"
     t.string   "name"
-    t.integer  "file_file_size"
     t.string   "file_file_name"
     t.datetime "file_updated_at"
     t.string   "file_content_type"
+    t.integer  "file_file_size"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
@@ -51,6 +51,31 @@ ActiveRecord::Schema.define(:version => 20120513105034) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "galleries", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "group"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "description"
+  end
+
+  add_index "galleries", ["user_id"], :name => "index_galleries_on_user_id"
+
+  create_table "photos", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "gallery_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "photos", ["user_id"], :name => "index_photos_on_user_id"
 
   create_table "profiles", :force => true do |t|
     t.string   "first_name"

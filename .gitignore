@@ -19,6 +19,7 @@
 
 # Ignore article attachments
 /public/system/files/*/*
+/public/system/images/*/*
 
 # Ignore all logfiles and tempfiles.
 /log/*.log

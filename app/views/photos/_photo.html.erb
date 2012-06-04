@@ -1,0 +1,18 @@
+<li>
+<div class="thumbnail vzs-gallery-photo">
+  <a href="<%= photo.image.url %>"><%= image_tag photo.image.url(:small) %></a>
+  <h5><%= photo.name %></h5>
+  <% if can? :delete, photo %>
+    <%= link_to gallery_photo_path(photo.gallery, photo), :confirm => 'Opravdu odstranit fotku?', :method => :delete, :class => "btn btn-danger btn-mini" do %>
+      <i class="icon-trash"></i> 
+    <% end %>
+  <% end %>
+  <% if can? :update, photo %>
+    <%= link_to edit_gallery_photo_path(photo.gallery, photo), :class => "btn btn-mini vzs-gallery-photo-edit" do %>
+      <i class="icon-edit"></i> 
+    <% end %>
+    <%= render 'photos/form', :photo => photo, :existing => true %>
+  <% end %>
+</div>
+</li>
+
