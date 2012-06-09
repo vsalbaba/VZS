@@ -17,6 +17,7 @@ class Ability
     article_rules(user)
     comments_rules(user)
     attachments_rules(user)
+    gallery_rules(user)
     user_manager_rules(user)
     user_rules(user)
 
@@ -56,6 +57,31 @@ class Ability
     if user.group >= BOARD
       can :manage, Attachment
     end
+  end
+
+  def gallery_rules(user)
+    if user.group? BOARD
+      can :read, Gallery, :group => [OUTSIDER, MEMBER, BOARD]
+      can :create, Gallery, :group => [nil, OUTSIDER, MEMBER, BOARD], :user_id => user.id
+      can [:update, :save, :destroy], Gallery, :group => [OUTSIDER, MEMBER, BOARD], :user_id => user.id
+    elsif user.group? MEMBER
+      can :read, Gallery, :group => [OUTSIDER, MEMBER]
+      can :create, Gallery, :group => [nil, OUTSIDER, MEMBER], :user_id => user.id
+      can [:update, :save, :destroy], Gallery, :group => [OUTSIDER, MEMBER], :user_id => user.id
+    elsif user.group? OUTSIDER
+      can :read, Gallery, :group => OUTSIDER
+    else
+      can :read, Gallery, :group => OUTSIDER # neprihlaseni smi prohlizet galerie pro necleny
+    end
+
+
+    # :read, Photo nepotrebujeme - odkazy na fotky jdou primo
+    unless user.group? OUTSIDER
+      can [:create, :update, :save, :destroy], Photo do |p|
+        user.group >= p.gallery.group
+      end
+    end
+
   end
 
   def user_rules(user)
