@@ -3,7 +3,12 @@
 
   <div class="row-fluid">
     <div class="pull-right"><%= render 'galleries/show_buttons' %></div>
-    <%= @gallery.description %>&nbsp;
+    <div class="">
+      <%= @gallery.description %>&nbsp;
+      <% unless @gallery.article.nil? %>
+        <p>Pro více informací viz článek <%= link_to @gallery.article.title, @gallery.article %>.</p>
+      <% end %>
+    </div>
 
     <%= render 'galleries/show_photos' %>
 

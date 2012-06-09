@@ -8,6 +8,13 @@
       <div class="row-fluid vzs-article-content">
         <%= simple_format @article.content %>
       </div>
+      <% unless @article.gallery.nil? %>
+        <h3>Fotky:</h3>
+        <p>Více fotek najdete ve fotogalerii <%= link_to @article.gallery.name, @article.gallery %>.</p>
+        <ul class="thumbnails">
+          <%= render @article.gallery.photos[0..2] %>
+        </ul>
+      <% end %>
       <%= render 'articles/show_comments' %>
     </div>
 

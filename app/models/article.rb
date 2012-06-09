@@ -2,6 +2,7 @@ class Article < ActiveRecord::Base
   belongs_to :user
   has_many :comments
   has_many :attachments
+  has_one :gallery
 
   validates :title, :content, :user_id, :presence => true
   validates :content, :presence => true

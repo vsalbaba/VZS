@@ -4,6 +4,7 @@
       <%= f.input :name %>
       <%= f.input :description %>
       <%= f.input :user %>
+      <%= f.input :article, :as => :select, :include_blank => true %>
       <%= f.input :group, :as => :select, :collection => group_names, :label => 'Skupina', :include_blank => false %>
     <% end %>
     <%= f.actions do %>
