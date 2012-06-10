@@ -9,8 +9,8 @@
   <% end %>
 
   <% if @article.commentable %>
+    <% @comment ||= current_user.comments.new :article_id => @article.id if current_user %>
     <% if can? :create, @comment %>
-      <% @comment ||= current_user.comments.new :article_id => @article.id if current_user %>
       <%= render 'comments/form' %>
     <% end %>
   <% else %>
