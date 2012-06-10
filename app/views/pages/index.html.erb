@@ -1,0 +1,26 @@
+<% title t('label.page.index') %>
+<%= link_to t('label.page.new'), new_page_path, :class => 'btn ' %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th><%= t('page.attr.title') %></th>
+      <th><%= t('page.attr.navbar_short') %>/<%= t('page.attr.menu_short') %></th>
+      <th><%= t('label.actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pages.each do |page| %>
+      <tr>
+        <td><%= page.id %></td>
+        <td><%= page_link page %></td>
+        <td><%= bool_name page.navbar %> / <%= bool_name page.menu %></td>
+        <td>
+          <%= link_to t('btn.edit'), edit_page_path(page), :class => 'btn btn-mini' %>
+          <%= link_to t('btn.delete'), page_path(page), :method => :delete, :confirm => 'Opravdu smazat?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

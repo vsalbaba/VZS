@@ -1,5 +1,10 @@
 Vzs::Application.routes.draw do
 
+  match 'pages/:id-:slug' => 'pages#show', :as => :page_seo, :via => :get
+  
+
+  resources :pages
+
   resources :articles do
     resources :comments
     resources :attachments

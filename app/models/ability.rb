@@ -18,6 +18,7 @@ class Ability
     comments_rules(user)
     attachments_rules(user)
     gallery_rules(user)
+    page_rules(user)
     user_manager_rules(user)
     user_rules(user)
 
@@ -82,6 +83,13 @@ class Ability
       end
     end
 
+  end
+
+  def page_rules(user)
+    can :read, Page
+    if user.group? BOARD
+      can :manage, Page
+    end
   end
 
   def user_rules(user)

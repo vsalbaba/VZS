@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120609024026) do
+ActiveRecord::Schema.define(:version => 20120609031410) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(:version => 20120609024026) do
   end
 
   add_index "galleries", ["user_id"], :name => "index_galleries_on_user_id"
+
+  create_table "pages", :force => true do |t|
+    t.string   "title"
+    t.string   "menu_title"
+    t.text     "content"
+    t.boolean  "navbar"
+    t.boolean  "menu"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "photos", :force => true do |t|
     t.string   "name"

@@ -1,6 +1,7 @@
 <ul class="nav">
-  <li> <a href="#"> O nás </a> </li>
-  <li> <a href="#"> Kontakty </a> </li>
+  <% pages_for_navbar.each do |page| %>
+    <li><%= page_link page %></li>
+  <% end %>
 </ul>
 
 <ul class="nav pull-right">

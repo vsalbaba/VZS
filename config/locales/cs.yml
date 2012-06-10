@@ -25,6 +25,15 @@ cs:
             younger15: 'Mladší 15 let'
             younger18: 'Mladší 18 let'
             adults: 'Dospělí'
+    page:
+        attr:
+            title: 'Nadpis'
+            menu_title: 'Text pro menu'
+            content: 'Text stránky'
+            navbar: 'Zobrazit v horním menu' 
+            navbar_short: 'Horní menu'
+            menu: 'Zobrazit v bočním menu' 
+            menu_short: 'Boční menu'
     btn:
         save: 'Uložit'
         edit: 'Upravit'
@@ -35,7 +44,15 @@ cs:
         register: 'Registrovat'
 
     label:
+        actions: 'Nástroje'
+        created_at: 'Vytvořeno'
+        bool_true: 'Ano'
+        bool_false: 'Ne'
         user:
             login: 'Přihlášení'
             new: 'Registrace'
             edit: 'Editace profilu'
+        page:
+            new: 'Nová stránka'
+            edit: 'Editace stránky'
+            index: 'Správa stránek'

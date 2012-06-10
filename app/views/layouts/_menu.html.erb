@@ -1,11 +1,22 @@
 <ul class="nav nav-list">
+
   <li class="nav-header">Menu</li>
   <li><%= link_to 'Úvodní stránka', root_path %></li>
+  <li><%= link_to 'Fotogalerie', galleries_path %></li>
+  <% pages_for_menu.each do |page| %>
+    <li><%= page_link page %></li>
+  <% end %>
+
+  <% if can?(:create, Article) or can?(:read_members, User) %>
+    <li class="nav-header">Administrace</li>
+  <% end %>
   <% if can? :create, Article %>
     <li><%= link_to 'Správa článků', articles_path %></li>
   <% end %>
-  <li><%= link_to 'Fotogalerie', galleries_path %></li>
   <% if can? :read_members, User %>
     <li><%= link_to 'Seznam členů VZS', members_path %></li>
+  <% end %>
+  <% if can? :manage, Page %>
+    <li><%= link_to t('label.page.index'), pages_path %></li>
   <% end %>
 </ul>
