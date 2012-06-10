@@ -1,8 +1,8 @@
 <% title "Články" %>
 
-<% if can? :create, Article %>
-  <%= link_to new_article_path, :class => "btn btn-large btn-primary pull-right" do %>
-    <i class="icon-pencil icon-white"></i> Nový článek
+<% context_menu do %>
+  <% if can? :create, Article %>
+    <%= link_new new_article_path, 'Nový článek' %>
   <% end %>
 <% end %>
 

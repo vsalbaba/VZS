@@ -44,15 +44,22 @@
       <div class="row-fluid">
 
         <div class="span3" id="vzs-left-menu">
+          <div class="well sidebar-nav">
           <div class="row-fluid" id="vzs-main-logo">
             <%= image_tag "logo_vzs.gif", :size => "150x150" %>
           </div>
-          <div class="well sidebar-nav">
             <%= render 'layouts/menu' %>
           </div><!--/.well -->
         </div><!--/span-->
 
         <div class="span9" id="vzs-main-content">
+          <% if content_for? :context_menu %>
+              <div class="pull-right">
+                <div class="btn-group">
+                  <%= yield(:context_menu) %>
+                </div>
+              </div>
+            <% end %>
           <% if content_for? :title %>
             <div class="page-header">
               <h1>

@@ -1,6 +1,6 @@
 <% title "New Article" %>
-<%= link_to articles_path, :class => ['btn', 'pull-right', 'btn-primary', 'btn-large'] do %>
-  <i class="icon-arrow-left icon-white"></i> Výpis všech článků
+<% context_menu do %>
+  <% link_back articles_path, 'Výpis všech článků' %>
 <% end %>
 
 <%= render 'form' %>

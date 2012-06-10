@@ -1,17 +1,7 @@
-
-<div>
-  <%= link_to articles_path, :class => "btn btn-primary btn-large" do %>
-    <i class="icon-arrow-left icon-white"></i> Výpis všech článků
-  <%end %>
-</div>
-<br />
-<div class="btn-group">
+<% context_menu do %>
+  <%= link_back articles_path, 'Výpis všech článků' %>
   <% if can? :edit, @article %>
-    <%= link_to edit_article_path(@article), :class => "btn" do %>
-      <i class="icon-edit"></i> Upravit
-    <% end %>
-    <%= link_to @article, :confirm => 'Opravdu odstranit tento článek?', :method => :delete, :class => "btn btn-danger" do %>
-      <i class="icon-trash"></i> Smazat
-    <% end %>
+    <%= link_edit edit_article_path(@article), 'Upravit' %>
+    <%= link_delete @article, 'Smazat', 'Opravdu smazat článek?' %>
   <% end %>
-</div>
+<% end %>
