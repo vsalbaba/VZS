@@ -3,11 +3,9 @@ class PhotosController < ApplicationController
 
   def create
     @photo = current_user.photos.new(params[:photo].merge(:gallery_id => params[:gallery_id]))
+
     authorize! :create, @photo
 
-    if @photo.name.empty? and not @photo.file_name.empty?
-      @photo.name = @photo.file_name
-    end
     if @photo.save
       redirect_to @photo.gallery, :notice => "Fotka byla úspěšně přiložena."
     else
@@ -21,10 +19,9 @@ class PhotosController < ApplicationController
 
   def update
     @photo.attributes = params[:photo]
-    if @photo.name.empty?
-      @photo.name = @photo.file_name
-    end
+
     authorize! :update, @photo
+
     if @photo.save
       redirect_to @photo.gallery, :notice => 'Fotka přejmenována'
     else
