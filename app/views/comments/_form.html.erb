@@ -4,6 +4,6 @@
     <%= f.input :message, :label => 'Váš komentář:' %>
   <% end %>
   <%= f.actions do %>
-    <%= f.action :submit, :as => :button, :button_html => { :class => 'btn btn-success' } %>
+    <%= f.action :submit, :as => :button, :label => t('btn.save'), :button_html => { :class => 'btn btn-success' } %>
   <% end %>
 <% end %>

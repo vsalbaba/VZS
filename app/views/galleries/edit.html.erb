@@ -1,6 +1,6 @@
-<% title "Edit gallery" %>
-<%= link_to @gallery, :class => ['btn', 'pull-right', 'btn-primary', 'btn-large'] do %>
-  <i class="icon-arrow-left icon-white"></i> Zpět ke galerii 
+<% title t('label.gallery.edit') %>
+<% context_menu do %>
+  <%= link_back @gallery, 'Zpět ke galerii' %>
 <% end %>
 
 <%= render 'form' %>

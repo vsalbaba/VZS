@@ -35,6 +35,7 @@ cs:
             menu: 'Zobrazit v bočním menu' 
             menu_short: 'Boční menu'
     btn:
+        show: 'Zobrazit'
         save: 'Uložit'
         edit: 'Upravit'
         delete: 'Odstranit'
@@ -44,7 +45,7 @@ cs:
         register: 'Registrovat'
 
     label:
-        actions: 'Nástroje'
+        actions: 'Možnosti'
         created_at: 'Vytvořeno'
         bool_true: 'Ano'
         bool_false: 'Ne'
@@ -53,6 +54,12 @@ cs:
             new: 'Registrace'
             edit: 'Editace profilu'
         page:
+            page: 'Stránka'
             new: 'Nová stránka'
             edit: 'Editace stránky'
             index: 'Správa stránek'
+        gallery:
+            new: 'Nová galerie'
+            edit: 'Editace galerie'
+        comment:
+            edit: 'Editace komentáře'

@@ -1,7 +1,6 @@
-<% title "New gallery" %>
-<%= link_to galleries_path, :class => ['btn', 'pull-right', 'btn-primary', 'btn-large'] do %>
-  <i class="icon-arrow-left icon-white"></i> Seznam fotogalerií
+<% title t('label.gallery.new') %>
+<% context_menu do %>
+  <%= link_back galleries_path, 'Seznam fotogalerií' %>
 <% end %>
-
 <%= render 'form' %>
 

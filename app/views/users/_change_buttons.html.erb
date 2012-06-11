@@ -1,14 +1,7 @@
-
   <% if can? :edit, user %>
-    <%= link_to edit_user_path(user), :class => "btn" do %>
-      <i class="icon-edit"></i> <%=t 'btn.edit' %>
-    <% end %>
+    <%= link_edit edit_user_path(user), t('btn.edit') %>
   <% end %>
 
   <% if can? :destroy, user %>
-    <%= link_to user, 
-      :confirm => 'Opravdu odstranit uživatele ' + user.full_name + '?',
-      :method => :delete, :class => "btn btn-danger" do %>
-        <i class="icon-trash"></i> <%=t 'btn.delete' %>
-    <% end %>
+    <%= link_delete user, t('btn.delete'), 'Opravdu odstranit uživatele ' + user.full_name + '?' %>
   <% end %>

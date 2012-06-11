@@ -1,8 +1,9 @@
 <% title @user.full_name %>
-<% if can? :read_members, User %>
-  <%= link_to users_path, :class => "btn pull-right btn-primary btn-large" do %>
-  <i class="icon-arrow-left icon-white"></i> Seznam členů
+<% context_menu do %>
+  <% if can? :read_members, User %>
+    <%= link_back users_path, 'Seznam členů' %>
   <%end %>
+  <%= render 'change_buttons', :user => @user %>
 <% end %>
 
 <table class="table">
@@ -11,9 +12,4 @@
   <td><%= @user.login %></td>
 
   <%= render @user.profile %>
-
 </table>
-
-<div class="btn-group pull-right">
-  <%= render 'change_buttons', :user => @user %>
-</div>

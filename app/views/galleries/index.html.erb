@@ -1,8 +1,7 @@
 <% title "Fotogalerie" %>
-
-<% if can? :create, Gallery %>
-  <%= link_to new_gallery_path, :class => "btn btn-large btn-primary pull-right" do %>
-    <i class="icon-pencil icon-white"></i> Nová galerie
+<% context_menu do %>
+  <% if can? :create, Gallery %>
+    <%= link_new new_gallery_path, t('label.gallery.new') %>
   <% end %>
 <% end %>
 

@@ -11,7 +11,9 @@
               <% end %>
             </li>
             <li>
-              <%= link_to article_comment_path(comment.article, comment), :confirm => 'Opravdu komentář "'+comment.message+'"?', :method => :delete do %>
+            <%= link_to article_comment_path(comment.article, comment),
+              :confirm => 'Opravdu smazat komentář od '+comment.user.full_name+': "'+comment.message.truncate(50, :omission => '...')+'"?',
+              :method => :delete do %>
               <i class="icon-trash"></i> Odstranit
               <% end %>
             </li>
@@ -21,16 +23,9 @@
 
       <%= comment.message %>
 
-      <% if false and comment.id == 1 %>
       <small>
-        <i class="icon-user"></i> <strong><%= comment.user.login %></strong>
-        <i class="icon-time"></i> <%= l comment.created_at, :format => :long %>
-      </small>
-    <% else %>
-      <small>
-        <strong><%= comment.user.login %></strong>
+        <strong><%= comment.user.full_name %></strong>
         @ <%= l comment.created_at, :format => :long %>
       </small>
-    <% end %>
     </blockquote>
 

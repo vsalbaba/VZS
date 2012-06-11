@@ -21,28 +21,28 @@ module LayoutHelper
   end
 
   def link_back(url, title)
-    bootstrap_link 'link_back', :url => url, :title => title
+    render_link 'link_back', :url => url, :title => title
   end
 
   def link_new(url, title)
-    bootstrap_link 'link_new', :url => url, :title => title
+    render_link 'link_new', :url => url, :title => title
   end
 
   def link_show(url, title)
-    bootstrap_link 'link_show', :url => url, :title => title
+    render_link 'link_show', :url => url, :title => title
   end
 
   def link_edit(url, title)
-    bootstrap_link 'link_edit', :url => url, :title => title
+    render_link 'link_edit', :url => url, :title => title
   end
 
   def link_delete(url, title, confirm='')
     confirm ||= 'Opravdu odstranit?'
-    bootstrap_link 'link_delete', :url => url, :title => title, :confirm => confirm
+    render_link 'link_delete', :url => url, :title => title, :confirm => confirm
   end
 
   private
-  def bootstrap_link(partial, locals)
+  def render_link(partial, locals)
     render :partial => 'shared/' + partial, :locals => locals
   end
 end
