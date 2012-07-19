@@ -17,6 +17,10 @@
 //= require user_list
 //= require attachments
 //= require photos
+//= require jquery.easing.1.3.js
+//= require jquery.elastislide.js
+//= require elastislide
+//= require lightbox
 // DISABLED require bootstrap.js.coffee
 // DISABLED require user_sessions.js.coffee
 
