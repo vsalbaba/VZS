@@ -14,17 +14,22 @@ gem 'will_paginate', '~> 3.0.3'
 #gem 'validation_reflection'
 gem 'paperclip', '~> 2.0'
 
-gem 'wirble', :group => :development
-gem 'quiet_assets', :group => :development
-gem 'nifty-generators', '~> 0.4.6', :group => :development
+gem 'acts_as_list'
+#gem "audited", "~> 3.0.0.rc2"
 
-gem "mocha", :group => :test
+group :development do
+  gem 'wirble'
+  gem 'quiet_assets'
+  gem 'nifty-generators', '~> 0.4.6'
+end
+
 group :production do
   gem 'mysql'
 end
 
 group :development, :test do
   gem "rspec-rails", "~> 2.8"
+  gem "mocha", :group => :test
   gem "syntax"
   gem "ruby-debug", :platforms => :mri_18
   gem "guard"
