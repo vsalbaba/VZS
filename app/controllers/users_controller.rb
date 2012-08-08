@@ -3,11 +3,7 @@ class UsersController < ApplicationController
 
   def index
     authorize! :read_members, User
-    @users = {}
-
-    users = User.joins(:profile).order('birthdate DESC').group_by(&:is_member_or_more?)
-    @users[:members] = users[true].group_by { |u| u.profile.user_age_group } unless users[true].nil?
-    @users[:outsiders] = users[false].group_by { |u| u.profile.user_age_group } unless users[false].nil?
+    @presenter = ProfilePresenters::IndexPresenter.new
   end
 
   def show
