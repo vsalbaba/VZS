@@ -1,0 +1,31 @@
+<tr>
+  <th><%=t 'user.attr.fullname' %>:</th>
+  <td><%= profile.first_name %> <%= profile.second_name %></td>
+</tr>
+<tr>
+  <th><%=t 'user.attr.email' %>:</th>
+  <td><%= profile.email %></td>
+</tr>
+<tr>
+  <th><%=t 'user.attr.phonenumber' %>:</th>
+  <td><%= profile.telephone %></td>
+</tr>
+<tr>
+  <th><%=t 'user.attr.im_jabber' %>:</th>
+  <td><%= profile.im_jabber %></td>
+</tr>
+<tr>
+  <th><%=t 'user.attr.age' %></th>
+  <td><%= profile.user_age || t('user.attr.age_empty') %></td>
+</tr>
+<% if can? :update_extended, @user.profile %>
+  <tr>
+    <th><%=t 'user.attr.birthdate' %></th>
+    <td><%= profile.birthdate %></td>
+  </tr>
+  <tr>
+    <th><%=t 'user.attr.birthnumber' %></th>
+    <td><%= profile.birthnumber %></td>
+  </tr>
+  <%= render profile.address %>
+<% end %>

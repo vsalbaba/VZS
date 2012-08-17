@@ -1,0 +1,24 @@
+<% title @gallery.name%>
+<% context_menu do %>
+  <%= link_back galleries_path, 'Seznam fotogalerií' %>
+  <% if can? :edit, @gallery%>
+    <%= link_edit edit_gallery_path(@gallery), t('btn.edit') %>
+    <%= link_delete @gallery, t('btn.delete'), 'Opravdu odstranit tuto galerii?' %>
+  <% end %>
+<% end %>
+<div class="row-fluid vzs-article">
+
+  <div class="row-fluid">
+    <div class="">
+      <%= @gallery.description %>&nbsp;
+      <% unless @gallery.article.nil? %>
+        <p>Pro více informací viz článek <%= link_to @gallery.article.title, @gallery.article %>.</p>
+      <% end %>
+    </div>
+
+    <%= render 'galleries/show_photos', :gallery => @gallery %>
+
+  </div>
+
+</div>
+

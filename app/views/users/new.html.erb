@@ -1,0 +1,9 @@
+<% title t('label.user.new') %>
+<% context_menu do %>
+  <% if can? :manage, User %>
+    <%= link_back users_path, 'Seznam členů' %>
+  <% end %>
+<% end %>
+
+<%= render 'form' %>
+

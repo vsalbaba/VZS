@@ -1,0 +1,30 @@
+<% title t('label.page.index') %>
+<% context_menu do %>
+  <%= link_new new_page_path, t('label.page.new') %>
+<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= t('label.page.page') %></th>
+      <th><%= t('label.actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pages.each do |page| %>
+      <tr>
+        <td>
+          <%= page_link page %>
+          <%= menu_presence page %>
+        </td>
+        <td>
+          <div class="btn-group">
+            <%= link_to t('btn.show'), page, :class => 'btn btn-mini' %>
+            <%= link_to t('btn.edit'), edit_page_path(page), :class => 'btn btn-mini' %>
+            <%= link_to t('btn.delete'), page_path(page), :method => :delete, :confirm => 'Opravdu smazat stránku '+page.title+'?', :class => 'btn btn-mini btn-danger' %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

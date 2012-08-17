@@ -1,0 +1,15 @@
+
+<div class="row-fluid vzs-article-attachments">
+  <% unless @article.attachments.empty? %>
+    <h3>Přílohy</h3>
+    <ul>
+      <%= render @article.attachments %>
+    </ul>
+  <% end %>
+  <% @attachment ||= current_user.attachments.new :article_id => @article.id if current_user %>
+  <% if can? :create, @attachment %>
+    <div id="vzs-new-attachment">
+      <%= render 'attachments/form' %>
+    </div>
+  <% end %>
+</div>

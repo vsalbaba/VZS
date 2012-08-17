@@ -1,0 +1,17 @@
+<% title "Fotogalerie" %>
+<% context_menu do %>
+  <% if can? :create, Gallery %>
+    <%= link_new new_gallery_path, t('label.gallery.new') %>
+  <% end %>
+<% end %>
+
+<div class="row-fluid">
+  <% @galleries.each do |gallery| %>
+    <div class="span5 well">
+      <h2><%= link_to gallery.name, gallery%></h2>
+      <small><%= gallery.description %></small>
+    </div>
+  <% end %>
+</div>
+
+<%= will_paginate @galleries %>

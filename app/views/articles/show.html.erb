@@ -1,0 +1,27 @@
+<% title @article.title %>
+<div class="row-fluid vzs-article">
+
+  <div class="row-fluid">
+    <div class="span8">
+      <%= render 'articles/meta_info', :article => @article %>
+      <br />
+      <div class="row-fluid vzs-article-content">
+        <%= simple_format @article.content %>
+      </div>
+      <% unless @article.gallery.nil? %>
+        <ul class="thumbnails">
+          <%= render 'galleries/gallery', :gallery => @article.gallery %>
+        </ul>
+      <% end %>
+      <%= render 'articles/show_comments' %>
+    </div>
+
+    <div class="span4">
+      <%= render 'articles/show_buttons' %>
+      <br />
+      <%= render 'articles/show_attachments' %>
+    </div>
+  </div>
+
+</div>
+

@@ -1,0 +1,9 @@
+<% title "Edit Article" %>
+<% context_menu do %>
+  <%= link_back articles_path, 'Výpis všech článků' %>
+  <%= link_show @article, 'Zobrazit' %>
+  <%= link_delete @article, 'Smazat' %>
+<% end %>
+
+<%= render 'form' %>
+

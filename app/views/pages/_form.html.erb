@@ -1,0 +1,13 @@
+<%= semantic_form_for @page do |f| %>
+	<%= f.semantic_errors %>
+    <%= f.inputs do %>
+      <%= f.input :title, :label => t('page.attr.title') %>
+      <%= f.input :menu_title, :label => t('page.attr.menu_title')  %>
+      <%= f.input :content, :label => t('page.attr.content')  %>
+      <%= f.input :navbar, :label => t('page.attr.navbar') %>
+      <%= f.input :menu, :label => t('page.attr.menu') %>
+    <% end %>
+    <%= f.actions do %>
+      <%= f.action :submit, :as => :button, :label => t('btn.save'), :button_html => { :class => 'btn btn-success' } %>
+    <% end %>
+<% end %>

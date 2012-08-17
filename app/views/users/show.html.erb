@@ -1,0 +1,15 @@
+<% title @user.full_name %>
+<% context_menu do %>
+  <% if can? :read_members, User %>
+    <%= link_back users_path, 'Seznam členů' %>
+  <%end %>
+  <%= render 'change_buttons', :user => @user %>
+<% end %>
+
+<table class="table">
+  <tr>
+  <th><%=t 'user.attr.login' %>:</th>
+  <td><%= @user.login %></td>
+
+  <%= render @user.profile %>
+</table>

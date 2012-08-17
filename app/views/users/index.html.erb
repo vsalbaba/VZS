@@ -1,0 +1,25 @@
+<% title "Seznam členů" %>
+<% context_menu do %>
+  <% if can? :manage, User %>
+    <%= link_new new_user_path, 'Nový člen' %>
+  <% end %>
+<% end %>
+
+<div class="row-fluid" id="userList">
+
+  <div class="tabbable">
+    <ul class="nav nav-tabs">
+        <li>
+          <%= link_to t(:members, :scope => 'user.groups'), "##{:members}", :data => {:toggle => "tab"} %>
+        </li>
+        <li>
+          <%= link_to t(:outsiders, :scope => 'user.groups'), "##{:outsiders}", :data => {:toggle => "tab"} %>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <%= render 'index_tab', :group_key => :members, :group => @presenter.members %>
+        <%= render 'index_tab', :group_key => :outsiders, :group => @presenter.outsiders %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<% title @page.title %>
+<% context_menu do %>
+  <% if can? :manage, Page %>
+    <%= link_back pages_path, 'Seznam stránek' %>
+    <%= link_edit edit_page_path(@page), t('btn.edit') %>
+    <%= link_delete @page, t('btn.delete'), 'Opravdu odstranit stránku ' + @page.title + '?' %>
+  <% end %>
+<% end %>
+
+<div class="row-fluid vzs-page">
+
+  <div class="row-fluid vzs-page-content">
+    <%= simple_format @page.content %>
+  </div>
+
+</div>
+

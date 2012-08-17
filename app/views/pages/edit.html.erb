@@ -1,0 +1,7 @@
+<% title t('label.page.edit') %>
+<% context_menu do %>
+  <%= link_back pages_path, 'Seznam stránek' %>
+  <%= link_show @page, 'Zobrazit' %>
+  <%= link_delete @page, t('btn.delete'), 'Opravdu odstranit stránku ' + @page.title + '?' %>
+<% end %>
+<%= render :partial => 'form' %>

@@ -1,0 +1,9 @@
+<%= semantic_form_for [@comment.article, @comment] do |f| %>
+	<%= f.semantic_errors %>
+	<%= f.inputs do %>
+    <%= f.input :message, :label => 'Váš komentář:' %>
+  <% end %>
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :button, :label => t('btn.save'), :button_html => { :class => 'btn btn-success' } %>
+  <% end %>
+<% end %>

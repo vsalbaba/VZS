@@ -1,0 +1,7 @@
+  <% if can? :edit, user %>
+    <%= link_edit edit_user_path(user), t('btn.edit') %>
+  <% end %>
+
+  <% if can? :destroy, user %>
+    <%= link_delete user, t('btn.delete'), 'Opravdu odstranit uživatele ' + user.full_name + '?' %>
+  <% end %>

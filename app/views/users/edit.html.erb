@@ -1,0 +1,7 @@
+<% title t('label.user.edit') %>
+<% context_menu do %>
+  <%= link_back users_path, 'Seznam členů' %>
+  <%= link_show @user, 'Zobrazit' %>
+<% end %>
+<%= render 'form' %>
+

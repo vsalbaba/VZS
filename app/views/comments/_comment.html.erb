@@ -1,0 +1,31 @@
+
+    <blockquote class="comment">
+      <% if can? :manage, comment %>
+        <div class="btn-group pull-right">
+          <a class="btn btn-mini" href="#"><i class="icon-user"></i> Admin</a>
+          <a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li>
+            <%= link_to edit_article_comment_path(comment.article, comment) do %>
+              <i class="icon-edit"></i> Upravit
+              <% end %>
+            </li>
+            <li>
+            <%= link_to article_comment_path(comment.article, comment),
+              :confirm => 'Opravdu smazat komentář od '+comment.user.full_name+': "'+comment.message.truncate(50, :omission => '...')+'"?',
+              :method => :delete do %>
+              <i class="icon-trash"></i> Odstranit
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= comment.message %>
+
+      <small>
+        <strong><%= comment.user.full_name %></strong>
+        @ <%= l comment.created_at, :format => :long %>
+      </small>
+    </blockquote>
+

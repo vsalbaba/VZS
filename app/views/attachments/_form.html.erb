@@ -1,0 +1,12 @@
+<h4>Nová příloha:</h4>
+<%= semantic_form_for [@attachment.article, @attachment] do |f| %>
+  <%= f.semantic_errors %>
+  <%= f.inputs do %>
+    <%= f.input :name, :label => 'Název:' %>
+    <%= f.input :file, :label => 'Soubor' %>
+  <% end %>
+  <%= f.actions do %>
+    <%= f.action :reset, :label => 'Storno', :as => :button, :button_html => { :class => 'btn' } %>
+    <%= f.action :submit, :label => 'Přiložit', :as => :button, :button_html => { :class => 'btn btn-success' } %>
+  <% end %>
+<% end %>

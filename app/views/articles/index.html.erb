@@ -1,0 +1,46 @@
+<% title "Články" %>
+
+<% context_menu do %>
+  <% if can? :create, Article %>
+    <%= link_new new_article_path, 'Nový článek' %>
+  <% end %>
+<% end %>
+
+<div class="row-fluid">
+  <% @articles.each do |article| %>
+    <div class="span5 well">
+      <h2><%= link_to article.title, article %>
+
+        <%= link_to article_path(article, :anchor => 'comments'),
+          :class => "badge badge-info" do
+          %><%=article.comments.count%> <i class="icon-comment"></i><%
+          end %>
+      </h2>
+
+      <%= render 'articles/meta_info', :article => article %>
+
+      <p><%= simple_format article.content.truncate(200) %></p>
+      <div class="btn-group pull-right">
+        <% if can? :read, article %>
+          <%= link_to article, :class => "btn" do %>
+            <i class="icon-eye-open"></i>
+            Zobrazit
+          <% end %>
+        <% end %>
+        <% if can? :update, article %>
+          <%= link_to edit_article_path(article), :class => "btn" do %>
+            <i class="icon-edit"></i> Upravit
+          <% end %>
+        <% end %>
+        <% if can? :destroy, article %>
+          <%= link_to article, :confirm => 'Opravdu odstranit článek '+article.title+'?', :method => :delete, :class => "btn btn-danger" do %>
+            <i class="icon-trash"></i> Smazat
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<%= will_paginate @articles %>
