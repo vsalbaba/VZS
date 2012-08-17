@@ -5,6 +5,7 @@
       <%= f.input :title %>
       <%= f.input :content %>
       <%= f.input :commentable %>
+      <%= f.input :sticky %>
       <%= f.input :group, :as => :select, :collection => group_names, :label => 'Skupina', :include_blank => false %>
     <% end %>
     <%= f.actions do %>
