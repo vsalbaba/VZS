@@ -1,8 +1,8 @@
 <% title 'Vodní záchranná služba ČČK', 'MS Třebíč' %>
 <%if @articles.first %>
 <div class="hero-unit">
-  <h1><%=@articles.first.try(:title)%></h1>
-  <p><%= @articles.first.try(:content).try(:truncate, 300) %> </p>
+  <h1><%=link_to @articles.first.try(:title), @articles.first%></h1>
+  <p><%= simple_format @articles.first.try(:content).try(:truncate, 300) %> </p>
   <p>
   <%= link_to 'Více  »', @articles.first, :class =>  "btn btn-primary btn-large" %>
   <p>
@@ -10,10 +10,10 @@
 <% end %>
 
 <div class="row-fluid">
-<% @articles.each do |article| %>
+<% @articles[1..-1].each do |article| %>
   <div class=span4>
     <h2><%= link_to article.title, article %></h2>
-      <p><%= article.content.truncate(150) %></p>
+      <p><%= simple_format article.content.truncate(150) %></p>
       <p>
         <%= link_to 'Více »', article, :class =>  "btn" %>
       </p>
