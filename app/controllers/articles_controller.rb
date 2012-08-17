@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
 
 
   def index
-    @articles = @articles.paginate(:page => params[:page])
+    @articles = @articles.order('sticky DESC').paginate(:page => params[:page])
   end
 
   def show

@@ -8,7 +8,7 @@ class Article < ActiveRecord::Base
   validates :content, :presence => true
   validates :group, :presence => true, :inclusion => { :in => User::GROUP.values }
 
-  attr_accessible :title, :content, :user_id, :group, :commentable
+  attr_accessible :title, :content, :user_id, :group, :commentable, :sticky
 
   self.per_page = 10
 end
