@@ -1,33 +1,8 @@
 <ul class="nav nav-list">
 
   <li class="nav-header">Menu</li>
-    <li><%= link_to 'Aktuálně', root_path %></li>
-  <li class="nav-header">Nase cinnost</li>
-  <li>Plán akcí</li>
-  <li>Proběhlé akce</li>
-  <li>Tréninky</li>
-  <li>Tábor</li>
-  <li>Hartvíkovice</li>
-
-  <li class="nav-header">O nas</li>
-  <li>Kontakty</li>
-  <li>Historie</li>
-  <li>Záchraný tým</li>
-
-  <li class="nav-header">Nase nabidka</li>
-  <li>Ukázky a školení</li>
-  <li>Nízké a vysoké lanové aktivity</li>
-  <li>PŮJČOVNA MATERIÁLU</li>
-  <li>KURZY</li>
-
-
-  <li class="nav-header"><%= link_to 'Fotogalerie', galleries_path %></li>
-  <li class="nav-header">Facebook</li>
-  <li class="nav-header">POUZE PRO ČLENY</li>
-  <li>VÝBOR</li>
-  <li> DOKUMENTY </li>
-  <li> SEZNAM ČLENŮ </li>
-  <li> EMAIL</li>
+  <li><%= link_to 'Úvodní stránka', root_path %></li>
+  <li><%= link_to 'Fotogalerie', galleries_path %></li>
   <% pages_for_menu.each do |page| %>
     <li><%= page_link page %></li>
   <% end %>
