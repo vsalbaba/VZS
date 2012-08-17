@@ -36,10 +36,10 @@ ActiveRecord::Schema.define(:version => 20120609031410) do
     t.integer  "article_id"
     t.integer  "user_id"
     t.string   "name"
+    t.integer  "file_file_size"
     t.string   "file_file_name"
     t.datetime "file_updated_at"
     t.string   "file_content_type"
-    t.integer  "file_file_size"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
