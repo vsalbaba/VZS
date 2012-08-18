@@ -1,22 +1,39 @@
 <% title 'Vodní záchranná služba ČČK', 'MS Třebíč' %>
+
 <%if @articles.first %>
 <div class="hero-unit">
-  <h1><%=link_to @articles.first.try(:title), @articles.first%></h1>
-  <p><%= simple_format @articles.first.try(:content).try(:truncate, 300) %> </p>
+  <% article = @articles.first %>
+  <h1><%=link_to article.try(:title), article %></h1>
+  <p><%= simple_format article.try(:content).try(:truncate, 300) %>
+  <% if article.gallery.try(:photos).try(:many?) %>
+      <%= render article.gallery %>
+  <% end %>
+  </p>
   <p>
   <%= link_to 'Více  »', @articles.first, :class =>  "btn btn-primary btn-large" %>
-  <p>
+  </p>
+
+  
 </div>
 <% end %>
 
-<div class="row-fluid">
+<div class="row">
 <% @articles[1..-1].each do |article| %>
-  <div class=span4>
-    <h2><%= link_to article.title, article %></h2>
-      <p><%= simple_format article.content.truncate(150) %></p>
-      <p>
-        <%= link_to 'Více »', article, :class =>  "btn" %>
-      </p>
+  <div class=span5>
+    <div class="row">
+        <div class="span2 showgrid">
+        <% if article.gallery.try(:photos) %>
+          <%= image_tag article.gallery.photos.first.image.url(:small) %>
+        <% end %>
+        </div>
+        <div class="span3">
+        <h2><%= link_to article.title, article %></h2>
+        <p><%= simple_format article.content.truncate(150) %></p>
+        <p>
+          <%= link_to 'Více »', article, :class =>  "btn" %>
+        </p>
+      </div>
+    </div>
   </div>
 <% end %>
 </div>
