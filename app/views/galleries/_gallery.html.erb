@@ -4,7 +4,7 @@
           <% gallery.photos.each do |photo| %>
             <li>
               <a href="<%= photo.image.url(:large)%>", rel="lightbox[gallery-<%= gallery.to_param%>]">
-                <%= image_tag photo.image.url(:medium) %>
+                <%= image_tag photo.image.url(:thumbnail) %>
               </a>
             </li>
           <% end %>
