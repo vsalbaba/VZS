@@ -7,7 +7,6 @@ class Photo < ActiveRecord::Base
 
   has_attached_file :image, :styles => { :small => '260x120>', :medium => '260x180>', :large => '800x600>' }
 
-  validates :name, :presence => true
   validates_attachment_presence :image
   validates :user, :presence => true
 
