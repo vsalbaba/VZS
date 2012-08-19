@@ -6,13 +6,17 @@
       <%= render 'articles/meta_info', :article => @article %>
       <br />
       <div class="row-fluid vzs-article-content">
-        <%= simple_format @article.content %>
+        <div class="span12">
+          <%= simple_format @article.content,{},  :sanitize => false %>
+        </div>
+        <% unless @article.gallery.nil? %>
+          <div class="span12">
+            <ul class="thumbnails">
+              <%= render 'galleries/gallery', :gallery => @article.gallery %>
+            </ul>
+          </div>
+        <% end %>
       </div>
-      <% unless @article.gallery.nil? %>
-        <ul class="thumbnails">
-          <%= render 'galleries/gallery', :gallery => @article.gallery %>
-        </ul>
-      <% end %>
       <%= render 'articles/show_comments' %>
     </div>
 
