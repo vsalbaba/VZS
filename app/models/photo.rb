@@ -5,7 +5,7 @@ class Photo < ActiveRecord::Base
 
   attr_accessible :name, :image, :user, :gallery_id
 
-  has_attached_file :image, :styles => {:thumbnail => '120x120#', :small => '260x120>', :medium => '260x180>', :large => '800x600>' }
+  has_attached_file :image, :styles => {:thumbnail => '90x90#', :gallery => '120x120#', :small => '260x120>', :medium => '260x180>', :large => '800x600>' }
 
   validates_attachment_presence :image
   validates :user, :presence => true
