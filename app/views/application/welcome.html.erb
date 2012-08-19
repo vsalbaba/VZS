@@ -4,7 +4,7 @@
 <div class="hero-unit">
   <% article = @articles.first %>
   <h1><%=link_to article.try(:title), article %></h1>
-  <p><%= simple_format article.try(:content).try(:truncate, 300) %>
+  <p><%= sanitize article.try(:content).try(:truncate, 300), :tags => '' %>
   <% if article.gallery.try(:photos).try(:many?) %>
       <%= render article.gallery %>
   <% end %>
@@ -24,16 +24,14 @@
         <div class="span5">
         <h2><%= link_to article.title, article %></h2>
         <div class="row">
-          <div class="span3">
-            <p><%= simple_format article.content.truncate(150) %></p>
+          <div class="span4">
+            <% if article.gallery.try(:photos) %>
+            <%= image_tag article.gallery.photos.first.image.url(:thumbnail), :class => "float right" %>
+            <% end %>
+            <%= sanitize article.content.truncate(150), :tags => '' %>
             <p>
               <%= link_to 'Více »', article, :class =>  "btn" %>
             </p>
-          </div>
-          <div class="span2 showgrid">
-            <% if article.gallery.try(:photos) %>
-              <%= image_tag article.gallery.photos.first.image.url(:thumbnail) %>
-            <% end %>
           </div>
         </div>
       </div>
