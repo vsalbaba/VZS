@@ -18,6 +18,7 @@ namespace :import do
         puts user_line[columns['Prijmeni']]
         user.save
         profile = user.build_profile
+        profile.vzs_id = user_line[columns['Id']]
         profile.first_name = user_line[columns['Jmeno']]
         profile.second_name = user_line[columns['Prijmeni']]
         profile.email = user_line[columns['Email1']]
