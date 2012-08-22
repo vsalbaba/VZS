@@ -1,6 +1,6 @@
 require 'csv'
 namespace :import do 
-  desc "Perform a rolling update of all feeds"
+  desc "importuje uzivatele z CSV souboru."
   task :users, [:csv_filename] => [:environment] do |t, args|
 
     csv_file = CSV.read args[:csv_filename]
@@ -9,15 +9,13 @@ namespace :import do
     column_names.each_with_index do |e, i|
       columns[e] = i
     end
-    puts columns.inspect
-    puts csv_file.first.inspect
-    puts csv_file[2].inspect
     csv_file[1..-1].each do |user_line|
       if user_line[columns['Clen']] == "1" then
         user = User.find_or_create_by_login(user_line[columns['Id']]) do |user|
           user.password = user.password_confirmation = user_line[columns['Rc']]
           user.group = 1
         end
+        puts user_line[columns['Prijmeni']]
         user.save
         profile = user.build_profile
         profile.first_name = user_line[columns['Jmeno']]
