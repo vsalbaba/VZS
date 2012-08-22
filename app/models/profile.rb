@@ -3,7 +3,7 @@ class Profile < ActiveRecord::Base
     :email, :telephone,
     :im_jabber, :birthdate,
     :birthnumber,
-    :address, :address_attributes
+    :address, :address_attributes, :vzs_id
 
   belongs_to :user, :inverse_of => :profile
 
