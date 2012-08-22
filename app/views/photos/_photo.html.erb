@@ -1,6 +1,6 @@
 <li>
 <div class="thumbnail vzs-gallery-photo">
-  <a href="<%= photo.image.url %>"><%= image_tag photo.image.url(:small) %></a>
+  <a href="<%= photo.image.url %>", target="_blank"><%= image_tag photo.image.url(:small) %></a>
   <h5><%= photo.name %></h5>
   <% if can? :delete, photo %>
     <%= link_to gallery_photo_path(photo.gallery, photo), :confirm => 'Opravdu odstranit fotku?', :method => :delete, :class => "btn btn-danger btn-mini" do %>
