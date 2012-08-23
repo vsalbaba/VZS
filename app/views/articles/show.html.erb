@@ -3,8 +3,6 @@
 
   <div class="row-fluid">
     <div class="span8">
-      <%= render 'articles/meta_info', :article => @article %>
-      <br />
       <div class="row-fluid vzs-article-content">
         <div class="span12">
           <%= simple_format @article.content,{},  :sanitize => false %>
@@ -17,6 +15,9 @@
           </div>
         <% end %>
       </div>
+      <%= render 'articles/meta_info', :article => @article %>
+      <br />
+
       <%= render 'articles/show_comments' %>
     </div>
 
