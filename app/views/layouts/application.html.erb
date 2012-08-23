@@ -40,47 +40,55 @@
       </div>
     </div>
 
-    <div class="container-fluid">
-      <div class="row-fluid vzs-main-content">
+    <div class="container">
+      <div class="row"> <!-- main header - logo + napis -->
 
-        <div class="span3" id="vzs-left-menu">
-          <div class="well sidebar-nav">
-          <div class="row-fluid" id="vzs-main-logo">
-            <%= link_to image_tag("logo_vzs.gif", :size => "150x150"), root_path %>
+        <div class="row">
+          <div class="span2">
+              <%= link_to root_path, :class => 'vzs-main-logo-container' do %>
+                <%= image_tag("logo_vzs.gif", :size => "150x150", :class => "vzs-main-logo img-circle") %>
+              <% end %>
           </div>
-            <%= render 'layouts/menu' %>
-          </div><!--/.well -->
-        </div><!--/span-->
-
-        <div class="span9" id="vzs-main-content">
-          <% if content_for? :context_menu %>
-              <div class="pull-right">
-                <div class="btn-group">
-                  <%= yield(:context_menu) %>
-                </div>
-              </div>
-            <% end %>
-          <% if content_for? :title %>
-            <div class="page-header">
-              <h1>
-                <%= yield(:title) %>
-                <% if content_for? :title_sub %>
-                  <small><%= yield(:title_sub) %></small>
-                <% end %>
-              </h1>
-            </div>
-          <% end %>
-
-          <% flash.each do |name, msg| %>
-            <%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert" %>
-          <% end %>
-
-          <div class="row-fluid" id="vzs-page-content">
-            <%= yield %>
+          <div class="span10">
+            <%= render 'layouts/title' %>
           </div>
         </div>
 
-      </div><!--/row-->
+
+        <div class="row vzs-main-content">
+
+          <div class="row">
+            <div class="span12"> <br /></div>
+          </div>
+
+          <div class="row">
+            <div class="span3" id="vzs-left-menu">
+              <div class="well sidebar-nav">
+                 <%= render 'layouts/menu' %>
+              </div><!--/.well -->
+            </div><!--/span-->
+
+            <div class="span8 offset1" id="vzs-main-content">
+              <% if content_for? :context_menu %>
+                  <div class="pull-right">
+                    <div class="btn-group">
+                      <%= yield(:context_menu) %>
+                    </div>
+                  </div>
+                <% end %>
+
+              <!--<% flash.each do |name, msg| %>-->
+                <!--<%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert" %>-->
+              <!--<% end %>-->
+
+              <div class="row well" id="vzs-page-content">
+                <%= yield %>
+              </div>
+            </div>
+          </div>
+
+        </div><!--/row-->
+      </div><!-- main header - logo + napis -->
 
       <hr />
       <footer>

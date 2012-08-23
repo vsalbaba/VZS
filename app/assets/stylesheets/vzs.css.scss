@@ -1,13 +1,13 @@
 #vzs-left-menu { }
-#vzs-main-logo {
-    text-align: center;
-    padding-bottom: 20px;
+.vzs-main-logo {
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+.vzs-main-logo-container {
 }
 .vzs-main-content {
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   padding-left: 10px;
-  padding-top: 10px;
 }
 #vzs-page-content {}
 
