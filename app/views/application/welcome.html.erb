@@ -1,41 +1,42 @@
 <% title 'Vodní záchranná služba ČČK', 'MS Třebíč' %>
 
 <%if @articles.first %>
-<div class="hero-unit">
-  <% article = @articles.first %>
-  <h1><%=link_to article.try(:title), article %></h1>
-  <p><%= sanitize article.try(:content).try(:truncate, 300), :tags => '' %>
-  <% if article.gallery.try(:photos).try(:many?) %>
-      <%= render article.gallery %>
-  <% end %>
-  </p>
-  <p>
-  <%= link_to 'Více  »', @articles.first, :class =>  "btn btn-primary btn-large" %>
-  </p>
-
-  
-</div>
+  <div class="hero-unit">
+    <% article = @articles.first %>
+    <h1><%=link_to article.try(:title), article %></h1>
+    <p>
+      <%= sanitize article.try(:content).try(:truncate, 300), :tags => '' %>
+      <% if article.gallery.try(:photos).try(:many?) %>
+          <%= render article.gallery %>
+      <% end %>
+    </p>
+    <p>
+      <a href="<%= article_path(article) %>" class="btn">Více <i class="icon-chevron-right"></i></a>
+    </p>
+  </div>
 <% end %>
 
-<div class="row">
-<% @articles[1..-1].each do |article| %>
-  <div class=span5>
-    <div class="row">
-        <div class="span5">
-        <h2><%= link_to article.title, article %></h2>
-        <div class="row">
-          <div class="span4">
-            <% if article.gallery.try(:photos) %>
-            <%= image_tag article.gallery.photos.first.image.url(:thumbnail), :class => "float right" %>
-            <% end %>
-            <%= sanitize article.content.truncate(150), :tags => '' %>
-            <p>
-              <%= link_to 'Více »', article, :class =>  "btn" %>
-            </p>
+  <% @articles[1..-1].each do |article| %>
+    <div class="span3">
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="row">
+            <div class="span12">
+          <h3><%= link_to article.title, article %></h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span12">
+              <% if article.gallery.try(:photos) %>
+                <%= image_tag article.gallery.photos.first.image.url(:thumbnail), :class => "float right" %>
+              <% end %>
+              <%= sanitize article.content.truncate(150), :tags => '' %>
+              <p>
+                <a href="<%= article_path(article) %>" class="btn">Více <i class="icon-chevron-right"></i></a>
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
-</div>
+  <% end %>
