@@ -1,0 +1,8 @@
+cs:
+  activerecord:
+    attributes:
+      address:
+        street: 'Ulice'
+        house_number: 'Číslo popisné'
+        city: 'Město'
+        postcode: 'PSČ'

@@ -1,39 +1,10 @@
 cs:
-    user:
-        attr:
-            login: 'Přihlašovací jméno'
-            first_name: 'Křestní jméno'
-            second_name: 'Příjmení'
-            fullname: 'Celé jméno'
-            email: 'E-Mail'
-            phonenumber: 'Telefonní číslo'
-            im_jabber: 'IM Jabber'
-            age: 'Věk'
-            age_empty: 'Nezadán'
-            password: 'Heslo'
-            password_confirmation: 'Potvrzení hesla'
-            birthdate: 'Datum narození'
-            birthnumber: 'Rodné číslo'
-            street: 'Ulice'
-            housenumber: 'Číslo popisné'
-            city: 'Město'
-            postcode: 'PSČ'
-
-        groups:
-            members: 'Členové'
-            outsiders: 'Nečlenové'
-            younger15: 'Mladší 15 let'
-            younger18: 'Mladší 18 let'
-            adults: 'Dospělí'
-    page:
-        attr:
-            title: 'Nadpis'
-            menu_title: 'Text pro menu'
-            content: 'Text stránky'
-            navbar: 'Zobrazit v horním menu' 
-            navbar_short: 'Horní menu'
-            menu: 'Zobrazit v bočním menu' 
-            menu_short: 'Boční menu'
+    groups:
+        members: 'Členové'
+        outsiders: 'Nečlenové'
+        younger15: 'Mladší 15 let'
+        younger18: 'Mladší 18 let'
+        adults: 'Dospělí'
     btn:
         show: 'Zobrazit'
         save: 'Uložit'

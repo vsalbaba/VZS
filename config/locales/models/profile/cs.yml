@@ -1,0 +1,18 @@
+cs:
+  activerecord:
+    attributes:
+      profile:
+        first_name: 'Křestní jméno'
+        second_name: 'Příjmení'
+        fullname: 'Celé jméno'
+        email: 'E-mail'
+        telephone: 'Telefonní číslo'
+        im_jabber: 'IM Jabber'
+        age: 'Věk'
+        age_empty: 'Nezadán'
+        birthdate: 'Datum narození'
+        birthnumber: 'Rodné číslo'
+        street: 'Ulice'
+        housenumber: 'Číslo popisné'
+        city: 'Město'
+        postcode: 'PSČ'
