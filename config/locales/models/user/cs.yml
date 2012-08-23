@@ -1,0 +1,9 @@
+cs:
+  activerecord:
+    attributes:
+      user:
+        login: 'Přihlašovací jméno'
+        group: 'Skupina'
+        password: 'Heslo'
+        password_confirmation: 'Potvrzení hesla'
+        full_name: Jméno

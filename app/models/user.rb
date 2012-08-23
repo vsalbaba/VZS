@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
 
   def full_name
     return login if profile.nil? or ( profile.first_name.empty? and profile.second_name.empty? )
-    return profile.first_name + ' ' + profile.second_name
+    return  profile.second_name + ' ' + profile.first_name
   end
 
   private

@@ -1,0 +1,9 @@
+cs:
+  activerecord:
+    attributes:
+      page:
+        title: Nadpis
+        menu_title: Popis v menu
+        content: Obsah
+        navbar: Do horního menu
+        menu: Do bočního menu

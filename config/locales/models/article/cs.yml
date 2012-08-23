@@ -1,0 +1,10 @@
+cs:
+  activerecord:
+    attributes:
+      article:
+        title: Nadpis
+        content: Obsah
+        user: Autor
+        commentable: Komentáře
+        group: Viditelnost
+        sticky: Hlavní článek

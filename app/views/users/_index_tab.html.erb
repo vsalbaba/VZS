@@ -1,14 +1,14 @@
         <div class="tab-pane" id="<%= group_key %>">
-          <h2><%=t group_key, :scope => 'user.groups' %></h2>
+          <h2><%=t group_key, :scope => 'groups' %></h2>
           <% group.each do |age_key, age_group| %>
-            <h3><%=t age_key, :scope => 'user.groups' %></h3>
+            <h3><%=t age_key, :scope => 'groups' %></h3>
             <table class="table">
               <thead>
                 <tr>
-                  <th class="span2"><%=t 'user.attr.fullname' %></th>
-                  <th class="span3"><%=t 'user.attr.email' %></th>
-                  <th class="span1"><%=t 'user.attr.age' %></th>
-                  <th class="span2"><%=t 'user.attr.telephone' %></th>
+                  <th class="span2"><%= User.human_attribute_name(:full_name)%></th>
+                  <th class="span3"><%= Profile.human_attribute_name(:email) %></th>
+                  <th class="span1"><%= Profile.human_attribute_name(:age) %></th>
+                  <th class="span2"><%= Profile.human_attribute_name(:telephone) %></th>
                   <th class="span4"></th>
                 </tr>
               </thead>
