@@ -20,7 +20,7 @@
 
         <%= render 'articles/meta_info', :article => article %>
 
-        <p><%= simple_format article.content.truncate(100), :tags => '' %></p>
+        <p><%= sanitize article.content.truncate(100), :tags => '' %></p>
         <div class="btn-group pull-right">
           <% if can? :update, article %>
             <%= link_to edit_article_path(article), :class => "btn" do %>
