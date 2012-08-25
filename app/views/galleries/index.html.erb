@@ -5,11 +5,11 @@
   <% end %>
 <% end %>
 
-<div class="row-fluid">
+<div class="row">
   <% @galleries.each do |gallery| %>
-    <div class="span5 well">
-      <h2><%= link_to gallery.name, gallery%></h2>
-      <small><%= gallery.description %></small>
+    <div class="row">
+      <h2><%= link_to gallery.name, gallery%> <small><%= gallery.description %></small></h2>
+      <%= render gallery %>
     </div>
   <% end %>
 </div>
