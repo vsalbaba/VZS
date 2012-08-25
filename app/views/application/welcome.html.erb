@@ -11,32 +11,41 @@
       <% end %>
     </p>
     <p>
-      <a href="<%= article_path(article) %>" class="btn">Více <i class="icon-chevron-right"></i></a>
+      <a href="<%= article_path(article) %>" class="btn btn-primary btn-large">Více <i class="icon-chevron-right"></i></a>
     </p>
   </div>
 <% end %>
 
-  <% @articles[1..-1].each do |article| %>
-    <div class="span3">
-      <div class="row-fluid">
-        <div class="span12">
+<% @articles[1..-1].in_groups_of(2) do |group| %>
+  <div class="row">
+    <% group.each do |article| %>
+      <% if article %>
+        <div class="span4">
           <div class="row">
-            <div class="span12">
-          <h3><%= link_to article.title, article %></h3>
-            </div>
-          </div>
-          <div class="row">
-            <div class="span12">
-              <% if article.gallery.try(:photos) %>
-                <%= image_tag article.gallery.photos.first.image.url(:thumbnail), :class => "float right" %>
-              <% end %>
-              <%= sanitize article.content.truncate(150), :tags => '' %>
-              <p>
-                <a href="<%= article_path(article) %>" class="btn">Více <i class="icon-chevron-right"></i></a>
-              </p>
+            <div class="span4">
+              <div class="row">
+                <div class="span4">
+                  <h3><%= link_to article.title, article %></h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="span4">
+                  <p>
+                    <% if article.gallery.try(:photos) %>
+                      <%= link_to article do %>
+                        <%= image_tag article.gallery.photos.first.image.url(:thumbnail), :class => "float right" %>
+                      <% end %>
+                    <% end %>
+                    <%= sanitize article.content.truncate(150), :tags => '' %>
+                    <br />
+                    <a href="<%= article_path(article) %>" class="btn btn-primary btn-medium">Více <i class="icon-chevron-right"></i></a>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  <% end %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
