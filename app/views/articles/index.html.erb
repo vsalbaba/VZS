@@ -6,41 +6,37 @@
   <% end %>
 <% end %>
 
-<div class="row-fluid">
-  <% @articles.each do |article| %>
-    <div class="span5 well">
-      <h2><%= link_to article.title, article %>
+<% @articles.in_groups_of(2) do |group| %>
+  <div class="row">
+    <% group.each do |article| %>
+      <div class="span3 well">
+        <h2><%= link_to article.title, article %>
 
-        <%= link_to article_path(article, :anchor => 'comments'),
-          :class => "badge badge-info" do
-          %><%=article.comments.count%> <i class="icon-comment"></i><%
-          end %>
-      </h2>
+          <%= link_to article_path(article, :anchor => 'comments'),
+            :class => "badge badge-info" do
+            %><%=article.comments.count%> <i class="icon-comment"></i><%
+            end %>
+        </h2>
 
-      <%= render 'articles/meta_info', :article => article %>
+        <%= render 'articles/meta_info', :article => article %>
 
-      <p><%= simple_format article.content.truncate(200) %></p>
-      <div class="btn-group pull-right">
-        <% if can? :read, article %>
-          <%= link_to article, :class => "btn" do %>
-            <i class="icon-eye-open"></i>
-            Zobrazit
+        <p><%= simple_format article.content.truncate(100), :tags => '' %></p>
+        <div class="btn-group pull-right">
+          <% if can? :update, article %>
+            <%= link_to edit_article_path(article), :class => "btn" do %>
+              <i class="icon-edit"></i> 
+            <% end %>
           <% end %>
-        <% end %>
-        <% if can? :update, article %>
-          <%= link_to edit_article_path(article), :class => "btn" do %>
-            <i class="icon-edit"></i> Upravit
+          <% if can? :destroy, article %>
+            <%= link_to article, :confirm => 'Opravdu odstranit článek '+article.title+'?', :method => :delete, :class => "btn btn-danger" do %>
+              <i class="icon-trash"></i>
+            <% end %>
           <% end %>
-        <% end %>
-        <% if can? :destroy, article %>
-          <%= link_to article, :confirm => 'Opravdu odstranit článek '+article.title+'?', :method => :delete, :class => "btn btn-danger" do %>
-            <i class="icon-trash"></i> Smazat
-          <% end %>
-        <% end %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% end %>
 
 
 <%= will_paginate @articles %>
