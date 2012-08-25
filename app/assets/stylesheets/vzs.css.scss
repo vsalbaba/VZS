@@ -1,6 +1,9 @@
 #vzs-left-menu { }
 .vzs-main-logo {
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    position:absolute;
+    left:140px;
+    top:100px;
 }
 .vzs-main-logo-container {
 }
@@ -8,9 +11,14 @@
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   padding-left: 10px;
-  padding-top: 20px;
+  padding-top: 30px;
   padding-bottom: 20px;
 }
+
+body {
+  background:transparent image-url("horni_lista_skutecna.gif") no-repeat 100% 50px;
+}
+
 #vzs-page-content {}
 
 .vzs-note { color: rgb(153,153,153); }
