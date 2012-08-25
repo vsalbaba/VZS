@@ -3,6 +3,7 @@
                 <h1>
                   <%= yield(:title) %>
                   <% if content_for? :title_sub %>
+                  <br />
                     <small><%= yield(:title_sub) %></small>
                   <% end %>
                 </h1>
