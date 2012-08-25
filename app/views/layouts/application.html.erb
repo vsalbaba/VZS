@@ -65,11 +65,13 @@
 
             <div class="span8 offset1" id="vzs-main-content">
               <% if content_for? :context_menu %>
+              <div class="row">
                   <div class="pull-right">
                     <div class="btn-group">
                       <%= yield(:context_menu) %>
                     </div>
                   </div>
+                </div>
                 <% end %>
 
               <% flash.each do |name, msg| %>
