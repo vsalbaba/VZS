@@ -1,14 +1,13 @@
-<ul class="nav nav-list">
+<ul class="nav nav-tabs nav-stacked">
 
-  <li class="nav-header">Menu</li>
   <li><%= link_to 'Úvodní stránka', root_path %></li>
   <li><%= link_to 'Fotogalerie', galleries_path %></li>
   <% pages_for_menu.each do |page| %>
     <li><%= page_link page %></li>
   <% end %>
-
+</ul>
+<ul class="nav nav-tabs nav-stacked">
   <% if can?(:create, Article) or can?(:read_members, User) %>
-    <li class="nav-header">Administrace</li>
   <% end %>
   <% if can? :create, Article %>
     <li><%= link_to 'Správa článků', articles_path %></li>
