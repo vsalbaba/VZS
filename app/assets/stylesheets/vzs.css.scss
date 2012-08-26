@@ -1,10 +1,28 @@
-#vzs-left-menu { }
+#vzs-left-menu { 
+  margin-left: 35px;
+  margin-right: 25px;
+  padding-top: 50px;
+  width: 180px;
+  position:relative;
+}
 .vzs-main-logo {
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
     position:absolute;
-    left:140px;
-    top:100px;
+    left:15px;
+    top:-124px;
 }
+
+#vzs-main-title {
+  padding-left:30px;
+  position:relative;
+  top:-15px;
+}
+
+.vzs-main-title-text {
+  text-shadow: 0px 3px 3px #FFF;
+  text-outline: 3px;
+}
+
 .vzs-main-logo-container {
 }
 .vzs-main-content {
@@ -13,10 +31,15 @@
   padding-left: 10px;
   padding-top: 30px;
   padding-bottom: 20px;
+  background-color: white;
 }
 
 body {
-  background:transparent image-url("horni_lista_skutecna.gif") no-repeat 100% 50px;
+  //background:transparent no-repeat 100% 10px;
+  background:transparent;
+  background-image:image-url("horni_lista_s_prechodem.png"), image-url("prechod.gif");
+  background-repeat:no-repeat, repeat-x;
+  background-position: 100% 15px, 100% 100px;
 }
 
 #vzs-page-content {}
