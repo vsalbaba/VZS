@@ -12,6 +12,9 @@ class GalleriesController < ApplicationController
   def new
     @gallery.group = current_user.group
     @gallery.user_id = current_user.id
+    if params[:article]
+      @gallery.article = Article.find_by_id(params[:article].to_i)
+    end
   end
 
   def create

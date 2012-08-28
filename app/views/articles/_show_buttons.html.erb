@@ -2,6 +2,9 @@
   <%= link_back articles_path, 'Výpis všech článků' %>
   <% if can? :edit, @article %>
     <%= link_edit edit_article_path(@article), 'Upravit' %>
+    <% if can? :create, Gallery %>
+      <%= link_new new_gallery_path + "?article=#{@article.id}", t('label.gallery.new_for_article') %>
+    <% end %>
     <%= link_delete @article, 'Smazat', 'Opravdu smazat článek?' %>
   <% end %>
 <% end %>
