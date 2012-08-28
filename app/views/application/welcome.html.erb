@@ -16,7 +16,7 @@
   </div>
 <% end %>
 
-<% @articles[1..-1].in_groups_of(2) do |group| %>
+<% @articles[1..-1].try(:in_groups_of, 2) do |group| %>
   <div class="row">
     <% group.each do |article| %>
       <% if article %>
