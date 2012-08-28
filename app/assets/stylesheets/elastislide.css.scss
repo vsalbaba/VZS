@@ -1,15 +1,16 @@
 /* Elastislide Style */
 .es-carousel-wrapper{
-	background: #e6e6e6;
+	background: white;
 	padding:10px 37px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
 	position:relative;
+  border: 1px solid #E3E3E3;  
 }
 .es-carousel{
 	overflow:hidden;
-	background:#000;
+	background:white;
 }
 .es-carousel ul{
 	display:none;
