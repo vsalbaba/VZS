@@ -8,10 +8,12 @@
 <div class="row">
   <% @galleries.each do |gallery| %>
     <div class="row">
-      <h2><%= link_to gallery.name, gallery%> <small><%= gallery.description %></small></h2>
-      <%= render gallery %>
+      <div class="span8 offset1">
+        <h2><%= link_to gallery.name, gallery%> <small><%= gallery.description %></small></h2>
+        <%= render gallery %>
+      </div>
     </div>
   <% end %>
-</div>
 
 <%= will_paginate @galleries %>
+</div>
