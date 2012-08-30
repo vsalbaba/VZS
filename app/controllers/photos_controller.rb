@@ -2,16 +2,28 @@ class PhotosController < ApplicationController
   load_and_authorize_resource :except => :create
 
   def create
+    result = { :status => true, :errors => nil }
     @photo = current_user.photos.new(params[:photo].merge(:gallery_id => params[:gallery_id]))
 
     authorize! :create, @photo
 
     if @photo.save
-      redirect_to @photo.gallery, :notice => "Fotka byla úspěšně přiložena."
+      if not request.xhr?
+        redirect_to @photo.gallery, :notice => "Fotka byla úspěšně přiložena."
+        return
+      end
+      result[:status] = true
     else
-      @gallery = @photo.gallery
-      render 'galleries/show'
+      if not request.xhr?
+        @gallery = @photo.gallery
+        render 'galleries/show'
+        return
+      end
+      result[:status] = false
+      result[:errors] = @photo.errors.messages
+      p @photo.errors.messages
     end
+    render :js => result.to_json
   end
 
   def edit

@@ -19,7 +19,7 @@ class Photo < ActiveRecord::Base
 
   private
   def setname_before_validation
-    if name.empty? and not file_name.empty?
+    if (name.nil? or name.empty?) and not (file_name.nil? or file_name.empty?)
       self[:name] = file_name
     end
   end
