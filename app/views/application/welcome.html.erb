@@ -1,22 +1,21 @@
 <% title 'Vodní záchranná služba ČČK', 'MS Třebíč' %>
 
 <%if @articles.first %>
-  <div class="hero-unit">
+  <div class="well">
     <% article = @articles.first %>
     <h1><%=link_to article.try(:title), article %></h1>
     <p>
       <%= sanitize article.try(:content).try(:truncate, 300), :tags => '' %>
+    </p>
       <% if article.gallery.try(:photos).try(:many?) %>
-          <%= render article.gallery %>
-      <% end %>
-    </p>
     <p>
-      <a href="<%= article_path(article) %>" class="btn btn-primary btn-large">Více <i class="icon-chevron-right"></i></a>
+        <%= render article.gallery %>
     </p>
+      <% end %>
   </div>
 <% end %>
 
-<% @articles[1..-1].in_groups_of(2) do |group| %>
+<% @articles[1..-1].try(:in_groups_of, 2) do |group| %>
   <div class="row">
     <% group.each do |article| %>
       <% if article %>

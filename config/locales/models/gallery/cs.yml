@@ -1,0 +1,9 @@
+cs:
+  activerecord:
+    attributes:
+      gallery:
+        name: Název
+        description: Popis fotogalerie
+        user: Autor
+        article: Příslušející článek
+        group: Požadované opravnění

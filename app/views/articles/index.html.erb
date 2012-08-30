@@ -9,6 +9,7 @@
 <% @articles.in_groups_of(2) do |group| %>
   <div class="row">
     <% group.each do |article| %>
+      <% next if not article %>
       <div class="span3 well">
         <h2>
           <%= link_to article_path(article, :anchor => 'comments'),

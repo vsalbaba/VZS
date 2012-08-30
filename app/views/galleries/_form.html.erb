@@ -5,7 +5,7 @@
       <%= f.input :description %>
       <%= f.input :user %>
       <%= f.input :article, :as => :select, :include_blank => true %>
-      <%= f.input :group, :as => :select, :collection => group_names, :label => 'Skupina', :include_blank => false %>
+      <%= f.input :group, :as => :select, :collection => group_names, :include_blank => false %>
     <% end %>
     <%= f.actions do %>
       <%= f.action :submit, :as => :button, :button_html => { :class => 'btn btn-success' } %>
