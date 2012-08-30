@@ -15,7 +15,6 @@
 #vzs-main-title {
   padding-left:30px;
   position:relative;
-  top:-15px;
 }
 
 .vzs-main-title-text {
@@ -39,7 +38,7 @@ body {
   background:transparent;
   background-image:image-url("horni-lista-618x434.gif"), image-url("prechod-min.gif");
   background-repeat:no-repeat, repeat-x;
-  background-position: 100% 45px, 100% 50px;
+  background-position: 100% 25px, 100% 50px;
 }
 
 #vzs-page-content {}
@@ -54,4 +53,8 @@ body {
 img.float.right {
   float:left;
   margin-right: 10px;
+}
+
+.well-white {
+  background: white;
 }
