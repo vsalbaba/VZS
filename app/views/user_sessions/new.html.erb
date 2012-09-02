@@ -1,17 +1,32 @@
 <% title t('label.user.login') %>
-
-<%= form_for @user_session do |form| %>  
-	<%= form.error_messages %>  
-	<p>  
-		<%= form.label :login, t('user.attr.login') %>  
-		<%= form.text_field :login %>  
-	</p>  
-	<p>  
-		<%= form.label :password, t('user.attr.password') %>  
-		<%= form.password_field :password %>  
-	</p>  
-	<p>  
-		<%= form.submit t('btn.login') %>  
-	</p>  
-<% end %>  
-
+<h1>Přihlášení</h1>
+<div class="span8">
+  <%= semantic_form_for @user_session, :html => {:class => "form-horizontal" } do |form| %>  
+    <div class="control-group">
+      <div class="string clearfix required stringish" id="user_session_login_input">
+        <label class="control-label" for="user_session_login">Přihlašovací jméno<abbr title="Povinná položka">*</abbr></label>
+        <div class="input controls">
+          <input id="user_session_login" name="user_session[login]" type="text">
+        </div>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="password clearfix required stringish" id="user_session_password_input">
+        <label class="control-label" for="user_session_password">Heslo<abbr title="Povinná položka">*</abbr></label>
+        <div class="input controls">
+          <input id="user_session_password" name="user_session[password]" type="password">
+        </div>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls span4">
+        <input name="commit" type="submit" class="btn btn-block btn-primary span4" value="Přihlásit se" />
+      </div>
+    </div>
+  <% end %>  
+  <p>
+    <small>
+      Výchozím heslem je rodné číslo včetně lomítka
+    </small>
+  </p>
+</div>

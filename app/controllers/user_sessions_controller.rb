@@ -1,7 +1,6 @@
 class UserSessionsController < ApplicationController
 
   def new
-	  @something = 'ahoj'
 	  @user_session = UserSession.new
   end
 
