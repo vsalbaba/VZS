@@ -11,12 +11,14 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.ui.all
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_self
 //= require user_list
 //= require attachments
 //= require photos
+//= require jquery.form
 //= require jquery.easing.1.3.js
 //= require jquery.elastislide.js
 //= require elastislide
