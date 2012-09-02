@@ -99,8 +99,8 @@ jQuery ->
     new_inputs.css('clear', 'left')
 
     last_inputs().remove() # remove original inputs
-    while inputs_count() < default_inputs_count
-      add_another()
+#    while inputs_count() < default_inputs_count
+#      add_another()
 
     @total_inputs_count = inputs_count()
     $(new_form).ajaxForm({
