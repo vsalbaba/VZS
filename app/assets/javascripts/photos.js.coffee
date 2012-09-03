@@ -124,7 +124,7 @@ jQuery ->
           submit_error(errors)
     })
 
-    $('button[type=submit]').click -> submit()
+    $('button[type=submit]', new_form).click -> submit()
 
   init_edit_toggle = ->
     $('.vzs-gallery-photo').each ->
