@@ -17,7 +17,6 @@
 //= require_self
 //= require user_list
 //= require attachments
-//= require photos
 //= require jquery.form
 //= require jquery.easing.1.3.js
 //= require jquery.elastislide.js
