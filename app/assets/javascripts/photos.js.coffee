@@ -26,13 +26,17 @@ jQuery ->
       $('#upphoto-progress').hide()
       if @total_submitted == 0
         submit_dialog.html('Žádné fotky k přiložení')
+        submit_dialog.dialog('option', 'buttons', {
+          'ok': ->
+            $(this).dialog('close')
+        })
       else
         submit_dialog.html('Soubory úspěšně přiloženy')
-      submit_dialog.dialog('option', 'buttons', {
-        'ok': ->
-          $(this).dialog('close')
-          window.location.href = window.location.href
-      })
+        submit_dialog.dialog('option', 'buttons', {
+          'ok': ->
+            $(this).dialog('close')
+            window.location.href = window.location.href
+        })
       return false
 
     submit_error = (reason) ->
@@ -63,7 +67,7 @@ jQuery ->
         if submit_validate_is_empty()
           @total_inputs_count--
           last_inputs().remove()
-          submit_next_file()
+          return submit_next_file()
         return submit_error('Nebyl zvolen soubor')
       @total_submitted++
       new_form.submit()
