@@ -22,6 +22,7 @@
 //= require jquery.elastislide.js
 //= require elastislide
 //= require lightbox
+//= require photos
 // DISABLED require bootstrap.js.coffee
 // DISABLED require user_sessions.js.coffee
 

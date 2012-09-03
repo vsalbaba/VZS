@@ -1,5 +1,5 @@
 jQuery ->
-  init_new_photo = (default_inputs_count=1) ->
+  init_new_photo = (new_block, default_inputs_count=1) ->
     first_inputs = ->
       return $('.inputs', new_block).first()
     last_inputs = ->
@@ -79,8 +79,9 @@ jQuery ->
       submit_next_file()
       return false
 
-    new_block = $('#vzs-new-photo')
     new_form = $('form#new_photo', new_block)
+    if last_inputs().length == 0
+      return
 
     submit_dialog = $('<div id="new_photo_dialog" title="Nové fotky">&nbsp;</div>')
     new_form.after(submit_dialog)
@@ -99,8 +100,8 @@ jQuery ->
     new_inputs.css('clear', 'left')
 
     last_inputs().remove() # remove original inputs
-#    while inputs_count() < default_inputs_count
-#      add_another()
+    while inputs_count() < default_inputs_count
+      add_another()
 
     @total_inputs_count = inputs_count()
     $(new_form).ajaxForm({
@@ -133,5 +134,6 @@ jQuery ->
         false
 
   init_edit_toggle()
-  init_new_photo(6)
+  $('#vzs-new-photo').each ->
+    init_new_photo($(this), 6)
 
