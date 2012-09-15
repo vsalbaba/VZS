@@ -16,6 +16,6 @@
     <li><%= link_to 'Seznam členů VZS', members_path %></li>
   <% end %>
   <% if can? :manage, Page %>
-    <li><%= link_to t('label.page.index'), pages_path %></li>
+    <li><%= link_to raw('Správa stránek <br /> <small>Pro administrátora</small>'), pages_path %></li>
   <% end %>
 </ul>
