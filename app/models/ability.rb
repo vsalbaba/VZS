@@ -16,6 +16,7 @@ class Ability
     end
 
 
+    page_rules(user)
     article_rules(user)
     comments_rules(user)
     attachments_rules(user)
@@ -114,6 +115,13 @@ class Ability
         u.profile.birthdate == user.profile.birthdate and
         u.profile.address == user.profile.address
       end
+    end
+  end
+
+  def page_rules(user)
+    can :read, Page
+    if user.group? BOARD
+      can :manage, Page
     end
   end
 
