@@ -5,31 +5,28 @@ class Ability
   BOARD = User::GROUP[:BOARD]
   MEMBER = User::GROUP[:MEMBER]
   OUTSIDER = User::GROUP[:OUTSIDER]
+  ALL = [OUTSIDER, MEMBER, BOARD]
 
   def initialize(user)
     user ||= User.new
 
-    if user.group == ADMIN
+    if user.group == ADMIN or user.group == BOARD
       can :manage, :all
       return
     end
+
 
     article_rules(user)
     comments_rules(user)
     attachments_rules(user)
     gallery_rules(user)
-    page_rules(user)
     user_manager_rules(user)
     user_rules(user)
-
+    photo_rules(user)
   end
 
   def article_rules(user)
-    if user.group? BOARD
-      can :read, Article, :group => [OUTSIDER, MEMBER, BOARD]
-      can :create, Article, :group => [nil, OUTSIDER, MEMBER, BOARD], :user_id => user.id
-      can [:update, :save, :destroy], Article, :group => [OUTSIDER, MEMBER, BOARD], :user_id => user.id
-    elsif user.group? MEMBER
+    if user.group? MEMBER
       can :read, Article, :group => [OUTSIDER, MEMBER]
       can :create, Article, :group => [nil, OUTSIDER, MEMBER], :user_id => user.id
       can [:update, :save, :destroy], Article, :group => [OUTSIDER, MEMBER], :user_id => user.id
@@ -60,12 +57,12 @@ class Ability
     end
   end
 
+  def photo_rules(user)
+    can :manage, Photo
+  end
+
   def gallery_rules(user)
-    if user.group? BOARD
-      can :read, Gallery, :group => [OUTSIDER, MEMBER, BOARD]
-      can :create, Gallery, :group => [nil, OUTSIDER, MEMBER, BOARD], :user_id => user.id
-      can [:update, :save, :destroy], Gallery, :group => [OUTSIDER, MEMBER, BOARD], :user_id => user.id
-    elsif user.group? MEMBER
+    if user.group? MEMBER
       can :read, Gallery, :group => [OUTSIDER, MEMBER]
       can :create, Gallery, :group => [nil, OUTSIDER, MEMBER], :user_id => user.id
       can [:update, :save, :destroy], Gallery, :group => [OUTSIDER, MEMBER], :user_id => user.id
@@ -83,13 +80,6 @@ class Ability
       end
     end
 
-  end
-
-  def page_rules(user)
-    can :read, Page
-    if user.group? BOARD
-      can :manage, Page
-    end
   end
 
   def user_rules(user)
