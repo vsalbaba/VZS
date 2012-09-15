@@ -9,7 +9,8 @@ class Photo < ActiveRecord::Base
                                         :gallery => '120x120#', 
                                         :small => '260x120>', 
                                         :medium => '260x180>', 
-                                        :large => '800x600>' }
+                                        :large => '800x600>' },
+                            :convert_options => { :all => '-auto-orient' }
 
   validates_attachment_presence :image
   validates :user, :presence => true
