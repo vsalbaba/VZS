@@ -5,7 +5,7 @@ else
 end 
 
 begin
-  REVISION = File.read("#{Rails.root}/REVISION").read.strip.to_s
+  REVISION = File.read("#{Rails.root}/REVISION").strip.to_s
 rescue
   REVISION = "development"
 end
