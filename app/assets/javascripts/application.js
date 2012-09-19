@@ -23,6 +23,7 @@
 //= require elastislide
 //= require lightbox
 //= require photos
+//= require tooltips
 // DISABLED require bootstrap.js.coffee
 // DISABLED require user_sessions.js.coffee
 
