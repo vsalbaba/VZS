@@ -32,6 +32,8 @@ Vzs::Application.routes.draw do
 
   root :to => 'Application#welcome'
 
+  match '/*a', :to => 'Application#welcome'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
