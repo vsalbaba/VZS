@@ -1,0 +1,9 @@
+<%= form_tag join_show_path(show) do %>
+  <%= field_set_tag 'Přihlásit jiné uživatele' do %>
+    <%= select_tag 'user_id', options_for_select(User.all.map{|u| [u.full_name, u.id]}) -%>
+    <%= label_tag 'wants_payed', 'Placeně?' %>
+    <%= check_box_tag 'wants_payed' %>
+    <%= hidden_field_tag 'subscribed', true %>
+    <%= submit_tag 'Přidat' %>
+  <% end %>
+<% end %>

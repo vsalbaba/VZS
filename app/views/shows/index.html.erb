@@ -1,0 +1,27 @@
+<% title "Akce VZS Třebíč" %>
+<div id='table_hint'>
+  <span class="subscribed">Jedu</span>|<span class="not_subscribed">Nejedu</span>
+</div>
+  <hr />
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Akce</th>
+        <th scope="col">Sraz</th>
+        <th scope="col">Návrat</th>
+        <th scope="col">Popis</th>
+        <th scope="col">Lidí</th>
+      </tr>
+     </thead>
+     <tbody>
+      <% for show in @shows do -%>
+        <%= render show %>
+      <% end -%>
+     </tbody>
+  </table>
+  <hr />
+<% if can?(:create, Show) then -%>
+<p><%= link_to "Nová akce", new_show_path %></p>
+<% end -%>
+<%= link_to 'Zobrazit všechny proběhlé akce', archived_shows_path %>
+

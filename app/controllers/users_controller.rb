@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :find_user, :only => [:show, :edit, :update, :destroy]
+  before_filter :find_user, :only => [:stats, :show, :edit, :update, :destroy]
 
   def index
     authorize! :read_members, User
@@ -50,9 +50,23 @@ class UsersController < ApplicationController
     redirect_to users_url, :notice => "Successfully destroyed user."
   end
   
+  def stats
+    #FIXME: authorize! ??
+    @from_date = parse_date(params[:from_date])
+    @to_date = parse_date(params[:to_date]) || Date.current
+    @statistic = Statistic.new @user, :from => @from_date, :to => @to_date
+    @shows = @statistic.shows
+  end
+
   protected
 
   def find_user
     @user = User.find(params[:id])
+  end
+
+  private
+
+  def parse_date datestring
+     Date.strptime(datestring, '%d. %m. %Y') if datestring.present?
   end
 end

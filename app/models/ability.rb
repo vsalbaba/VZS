@@ -10,8 +10,12 @@ class Ability
   def initialize(user)
     user ||= User.new
 
+    can :feed, Show
+
     if user.group == ADMIN or user.group == BOARD
       can :manage, :all
+      can :see_subscription, Subscription
+      can :subscribe_others, Show
       return
     end
 
@@ -24,6 +28,7 @@ class Ability
     user_manager_rules(user)
     user_rules(user)
     photo_rules(user)
+    show_rules(user)
   end
 
   def article_rules(user)
@@ -131,6 +136,19 @@ class Ability
       # profilu (RC, Adresa, Skupina apod)
       can :manage, User
       can :update_extended, Profile
+    end
+  end
+
+  def show_rules(user)
+    if user.group >= BOARD
+        can :see_subscription, Subscription
+        can :subscribe_others, Show
+    else
+        cannot :index, :stats
+        cannot :kick, Show
+        cannot :unarchive, Show
+        cannot :archive, Show
+        cannot :subscribe_others, Show
     end
   end
 end

@@ -19,9 +19,30 @@ Vzs::Application.routes.draw do
 
   get "user_sessions/new"
 
-  resources :users
+  resources :users do
+    member do
+      get :stats
+    end
+  end
+
   resources :user_sessions
   match 'register' => 'Users#new', :as => :register
+
+  resources :shows do
+    member do
+      post :join
+      put :kick
+      put :archive
+      put :unarchive
+    end
+
+    collection do
+      get :archived
+      get :feed
+    end
+  end
+
+  match 'stats' => 'statistics#stats', :as => 'stats'
 
   # vypis osob
   match 'clenove' => 'Users#index', :as => :members

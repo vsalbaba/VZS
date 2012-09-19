@@ -1,0 +1,32 @@
+<% title "Statistiky - #{@user.full_name}" %>
+<%= form_tag nil, :method => :get do %>
+  <%= text_field_tag :from_date, @from_date && l(@from_date), :id => 'from_date', :class => 'ui-daterange-picker' %>
+  <%= text_field_tag :to_date, l(@to_date), :id => 'to_date', :class => 'ui-daterange-picker' %>
+  <%= submit_tag 'Zobrazit' %>
+<% end %>
+<table>
+  <thead>
+    <th scope="col">Ukázka</td>
+    <th scope="col">Placených</td>
+    <th scope="col">Brigádnických</td>
+    <th scope="col">Na klubovně?</td>
+  </thead>
+  <tbody>
+    <% @shows.each do |show| %>
+    <tr>
+      <td><%= link_to [l(show.date), show.name].join(" - "), show_path(show) %></td>
+      <td><%= show.payed_hours if @user.subscriptions.find_by_show_id(show.id).wants_payed %></td>
+      <td><%= show.brigade_hours unless @user.subscriptions.find_by_show_id(show.id).wants_payed %></td>
+      <td><%= 'X' if show.club %>
+    </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>CELKEM</th>
+      <th><%= @statistic.paid_hours %> hodin - <%= number_to_currency @statistic.pay %></th>
+      <th><%= @statistic.brigade_hours %></th>
+    </tr>
+  </tfoot>
+</table>
+     

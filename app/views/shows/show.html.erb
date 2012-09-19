@@ -1,0 +1,107 @@
+<% title @show.name %>
+
+<% if @show.archived? then -%>
+  <div class="archived_headline slight_padding">
+    Tato akce byla archivována
+  </div>
+<% end -%>
+
+<%= h @show.description %>
+
+<span class="slight_padding">
+  <%= subscribed_notice @show, current_user %>
+</span>
+
+<div id='date'>
+  <strong>Datum:</strong>
+  <%=l @show.date, :format => :long %>
+</div>
+
+<div id='properties'>
+  <ul>
+    <li>Sraz v <%= l(@show.meet_time, :format => :extra_short) %>, návrat v <%= l(@show.end_time, :format => :extra_short) %></li>
+    <li>Místo srazu: <%= h @show.meet_at %></li>
+    <li>Jídlo: <%= food_for(@show) %></li>
+    <li>Odměna: <%= reward(@show) %></li>
+    <li>Přihlášených lidí: <%= h show_subscribed_count(@show) %></li>
+    <li>Vedoucí: <%= h @show.contact %> </li>
+  </ul>
+</div>
+<div id='notes'>
+  <h2>Poznámky</h2>
+  <%= raw RedCloth.new(@show.notes).to_html %>
+</div>
+
+<div id='people'>
+  Na akci jsou nahlášeni:
+  <ol>
+  <% for subscription in @show.subscriptions.subscribed -%>
+    <li><%= subscription.user.full_name %> 
+
+      <% if can?(:see_subscription, Subscription) %>
+        <% if subscription.wants_payed %>
+          <strong>placeně</strong>
+        <% else %>
+          <em>brigáda</em>
+        <% end %>
+      <% end %>
+
+      <% if can? :kick, @show then -%>
+      (<%= 
+      link_to 'Odhlásit', 
+        kick_show_path(@show, :user_id => subscription.user.id ), 
+        :method => :put, 
+        :confirm => "Opravdu vyhodit #{subscription.user.full_name} z ukázky?"
+      %>)
+      <% end -%>
+    </li>
+  <% end %>
+  </ol>
+
+  <% if can? :subscribe_others, @show then -%>
+    <%= render :partial => 'subscribe_others', :locals => {:show => @show} %> 
+  <% end -%>
+
+  Nepojedou:
+  <ol>
+    <% for subscription in @show.subscriptions.not_subscribed -%>
+      <li><%= subscription.user.full_name %>
+      <% if subscription.user == current_user or can?(:kick, @show) then -%>
+        (<%= link_to 'Odstranit', kick_show_path(@show, :user_id => subscription.user.id), :method => :put %>)
+       <% end -%>
+      </li>
+    <% end -%>
+  </ol>
+</div>
+
+
+<% if not @show.archived? then -%>
+  <div id='joining_links'>
+    <% unless current_user.shows.exists? @show -%>
+      <%= link_to 'Přihlásit - brig. hodiny', join_show_path(@show, :subscribed => 'true'), :method => :post, :confirm => 'Jste si jisti? Z akce Vás bude moci odhlásit pouze vedoucí' %> |
+      <%= link_to_if @show.paid, 'Přihlásit - peníze', join_show_path(@show, :subscribed => 'true', :wants_payed => 'true'), :method => :post, :confirm => 'Jste si jisti? Z akce Vás bude moci odhlásit pouze vedoucí' %> |
+      <%= link_to 'Na tuto ukázku nemohu jet', join_show_path(@show, :subscribed => 'false'), :method => :post %>
+    <% end -%>
+  </div>
+
+  <div id='admin_links'>
+    <% if can? :edit, @show then -%>
+      <%= link_to "Editovat", edit_show_path(@show) %> |
+    <% end -%>
+
+    <% if can? :archive, @show then -%>
+      <%= link_to 'Archivovat', archive_show_path(@show), :confirm => 'Opravdu archivovat?', :method => :put %> |
+    <% end -%>
+
+    <% if can? :delete, @show then -%>
+      <%= link_to "Smazat", @show, :confirm => 'Opravdu smazat?', :method => :delete %>
+    <% end -%>
+  </div>
+<% else -%>
+  <% if can? :unarchive, @show then -%>
+    <%= link_to 'Odarchivovat', unarchive_show_path(@show), :method => :put %>
+  <% end -%>
+<% end -%>
+
+<%= link_to "Zobrazit všechny aktuální akce", shows_path %>
+

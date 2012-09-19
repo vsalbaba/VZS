@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   has_many :attachments
   has_many :galleries
   has_many :photos
+  has_many :subscriptions
+  has_many :shows, :through => :subscriptions
 
   has_one :profile, :dependent => :destroy, :inverse_of => :user
 
@@ -39,6 +41,15 @@ class User < ActiveRecord::Base
   def full_name
     return login if profile.nil? or ( profile.first_name.empty? and profile.second_name.empty? )
     return  profile.second_name + ' ' + profile.first_name
+  end
+
+  def subscribed_to?(show)
+    subscription = self.subscriptions.find(:first, :conditions => {:show_id => show.id})
+    if subscription then
+      subscription.subscribed
+    else
+      nil
+    end
   end
 
   private

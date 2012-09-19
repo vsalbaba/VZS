@@ -72,9 +72,9 @@ describe User do
       @user.full_name.should == @user.login
     end
 
-    it 'should return concatenation of first and second name' do
+    it 'should return concatenation of second and first name' do
       @user.profile = Factory :profile
-      @user.full_name.should == @user.profile.first_name + ' ' + @user.profile.second_name
+      @user.full_name.should == @user.profile.second_name + ' ' + @user.profile.first_name
     end
   end
 end

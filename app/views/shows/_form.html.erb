@@ -1,0 +1,22 @@
+<% semantic_form_for @show do |f| %>
+  <% f.inputs do %>
+    <%= f.input :name, :hint => 'Například: Myslibořice' %>
+    <%= f.input :date, :hint => 'Počáteční den akce. Pokud je akce vícedenní, napište to do popisu.' %>
+    <%= f.input :description, :hint => 'Krátce a výstižně, max pěti slovy', :as => :string %>
+    <%= f.input :meet_time, :minute_step => 15 %>
+    <%= f.input :meet_at, :hint => 'Například: klubovna. Pokud je míst setkání víc, zadejte hlavní z nich a ostatní vypište do poznámek.' %>
+    <%= f.input :end_time, :minute_step => 15 %>
+    <%= f.input :payed_hours, :hint => 'Například: 8' %>
+    <%= f.input :brigade_hours, :hint => 'Například: 10' %>
+    <%= f.input :paid, :as => :radio, :collection => [["Brigádnické hodiny", false], ["Placená", true]] %>
+    <%= f.input :people, :hint => 'Například: 5, pokud nevyplníte, bude ukázka bez omezení' %>
+    <%= f.input :contact %>
+    <%= f.input :breakfast %>
+    <%= f.input :lunch %>
+    <%= f.input :dinner %>
+    <%= f.input :notes, :hint => raw("Můžete používat syntaxi #{link_to 'Textile', textile_help_path, :target => '_blank'}") %>
+    <%= f.input :club %>
+  <% end -%>
+  <%= f.buttons %>
+<% end %>
+

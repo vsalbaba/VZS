@@ -1,0 +1,29 @@
+<% title 'Statistiky' %>
+<%= form_tag nil, :method => :get do %>
+  <%= text_field_tag :from_date, @from_date && l(@from_date), :id => 'from_date', :class => 'ui-daterange-picker' %>
+  <%= text_field_tag :to_date, l(@to_date), :id => 'to_date', :class => 'ui-daterange-picker' %>
+  <%= submit_tag 'Zobrazit' %>
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Cislo</th>
+      <th scope="col">Jméno</th>
+      <th scope="col">Brigádnických</th>
+      <th scope="col">Placených</th>
+      <th scope="col">K vyplacení (placených * 30)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @statistics.each do |statistic| %>
+    <tr>
+      <td><%= statistic.user.vzs_id %></td>
+      <td><%= link_to statistic.user.full_name, stats_user_path(statistic.user, :from_date => (@from_date && l(@from_date)), :to_date => (@to_date && l(@to_date))) %></td>
+      <td><%= statistic.brigade_hours %></td>
+      <td><%= statistic.paid_hours %></td>
+      <td><%= number_to_currency statistic.pay %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+

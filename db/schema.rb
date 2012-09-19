@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120822074902) do
+ActiveRecord::Schema.define(:version => 20120917115447) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(:version => 20120822074902) do
     t.integer  "article_id"
     t.integer  "user_id"
     t.string   "name"
-    t.integer  "file_file_size"
     t.string   "file_file_name"
     t.datetime "file_updated_at"
     t.string   "file_content_type"
+    t.integer  "file_file_size"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
@@ -102,6 +102,40 @@ ActiveRecord::Schema.define(:version => 20120822074902) do
     t.string   "birthnumber"
     t.string   "vzs_id"
   end
+
+  create_table "shows", :force => true do |t|
+    t.string   "name"
+    t.date     "date"
+    t.time     "meet_time"
+    t.time     "end_time"
+    t.integer  "payed_hours"
+    t.integer  "people"
+    t.string   "meet_at"
+    t.string   "contact"
+    t.boolean  "breakfast"
+    t.boolean  "lunch"
+    t.boolean  "dinner"
+    t.boolean  "club"
+    t.text     "notes"
+    t.text     "description"
+    t.boolean  "paid"
+    t.integer  "brigade_hours"
+    t.boolean  "archived"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "show_id"
+    t.integer  "user_id"
+    t.boolean  "subscribed"
+    t.boolean  "wants_payed"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "subscriptions", ["show_id"], :name => "index_subscriptions_on_show_id"
+  add_index "subscriptions", ["user_id"], :name => "index_subscriptions_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "login"

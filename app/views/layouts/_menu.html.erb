@@ -7,6 +7,16 @@
   <% end %>
 </ul>
 <ul class="nav nav-tabs nav-stacked">
+  <li><%= link_to "Plánované akce", shows_path %></li>
+  <li><%= link_to "Proběhlé akce", archived_shows_path %></li>
+  <% if can?(:index, :stats) %>
+    <li><%= link_to "Statistiky akcí", stats_path %></li>
+  <% end %>
+  <% #FIXME: if can?(...) %>
+    <li><%= link_to "Moje statistiky", stats_user_path(current_user) %></li>
+  <% #end %>
+</ul>
+<ul class="nav nav-tabs nav-stacked">
   <% if can?(:create, Article) or can?(:read_members, User) %>
   <% end %>
   <% if can? :create, Article %>
