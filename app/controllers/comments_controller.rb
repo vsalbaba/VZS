@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(params[:comment].merge(:article_id => params[:article_id]))
 
     if @comment.save
-      redirect_to @comment.article, :notice => "Váš komentář byl úspěšně přijat."
+      redirect_to @comment.article, :notice => flash_message(:create,@comment)
     else
       @article = @comment.article
       render 'articles/show'
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update_attributes(params[:comment])
-      redirect_to @comment.article, :notice  => "Komentář byl upraven."
+      redirect_to @comment.article, :notice  => flash_message(:update, @comment)
     else
       render :action => 'edit'
     end
@@ -32,6 +32,6 @@ class CommentsController < ApplicationController
   def destroy
     article = @comment.article
     @comment.destroy
-    redirect_to article, :notice => "Komentář byl odstraněn."
+    redirect_to article, :notice => flash_message(:destroy, @comment)
   end
 end

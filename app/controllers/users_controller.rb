@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @user.profile.build_address unless @user.profile.address 
     authorize! :create, @user
     if @user.save
-       redirect_to root_url, :notice => 'Registrace úspěšně dokončna'
+       redirect_to root_url, :notice => flash_message(:create, @user)
     else
       render :action => 'new'
     end
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     @user.attributes = params[:user]
     authorize! :save, @user
     if @user.save
-      redirect_to @user, :notice  => "Successfully updated user."
+      redirect_to @user, :notice  => flash_message(:update, @user)
     else
       render :action => 'edit'
     end
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   def destroy
     authorize! :destroy, @user
     @user.destroy
-    redirect_to users_url, :notice => "Successfully destroyed user."
+    redirect_to users_url, :notice => flash_message(:destroy, @user)
   end
   
   protected

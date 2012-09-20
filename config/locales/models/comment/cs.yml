@@ -1,0 +1,6 @@
+cs:
+  flash:
+    comment:
+      create: Váš komentář byl úspěšně přijat
+      update: Komentář upraven
+      destroy: Komentář smazán

@@ -1,7 +1,6 @@
 class ArticlesController < ApplicationController
   load_and_authorize_resource
 
-
   def index
     @articles = @articles.order('sticky DESC').paginate(:page => params[:page])
   end
@@ -17,7 +16,7 @@ class ArticlesController < ApplicationController
 
   def create
     if @article.save
-      redirect_to @article, :notice => "Successfully created article."
+      redirect_to @article, :notice => flash_message(:create, @article)
     else
       render :action => 'new'
     end
@@ -30,7 +29,7 @@ class ArticlesController < ApplicationController
     @article.attributes = params[:article]
     authorize! :update, @article
     if @article.save
-      redirect_to @article, :notice  => "Successfully updated article."
+      redirect_to @article, :notice  => flash_message(:update, @article)
     else
       render :action => 'edit'
     end
@@ -38,6 +37,6 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-    redirect_to articles_url, :notice => "Successfully destroyed article."
+    redirect_to articles_url, :notice => flash_message(:destroy, @article)
   end
 end

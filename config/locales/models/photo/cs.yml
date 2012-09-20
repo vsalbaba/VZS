@@ -1,0 +1,6 @@
+cs:
+  flash:
+    photo:
+      create: Fotografie nahrána
+      update: Fotografie upravena
+      destroy: Fotografie odstraněna

@@ -19,7 +19,7 @@ class GalleriesController < ApplicationController
 
   def create
     if @gallery.save
-      redirect_to @gallery, :notice => "Successfully created gallery."
+      redirect_to @gallery, :notice => flash_message(:create, @gallery)
     else
       render :action => 'new'
     end
@@ -32,7 +32,7 @@ class GalleriesController < ApplicationController
     @gallery.attributes = params[:gallery]
     authorize! :update, @gallery
     if @gallery.save
-      redirect_to @gallery, :notice  => "Successfully updated gallery."
+      redirect_to @gallery, :notice  => flash_message(:update, @gallery)
     else
       render :action => 'edit'
     end
@@ -40,6 +40,6 @@ class GalleriesController < ApplicationController
 
   def destroy
     @gallery.destroy
-    redirect_to galleries_url, :notice => "Successfully destroyed gallery."
+    redirect_to galleries_url, :notice => flash_message(:destroy, @gallery)
   end
 end

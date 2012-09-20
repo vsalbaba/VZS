@@ -7,3 +7,8 @@ cs:
         user: Autor
         article: Příslušející článek
         group: Požadované opravnění
+  flash:
+    gallery:
+      create: Galerie vytvořena
+      update: Galerie upravena
+      destroy: Galerie smazána

@@ -7,3 +7,8 @@ cs:
         password: 'Heslo'
         password_confirmation: 'Potvrzení hesla'
         full_name: Jméno
+  flash:
+    user:
+      create: Uživatel vytvořen
+      update: Uživatel upraven
+      destroy: Uživatel odstraněn

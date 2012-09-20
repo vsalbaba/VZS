@@ -1,0 +1,5 @@
+cs:
+  flash:
+    attachment:
+      create: Soubor byl úspěšně přiložen
+      destroy: Soubor byl odstraněn
