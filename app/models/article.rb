@@ -11,4 +11,9 @@ class Article < ActiveRecord::Base
   attr_accessible :title, :content, :user_id, :group, :commentable, :sticky
 
   self.per_page = 10
+
+  def to_param
+    self.id.to_s + "-" + title.parameterize
+  end
+
 end
