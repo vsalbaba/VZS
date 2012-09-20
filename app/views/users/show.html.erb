@@ -8,7 +8,7 @@
 
 <table class="table">
   <tr>
-  <th><%=t 'user.attr.login' %>:</th>
+  <th><%= User.human_attribute_name :login %>:</th>
   <td><%= @user.login %></td>
 
   <%= render @user.profile %>
