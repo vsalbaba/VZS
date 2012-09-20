@@ -6,8 +6,8 @@ cs:
         younger18: 'Mladší 18 let'
         adults: 'Dospělí'
         "0": Nečlen
-        "1": Člen
-        "2": Výbor
+        "1": Pro členy
+        "2": Pro výbor
         "3": Admin
     btn:
         show: 'Zobrazit'
