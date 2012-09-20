@@ -8,3 +8,9 @@ cs:
         commentable: Komentáře
         group: Viditelnost
         sticky: Hlavní článek
+
+  flash:
+    article:
+      create: Článek vytvořen
+      update: Článek upraven
+      destroy: Článek odstraněn

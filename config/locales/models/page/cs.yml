@@ -7,3 +7,12 @@ cs:
         content: Obsah
         navbar: Do horního menu
         menu: Do bočního menu
+  flash:
+    page:
+      create: Stránka vytvořena
+      update: Stránka upravena
+      destroy: Stránka odstraněna
+  page:
+    attr:
+      menu_short: V bočním menu
+      navbar_short: V horním menu

@@ -6,7 +6,7 @@ class AttachmentsController < ApplicationController
     authorize! :create, @attachment
 
     if @attachment.save
-      redirect_to @attachment.article, :notice => "Soubor byl úspěšně přiložen."
+      redirect_to @attachment.article, :notice => flash_message(:create, @attachment)
     else
       @article = @attachment.article
       render 'articles/show'
@@ -16,6 +16,6 @@ class AttachmentsController < ApplicationController
   def destroy
     article = @attachment.article
     @attachment.destroy
-    redirect_to article, :notice => "Soubor byl odstraněn."
+    redirect_to article, :notice => flash_message(:destroy, @attachment)
   end
 end

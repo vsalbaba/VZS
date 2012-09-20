@@ -9,7 +9,7 @@ class PhotosController < ApplicationController
 
     if @photo.save
       if not request.xhr?
-        redirect_to @photo.gallery, :notice => "Fotka byla úspěšně přiložena."
+        redirect_to @photo.gallery, :notice => flash_message(:create, @photo)
         return
       end
       result[:status] = true
@@ -35,15 +35,15 @@ class PhotosController < ApplicationController
     authorize! :update, @photo
 
     if @photo.save
-      redirect_to @photo.gallery, :notice => 'Fotka přejmenována'
+      redirect_to @photo.gallery, :notice => flash_message(:update, @photo)
     else
-      redirect_to @photo.gallery, :notice => 'Neplatné jméno fotky ...?'
+      redirect_to @photo.gallery, :error => 'Neplatné jméno fotky ...?'
     end
   end
 
   def destroy
     gallery = @photo.gallery
     @photo.destroy
-    redirect_to gallery, :notice => "Fotka byla odstraněna."
+    redirect_to gallery, :notice => flash_message(:destroy, @photo)
   end
 end

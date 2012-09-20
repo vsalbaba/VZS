@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   def bool_name(boolean_value)
     if boolean_value
       return t('label.bool_true')

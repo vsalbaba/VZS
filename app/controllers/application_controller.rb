@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def flash_message(action, object)
+    t action, :scope => [:flash, object.class.to_s.downcase]
+  end
+
   def current_user_session
 	  return @current_user_session if defined?(@current_user_session)
 	  @current_user_session = UserSession.find
