@@ -24,7 +24,12 @@
             <div class="span4">
               <div class="row">
                 <div class="span4">
-                  <h3><%= link_to article.title, article %></h3>
+                  <h3>
+                    <% if article.group > 0 %>
+                      <span class="pull-right label"><%= t article.group, :scope => "groups" %></span>
+                    <% end %>
+                    <%= link_to article.title, article %>
+                  </h3>
                 </div>
               </div>
               <div class="row">
