@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @articles = @articles.order('sticky DESC').paginate(:page => params[:page])
+    @articles = @articles.order('sticky DESC, created_at DESC').paginate(:page => params[:page])
   end
 
   def show
