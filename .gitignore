@@ -9,7 +9,8 @@
 
 # Ignore deploy configuration
 !/config/deploy/example.rb
-/config/deploy/*
+/config/deploy/production.rb
+
 
 # Ignore database configuration
 /config/database.yml
