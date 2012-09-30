@@ -1,0 +1,18 @@
+<% if article %>
+<h1><%=link_to article.title, article %></h1>
+  <p>
+    <% unless article.gallery.photos.many? %>
+      <%= link_to article do %>
+        <%= image_tag article.gallery.photos.first.image.url(:thumbnail), :class => "float right" %>
+      <% end %>
+    <% end %>
+    <%= sanitize article.content.truncate(300), :tags => '' %>
+    <br />
+    <a href="<%= article_path(article) %>" class="btn btn-primary btn-medium">Více <i class="icon-chevron-right"></i></a>
+  </p>
+    <% if article.gallery.photos.many? %>
+      <p>
+        <%= render article.gallery %>
+      </p>
+  <% end %>
+<% end %>

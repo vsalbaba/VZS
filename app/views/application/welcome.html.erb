@@ -3,15 +3,7 @@
 <%if @articles.first %>
   <div class="well">
     <% article = @articles.first %>
-    <h1><%=link_to article.try(:title), article %></h1>
-    <p>
-      <%= sanitize article.try(:content).try(:truncate, 300), :tags => '' %>
-    </p>
-      <% if article.gallery.try(:photos).try(:many?) %>
-    <p>
-        <%= render article.gallery %>
-    </p>
-      <% end %>
+    <%= render :partial => 'shared/hero', :locals => {:article => article} %>
   </div>
 <% end %>
 
