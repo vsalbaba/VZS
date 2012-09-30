@@ -1,12 +1,12 @@
 <% if photo_counter % 4 == 0 %>
   <div class="row">
 <% end %>
-  <div class="span3">
+  <div class="span2">
     <a href="<%= photo.image.url(:large) %>" rel="lightbox[]">
       <%= image_tag photo.image.url(:small) %>
     </a>
       <h5>
-        <%= photo.name %>
+        <% photo.name.truncate(10) %>
     <% if current_user %>
     <a class="btn pull-right" href="<%= photo.image.url(:original)%>" >
       <i class="icon-download"></i>

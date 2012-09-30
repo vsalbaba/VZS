@@ -1,13 +1,6 @@
-  <div class="span12">
-    <%= render @gallery.photos %>
-    <% unless @gallery.photos.count % 4 == 3 %>
-      </div>
-    <% end %>
-  </div>
-<% if can? :create, @photo %>
-  <div class="row-fluid" id="vzs-new-photo">
-    <% @photo ||= current_user.photos.new :gallery_id => @gallery.id if current_user %>
-    <h4>Nová fotka:</h4>
-    <%= render 'photos/form', :photo => @photo %>
-  </div>
-<% end %>
+<div class="span8">
+  <%= render @gallery.photos %>
+  <% unless @gallery.photos.count % 4 == 3 %>
+    </div>
+  <% end %>
+</div>

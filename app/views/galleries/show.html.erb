@@ -6,18 +6,19 @@
     <%= link_delete @gallery, t('btn.delete'), 'Opravdu odstranit tuto galerii?' %>
   <% end %>
 <% end %>
-<div class="row-fluid vzs-article">
+<div class="row vzs-article">
+  <%= @gallery.description %>&nbsp;
+  <% unless @gallery.article.nil? %>
+    <p>Pro více informací viz článek <%= link_to @gallery.article.title, @gallery.article %>.</p>
+  <% end %>
 
-  <div class="row-fluid">
-    <div class="">
-      <%= @gallery.description %>&nbsp;
-      <% unless @gallery.article.nil? %>
-        <p>Pro více informací viz článek <%= link_to @gallery.article.title, @gallery.article %>.</p>
-      <% end %>
+  <%= render 'galleries/show_photos', :gallery => @gallery %>
+
+  <% if can? :create, Photo %>
+  <div class="span8">
+      <% photo ||= current_user.photos.new :gallery_id => @gallery.id if current_user %>
+      <h4>Nová fotka:</h4>
+      <%= render 'photos/form', :photo => photo %>
     </div>
-
-    <%= render 'galleries/show_photos', :gallery => @gallery %>
-
-  </div>
-
+  <% end %>
 </div>
