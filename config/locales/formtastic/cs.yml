@@ -1,0 +1,10 @@
+cs:
+  formtastic:
+    :yes: 'Ano'
+    :no: 'Ne'
+    :create: 'Vytvořit %{model}'
+    :update: 'Aktualizovat %{model}'
+    :submit: 'Odeslat %{model}'
+    :cancel: 'Stornovat %{model}'
+    :reset: 'Resetovat %{model}'
+    :required: 'Povinné'
