@@ -13,7 +13,6 @@ class Photo < ActiveRecord::Base
                             :convert_options => { :all => '-auto-orient' }
 
   validates_attachment_presence :image
-  validates :user, :presence => true
 
   def file_name
     image_file_name

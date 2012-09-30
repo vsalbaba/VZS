@@ -18,7 +18,15 @@
   <div class="span8">
       <% photo ||= current_user.photos.new :gallery_id => @gallery.id if current_user %>
       <h4>Nová fotka:</h4>
-      <%= render 'photos/form', :photo => photo %>
+<%= semantic_form_for @gallery do |f| %>
+	<%= f.semantic_errors %>
+    <%= f.inputs do %>
+      <%= f.file_field 'gallery_photos_image', :multiple => "multiple", :name => "gallery[photos_attributes][][image]" %>
+    <% end %>
+    <%= f.actions do %>
+      <%= f.action :submit, :as => :button, :button_html => { :class => 'btn btn-success' } %>
+    <% end %>
+<% end %>
     </div>
   <% end %>
 </div>
