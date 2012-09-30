@@ -1,4 +1,4 @@
-<% title @gallery.name%>
+<%= title @gallery.name%>
 <% context_menu do %>
   <%= link_back galleries_path, 'Seznam fotogalerií' %>
   <% if can? :edit, @gallery%>

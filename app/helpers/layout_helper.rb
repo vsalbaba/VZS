@@ -4,8 +4,11 @@
 #   helper :layout
 module LayoutHelper
   def title(page_title, page_subtitle = '')
-    content_for(:title) { h(page_title.to_s) }
+    content_for(:title) { h(page_title.to_s) + " - Vodní záchranná služba Třebíč"}
     content_for(:title_sub) { h(page_subtitle.to_s) }
+    content_tag :h1 do
+      page_title 
+    end
   end
 
   def context_menu(&code)
