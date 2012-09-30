@@ -1,5 +1,7 @@
 cs:
   activerecord:
+    models:
+      page: Statická stránka
     attributes:
       page:
         title: Nadpis
