@@ -6,6 +6,11 @@ class UsersController < ApplicationController
     @presenter = ProfilePresenters::IndexPresenter.new
   end
 
+  def emails
+    authorize! :read_members, User
+    @users = User.where("`group` > ?", 0)
+  end
+
   def show
     authorize! :read, @user
   end

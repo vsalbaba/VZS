@@ -1,5 +1,7 @@
 cs:
   activerecord:
+    models:
+      user: Uživatel
     attributes:
       user:
         login: 'Přihlašovací jméno'

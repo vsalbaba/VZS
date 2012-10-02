@@ -1,7 +1,10 @@
-<% title "Seznam členů" %>
+<%= title "Seznam členů" %>
 <% context_menu do %>
   <% if can? :manage, User %>
     <%= link_new new_user_path, 'Nový člen' %>
+  <% end %>
+  <% if can? :view, :emails %>
+    <%= link_new emails_users_path, 'Emaily' %>
   <% end %>
 <% end %>
 

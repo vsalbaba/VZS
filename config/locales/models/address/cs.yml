@@ -1,5 +1,7 @@
 cs:
   activerecord:
+    models:
+      address: Adresa
     attributes:
       address:
         street: 'Ulice'

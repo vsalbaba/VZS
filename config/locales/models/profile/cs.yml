@@ -1,5 +1,7 @@
 cs:
   activerecord:
+    models:
+      photo: Fotografie
     attributes:
       profile:
         first_name: 'Křestní jméno'

@@ -1,5 +1,7 @@
 cs:
   activerecord:
+    models:
+        gallery: Galerie
     attributes:
       gallery:
         name: Název

@@ -1,5 +1,7 @@
 cs:
   activerecord:
+    models:
+      article: Článek
     attributes:
       article:
         title: Nadpis
