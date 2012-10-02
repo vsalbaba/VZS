@@ -19,7 +19,11 @@ Vzs::Application.routes.draw do
 
   get "user_sessions/new"
 
-  resources :users
+  resources :users do
+    collection do
+      get "emails"
+    end
+  end
   resources :user_sessions
   match 'register' => 'Users#new', :as => :register
 

@@ -51,5 +51,12 @@ class Profile < ActiveRecord::Base
     user and user.is_member_or_more?
   end
 
+  def full_name
+    [second_name, first_name].join " "
+  end
+
+  def email_address
+    "\"#{full_name}\" <#{email}>"
+  end
 end
 

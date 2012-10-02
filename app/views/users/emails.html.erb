@@ -1,0 +1,3 @@
+<%= @users.map do |user| %>
+ <% user.try(:profile).try(:email_address) %>
+<% end.join(", ") %>
