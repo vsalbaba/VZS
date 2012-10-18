@@ -3,7 +3,7 @@ class GalleriesController < ApplicationController
 
 
   def index
-    @galleries = @galleries.paginate(:page => params[:page])
+    @galleries = @galleries.order('created_at DESC').paginate(:page => params[:page])
   end
 
   def show
