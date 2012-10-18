@@ -1,3 +1,18 @@
+# == Schema Information
+# Schema version: 20121009213651
+#
+# Table name: users
+#
+#  id                :integer          not null, primary key
+#  login             :string(255)
+#  crypted_password  :string(255)
+#  password_salt     :string(255)
+#  persistence_token :string(255)
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  group             :integer
+#
+
 class User < ActiveRecord::Base
 
   GROUP = {
@@ -34,6 +49,18 @@ class User < ActiveRecord::Base
 
   def group?(g)
     g == self.group
+  end
+
+  def admin?
+    group == GROUP[:ADMIN]
+  end
+
+  def board?
+    group == GROUP[:BOARD]
+  end
+
+  def member?
+    group == GROUP[:MEMBER]
   end
 
   def full_name

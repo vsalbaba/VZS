@@ -1,3 +1,18 @@
+# == Schema Information
+# Schema version: 20121009213651
+#
+# Table name: addresses
+#
+#  id           :integer          not null, primary key
+#  street       :string(255)
+#  house_number :string(255)
+#  city         :string(255)
+#  postcode     :string(255)
+#  profile_id   :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 class Address < ActiveRecord::Base
   attr_accessible :street, :house_number, :city, :postcode, :profile_id
 
