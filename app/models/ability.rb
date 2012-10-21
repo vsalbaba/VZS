@@ -59,7 +59,14 @@ class Ability
   end
 
   def photo_rules(user)
-    can :manage, Photo
+    if user.admin? or user.board? then
+      can :manage, Photo
+    else
+      can :read, Photo
+      can :manage, Photo do |p|
+        p.gallery.user == user
+      end
+    end
   end
 
   def gallery_rules(user)

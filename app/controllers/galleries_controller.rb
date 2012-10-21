@@ -34,7 +34,7 @@ class GalleriesController < ApplicationController
     if @gallery.save
       redirect_to @gallery, :notice  => flash_message(:update, @gallery)
     else
-      render :action => 'edit'
+      render :action => 'edit', :notice => flash_message(:error, @gallery)
     end
   end
 
