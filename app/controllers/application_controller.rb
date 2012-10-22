@@ -9,6 +9,24 @@ class ApplicationController < ActionController::Base
     @articles = Article.accessible_by(current_ability).order('sticky DESC, created_at DESC').limit(10)
   end
 
+  def feed
+    # this will be the name of the feed displayed on the feed reader
+    @title = "MS VZS ČČK Třebíč"
+
+    # the news items
+    @news_items = Article.accessible_by(current_ability).order("created_at desc")
+
+    # this will be our Feed's update timestamp
+    @updated = @news_items.first.updated_at unless @news_items.empty?
+
+    respond_to do |format|
+      format.atom { render :layout => false }
+
+      # we want the RSS feed to redirect permanently to the ATOM feed
+      format.rss { redirect_to feed_path(:format => :atom), :status => :moved_permanently }
+    end
+  end
+
   private
 
   def flash_message(action, object)
