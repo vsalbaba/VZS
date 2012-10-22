@@ -8,9 +8,14 @@
       <h5>
         <% photo.name.truncate(10) %>
     <% if current_user %>
-    <a class="btn pull-right" href="<%= photo.image.url(:original)%>" >
-      <i class="icon-download"></i>
-    </a>
+      <a class="btn pull-right" href="<%= photo.image.url(:original)%>" >
+        <i class="icon-download"></i>
+      </a>
+      <% if can? :destroy, photo %>
+        <%= link_to [photo.gallery, photo], :method=>:delete, :class=> 'btn btn-danger pull-right' do %>
+        <i class="icon-trash"></i>
+        <% end %>
+      <% end %>
     <% end %>
     </h5>
   </div>
