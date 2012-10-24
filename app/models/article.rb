@@ -18,7 +18,7 @@
 class Article < ActiveRecord::Base
   auto_html_for :content do
     image
-    youtube(:width => 400, :height => 250)
+    youtube(:width => 474, :height => 300)
     link
     simple_format
   end
