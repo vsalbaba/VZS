@@ -17,7 +17,6 @@
 
 class Article < ActiveRecord::Base
   auto_html_for :content do
-    html_escape
     image
     youtube(:width => 400, :height => 250)
     link
