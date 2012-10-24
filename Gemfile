@@ -19,6 +19,8 @@ gem 'paperclip', '~> 2.0'
 gem 'acts_as_list'
 #gem "audited", "~> 3.0.0.rc2"
 
+gem 'auto_html'
+
 group :development do
   gem 'wirble'
   gem 'quiet_assets'

@@ -5,7 +5,7 @@
     <div class="span8">
       <div class="row-fluid vzs-article-content">
         <div class="span12">
-          <%= simple_format @article.content,{},  :sanitize => false %>
+          <%=  @article.content_html %>
         </div>
         <% if @article.gallery %>
           <div class="span12">
