@@ -16,6 +16,13 @@
 #
 
 class Article < ActiveRecord::Base
+  auto_html_for :content do
+    html_escape
+    image
+    youtube(:width => 400, :height => 250)
+    link
+    simple_format
+  end
   belongs_to :user
   has_many :comments
   has_many :attachments
