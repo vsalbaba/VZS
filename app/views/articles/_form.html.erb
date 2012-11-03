@@ -6,6 +6,9 @@
       <%= f.input :content %>
       <%= f.input :commentable %>
       <%= f.input :sticky %>
+      <% if can? :approve, @article %>
+        <%= f.input :approved %>
+      <% end %>
       <%= f.input :group, :as => :select, :collection => group_names, :include_blank => false %>
     <% end %>
     <%= f.actions do %>

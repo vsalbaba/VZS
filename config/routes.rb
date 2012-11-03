@@ -6,6 +6,9 @@ Vzs::Application.routes.draw do
   resources :pages
 
   resources :articles do
+    collection do
+      get :pending
+    end
     resources :comments
     resources :attachments
   end

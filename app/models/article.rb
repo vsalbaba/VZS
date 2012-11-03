@@ -39,4 +39,12 @@ class Article < ActiveRecord::Base
     self.id.to_s + "-" + title.parameterize
   end
 
+  def self.pending
+    where("`articles`.`approved` IS NULL OR `articles`.`approved` =  0")
+  end
+
+  def self.approved
+    where(:approved => true)
+  end
+
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120822074902) do
+ActiveRecord::Schema.define(:version => 20121103201822) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20120822074902) do
     t.boolean  "commentable"
     t.integer  "group"
     t.boolean  "sticky"
+    t.boolean  "approved"
   end
 
   create_table "attachments", :force => true do |t|

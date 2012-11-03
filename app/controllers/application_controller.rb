@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :pages_for_navbar
 
   def welcome
-    @articles = Article.accessible_by(current_ability).order('sticky DESC, created_at DESC')
+    @articles = Article.approved.accessible_by(current_ability).order('sticky DESC, created_at DESC')
   end
 
   def feed

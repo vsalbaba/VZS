@@ -5,6 +5,11 @@ class ArticlesController < ApplicationController
     @articles = @articles.order('sticky DESC, created_at DESC').paginate(:page => params[:page])
   end
 
+  def pending
+    @articles = Article.pending.order('created_at DESC').paginate(:page => params[:page])
+    render :action => 'index'
+  end
+
   def show
   end
 
