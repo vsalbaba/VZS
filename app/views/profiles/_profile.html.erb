@@ -21,7 +21,7 @@
 <% if can? :update_extended, @user.profile %>
   <tr>
     <th><%= Profile.human_attribute_name :birthdate %></th>
-    <td><%= profile.birthdate %></td>
+    <td><%= l profile.birthdate %></td>
   </tr>
   <tr>
     <th><%= Profile.human_attribute_name :birthnumber %></th>
