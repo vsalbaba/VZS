@@ -9,8 +9,13 @@
 <ul class="nav nav-tabs nav-stacked">
   <% if can?(:create, Article) or can?(:read_members, User) %>
   <% end %>
+   <% if can? :approve, Article %>
+     <li>
+     <%= link_to 'Články čekající na schválení', pending_articles_path%>
+     </li>
+   <% end %>
   <% if can? :create, Article %>
-    <li><%= link_to 'Správa článků', articles_path %></li>
+    <li><%= link_to 'Články', articles_path %></li>
   <% end %>
   <% if can? :read_members, User %>
     <li><%= link_to 'Seznam členů VZS', members_path %></li>
