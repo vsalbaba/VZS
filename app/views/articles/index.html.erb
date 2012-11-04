@@ -1,43 +1,42 @@
 <%= title "Články" %>
 
 <% context_menu do %>
-  <% if can? :create, Article %>
-    <%= link_new new_article_path, 'Nový článek' %>
-  <% end %>
+   <% if can? :create, Article %>
+     <%= link_new new_article_path, 'Nový článek' %>
    <% end %>
+ <% end %>
 
-<% @articles.in_groups_of(2) do |group| %>
-  <div class="row">
-    <% group.each do |article| %>
-      <% next if not article %>
-      <div class="span3 well">
-        <h2>
-          <%= link_to article_path(article, :anchor => 'comments'),
-            :class => "badge badge-info pull-right" do %>
-            <%=article.comments.count%> <i class="icon-comment"></i>
-          <% end %>
-          <%= link_to article.title, article %>
-        </h2>
-
-        <%= render 'articles/meta_info', :article => article %>
-
-        <p><%= sanitize article.content.truncate(100), :tags => '' %></p>
-        <div class="btn-group pull-right">
-          <% if can? :update, article %>
-            <%= link_to edit_article_path(article), :class => "btn" do %>
-              <i class="icon-edit"></i> 
-            <% end %>
-          <% end %>
-          <% if can? :destroy, article %>
-            <%= link_to article, :confirm => 'Opravdu odstranit článek '+article.title+'?', :method => :delete, :class => "btn btn-danger" do %>
-              <i class="icon-trash"></i>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-<% end %>
-
-
-<%= will_paginate @articles %>
+ <table class="table">
+   <thead>
+     <tr>
+       <th>
+         Článek
+       </th>
+       <th>
+         Komentáře
+       </th>
+       <th>
+         Datum vydání
+       </th>
+       <th>Autor</th>
+     </tr>
+   </thead>
+   <tbody>
+   <% @articles.each do |article| %>
+     <tr>
+       <td>
+         <%= link_to article.title, article %>
+       </td>
+       <td> 
+         <%= article.comments.count %>
+       </td>
+       <td>
+         <%= l article.created_at %>
+       </td>
+       <td>
+         <%= article.user.full_name%>
+       </td>
+   </tr>
+   <% end %>
+ </tbody>
+ </table>
