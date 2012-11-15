@@ -30,6 +30,7 @@ end
 
 group :production do
   gem 'mysql'
+  gem 'passenger'
 end
 
 group :development, :test do
