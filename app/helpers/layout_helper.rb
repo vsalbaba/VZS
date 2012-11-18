@@ -7,7 +7,7 @@ module LayoutHelper
     content_for(:title) { h(page_title.to_s) + " - Vodní záchranná služba Třebíč"}
     content_for(:title_sub) { h(page_subtitle.to_s) }
     content_tag :h1 do
-      page_title 
+      page_title
     end
   end
 
