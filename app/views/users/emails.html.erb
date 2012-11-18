@@ -1,6 +1,6 @@
 <%= title 'Emaily' %>
 <% @users.group_by{|e| e.try(:profile).try(:user_age_group)}.each do |group| %>
-  <h2><%=t "groups.#{group[0]}" %></h2>
+  <h2><%=t "groups.#{group[0]}" unless group[0].blank? %></h2>
   <%= group[1].map do |user| %>
     <% if user.try(:profile).try(:email_address) %>
      <% user.try(:profile).try(:email_address) %>
