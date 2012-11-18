@@ -75,7 +75,7 @@ class Profile < ActiveRecord::Base
   end
 
   def email_address
-    "\"#{full_name}\" <#{email}>"
+    "\"#{full_name}\" <#{email}>" unless email.blank?
   end
 end
 

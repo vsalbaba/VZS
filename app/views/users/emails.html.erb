@@ -1,3 +1,10 @@
-<%= @users.map do |user| %>
- <% user.try(:profile).try(:email_address) %>
-<% end.join(", ") %>
+<%= title 'Emaily' %>
+<% @users.group_by{|e| e.profile.user_age_group}.each do |group| %>
+  <h2><%=t "groups.#{group[0]}" %></h2>
+  <%= group[1].map do |user| %>
+    <% if user.try(:profile).try(:email_address) %>
+     <% user.try(:profile).try(:email_address) %>
+   <% end %>
+ <% end.compact.join(', ') %>
+ <br/ >
+<% end %>
