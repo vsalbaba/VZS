@@ -1,7 +1,7 @@
         <div class="tab-pane" id="<%= group_key %>">
           <h2><%=t group_key, :scope => 'groups' %></h2>
           <% group.each do |age_key, age_group| %>
-            <h3><%=t age_key, :scope => 'groups' %></h3>
+            <h3><%=t age_key, :scope => 'groups' %> (<%= age_group.size %>)</h3>
             <table class="table">
               <thead>
                 <tr>
