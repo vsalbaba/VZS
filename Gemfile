@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.7'
+gem 'rails', '3.2.9'
 gem 'rails-i18n', '~> 0.6.3'
 gem 'json', '~> 1.6.6'
 gem 'jquery-rails', '~> 2.0.2'
@@ -11,7 +11,7 @@ gem 'formtastic'
 gem 'formtastic-bootstrap'
 
 gem 'twitter-bootstrap-rails'
-gem 'less'
+gem 'less-rails'
 gem 'will_paginate', '~> 3.0.3'
 #gem 'validation_reflection'
 gem 'paperclip', '~> 2.0'
