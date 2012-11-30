@@ -7,10 +7,10 @@
         <div class="span12">
           <%=  @article.content_html %>
         </div>
-        <% if @article.gallery %>
+        <% @article.galleries.each do |gallery| %>
           <div class="span12">
             <ul class="thumbnails">
-              <%= render 'galleries/gallery', :gallery => @article.gallery %>
+              <%= render 'galleries/gallery', :gallery => gallery %>
             </ul>
           </div>
         <% end %>

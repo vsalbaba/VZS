@@ -1,18 +1,21 @@
 <% if article %>
-<h1><%=link_to article.title, article %></h1>
+  <h1><%=link_to article.title, article %></h1>
   <p>
-    <% unless article.gallery.nil? or article.gallery.try(:photos).try(:many?) %>
-      <%= link_to article do %>
-        <%= image_tag article.gallery.photos.first.image.url(:thumbnail), :class => "float right" %>
+    <% unless article.galleries.blank? %>
+      <% gallery = article.galleries.first %>
+      <% if gallery.try(:photos).try(:many?) %>
+        <%= link_to article do %>
+          <%= image_tag gallery.photos.first.image.url(:thumbnail), :class => "float right" %>
+        <% end %>
       <% end %>
     <% end %>
     <%= sanitize article.content.truncate(300), :tags => '' %>
     <br />
     <a href="<%= article_path(article) %>" class="btn btn-primary btn-medium">Více <i class="icon-chevron-right"></i></a>
   </p>
-    <% if article.gallery.try(:photos).try(:many?) %>
-      <p>
-        <%= render article.gallery %>
-      </p>
+  <% if article.galleries.first.try(:photos).try(:many?) %>
+    <p>
+      <%= render article.galleries.first %>
+    </p>
   <% end %>
 <% end %>

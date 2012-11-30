@@ -27,9 +27,9 @@
               <div class="row">
                 <div class="span4">
                   <p>
-                    <% if article.gallery.try(:photos) %>
+                    <% if article.galleries.first.try(:photos) %>
                       <%= link_to article do %>
-                        <%= image_tag article.gallery.photos.first.image.url(:thumbnail), :class => "float right" %>
+                        <%= image_tag article.galleries.first.photos.first.image.url(:thumbnail), :class => "float right" %>
                       <% end %>
                     <% end %>
                     <%= sanitize article.content.truncate(150), :tags => '' %>
