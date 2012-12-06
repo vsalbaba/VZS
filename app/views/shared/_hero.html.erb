@@ -13,9 +13,4 @@
     <br />
     <a href="<%= article_path(article) %>" class="btn btn-primary btn-medium">Více <i class="icon-chevron-right"></i></a>
   </p>
-  <% if article.galleries.first.try(:photos).try(:many?) %>
-    <p>
-      <%= render article.galleries.first %>
-    </p>
-  <% end %>
 <% end %>
