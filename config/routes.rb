@@ -1,7 +1,6 @@
 Vzs::Application.routes.draw do
 
   match 'pages/:id-:slug' => 'pages#show', :as => :page_seo, :via => :get
-  
 
   resources :pages
 
@@ -19,6 +18,11 @@ Vzs::Application.routes.draw do
 
   resources :articles
   resources :galleries
+  resources :events do
+    collection do
+      get 'old'
+    end
+  end
 
   get "user_sessions/new"
 

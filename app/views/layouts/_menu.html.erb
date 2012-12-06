@@ -2,6 +2,7 @@
 
   <li><%= link_to 'Úvodní stránka', root_path %></li>
   <li><%= link_to 'Fotogalerie', galleries_path %></li>
+  <!--  <li><%= link_to 'Plánované akce', events_path %></li> -->
   <% pages_for_menu.each do |page| %>
     <li><%= page_link page %></li>
   <% end %>

@@ -1,0 +1,9 @@
+<%= title 'Upravit událost' %>
+
+<% context_menu do %>
+  <%= link_back events_path, 'Výpis všech článků' %>
+  <%= link_show @event, 'Zobrazit' %>
+  <%= link_delete @event, 'Smazat' %>
+<% end %>
+
+<%= render 'form' %>
