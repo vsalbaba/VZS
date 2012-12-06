@@ -30,6 +30,8 @@ class User < ActiveRecord::Base
   has_many :attachments
   has_many :galleries
   has_many :photos
+  has_many :brigades
+  has_many :events, :through => :brigades
 
   has_one :profile, :dependent => :destroy, :inverse_of => :user
 
