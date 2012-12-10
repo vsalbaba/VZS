@@ -1,11 +1,12 @@
 class EventsController < ApplicationController
   before_filter :find_event, :only => ['show', 'edit', 'update', 'destroy']
   def index
-    @events = Event.actual.order('date DESC')
+    @events = Event.pending.order('start_datetime DESC')
+    @done_events = Event.actual.done.order('end_datetime DESC')
   end
 
   def old
-    @events = Event.old.order('date DESC')
+    @events = Event.done.order('date DESC')
     render :action => "index"
   end
 
@@ -29,9 +30,17 @@ class EventsController < ApplicationController
   end
 
   def update
+    @event.attributes = params[:event]
+    if @event.save
+      redirect_to @event, :notice => flash_message(:update, @event)
+    else
+      render :action => 'edit'
+    end
   end
 
   def destroy
+    @event.destroy
+    redirect_to events_url, :notice => flash_message(:destroy, @event)
   end
 
   private

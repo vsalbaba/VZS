@@ -61,7 +61,7 @@ end
     :time => {
       :formats => {
         :default => "%a %d. %B %Y %H:%M",
-        :short   => "%d. %m. %H:%M",
+        :short   => "%d. %m. %Y %H:%M",
         :long    => "%A %d. %B %Y %H:%M",
         :just_time => "%H:%M"
       },

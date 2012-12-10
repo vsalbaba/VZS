@@ -1,37 +1,14 @@
 <table cellpadding="10" cellspacing="10" class="table table-striped">
   <% @events.each do |event| %>
     <tr>
-      <th><%= l event.date %></th>
-      <td class="red"></td>
+      <th><%= l event.start_datetime, :format => :short %></th>
+      <td class="red"><%= event.event_type %></td>
       <td><%= link_to event.name, event %></td>
-      <td></td>
+      <td><%= event.place %></td>
       <td>
-        <%= link_to 'Přihlásit', '#', :class => "btn btn-primary btn-large" %>
+        <!-- <%= link_to 'Přihlásit', '#', :class => "btn btn-primary btn-large" %> -->
       </td>
   <% end %>
-  <tr>
-    <th> 16. 12. 2012<br />09:00</th>
-    <td class="red">ukázka</td>
-    <td><a href=>Koupání Ledních medvědů</a> Zabezpečení setkání otužilců na řece Jihlavě</td>
-    <td> Třebíč </td>
-    <td><a href="http://akcevzs.herokuapp.com/" class="btn btn-primary btn-large" target="_blank">přihlásit</a></td>
-  </tr>
-
-  <tr>
-    <th width="80"> 21.12. 2012 <br />18:00</th>
-    <td class="red">ukázka</td>
-    <td><a href="http://trebic.vzs.cz/articles/55-mamo-tato-nenechte-me-utonout">Mámo, táto, nenechte mě utonout!</a> Ukázka a výuka záchrany pro veřejnost</td>
-    <td> Třebíč </td>
-    <td><a href="http://akcevzs.herokuapp.com/shows/156" class="btn btn-primary btn-large" target="_blank">přihlásit</a></td>
-  </tr>
-
-  <tr>
-    <th> 2.3.2013 <br />20:00</th>
-    <td class="red">akce</td>
-    <td><a href="http://trebic.vzs.cz/articles/53-zachranarsky-vecer-s-hudbou">Společenský večer v maskách </a> Příjemné posezení s hudbou</td>
-    <td> Třebíč </td>
-    <td><a href="http://trebic.vzs.cz/articles/53-zachranarsky-vecer-s-hudbou" class="btn btn-secondary btn-large" target="_blank">info</a></td>
-  </tr>
 </table>
 
 <p>
@@ -42,76 +19,13 @@
 <h1> Proběhlé akce</h1>
 
 <table cellpadding="10" cellspacing="10" class="table table-striped">
-
-  <tr>
-    <th> 30. 11. 2012<br />18:00</th>
-    <td class="red">schůze</td>
-    <td><a href="http://trebic.vzs.cz/articles/47-pozvanka-na-clenskou-schuzi-ms-vzs-cck-trebic">Valná hromada</a> Schůze všech členů v hotelu Atom</td>
-    <td> Třebíč </td>
-    <td></td>
-
+  <% @done_events.each do |event| %>
     <tr>
-      <th> 23.- 25. 11. <br />2012</th>
-      <td class="red">kurz</td>
-      <td><a href="http://trebic.vzs.cz/articles/35-zachranarsky-faktor">Podzimní soustředění mládeže</a> Výcvik a hry nejen s první pomocí</td>
-      <td> Třebíč </td>
-      <td><a href="http://trebic.vzs.cz/galleries/39" class="btn btn-secondary btn-large" >foto</a></td>
+      <th><%= l event.start_datetime, :format => :short %></th>
+      <td class="red"><%= event.event_type %></td>
+      <td><%= link_to event.name, event %></td>
+      <td> <%= event.place %> </td>
+      <td></td>
     </tr>
-
-    <tr>
-      <th width="80"> 6. 10. 2012<br />11:00</th>
-      <td class="red">akce</td>
-      <td><a href="http://trebic.vzs.cz/articles/33-ukonceni-sezony-2011-2012"> Ukončení sezóny 2012</a> Přátelská akce pro všechny členy </td>
-      <td> Třebíč </td>
-      <td><a href="http://trebic.vzs.cz/galleries/49" class="btn btn-secondary btn-large" >foto</a></td>
-    </tr>
-
-    <tr>
-      <th width="80"> 21. 9. 2012<br>16:00</th>
-      <td class="red">ukázka</td>
-      <td><a href="http://trebic.vzs.cz/articles/27-pohadkova-trebic-21-9-2012"> Pohádková Třebíč</a> Ukázka činnosti pro širokou veřejnost v rámci akce Pohádková Třebíč </td>
-      <td> Třebíč </td>
-      <td><a href="http://trebic.vzs.cz/galleries/33" class="btn btn-secondary btn-large" >foto</a></td>
-    </tr>
-
-    <tr>
-      <th width="80">1. 9. 2012<br />8:00</th>
-      <td class="red">brigáda</td>
-      <td><a href="http://trebic.vzs.cz/galleries/27" title="Balení Hartvíkovic">Balení Hartvíkovic</a> Ukončení a úklid stanice první pomoci v AC Wilsonka....</td>
-      <td> Hartvíkovice </td>
-      <td><a href="http://trebic.vzs.cz/galleries/27" class="btn btn-secondary btn-large" >foto</a></td>
-    </tr>
-
-    <tr>
-      <th>4. a 6. 9<br />2012</th>
-      <td class="red">ukázka</td>
-      <td><a href="http://trebic.vzs.cz/galleries/21" title="Ukázka pro Gymnázium Třebíč">Ukázka pro Gymnázium Třebíč</a> 
-        Nízké a vysoké lnové překážky, animační program ... </td>
-      <td> Nesměř </td>
-      <td><a href="http://trebic.vzs.cz/galleries/21" class="btn btn-secondary btn-large" >foto</a></td>
-    </tr>
-
-    <tr>
-      <th>8. 9. 2012 <br />6:30</th>
-      <td class="red">výcvik</td>
-      <td><a href="http://trebic.vzs.cz/galleries/11"> Výcvik na tekoucí vodě</a>  Přilepšení vodního stavu Jihlavy </td>
-      <td> Třebíč </td>
-      <td><a href="http://trebic.vzs.cz/galleries/11" class="btn btn-secondary btn-large" >foto</a></td>
-    </tr>
-
-    <tr>
-      <th>8. 9. 2012<br />12:00</th>
-      <td class="red">ukázka</td>
-      <td><a href="http://trebic.vzs.cz/galleries/25" > S námi bez nudy</a> Ukázka činnosti pro širokou veřejnost v rámci akce S námi bez nudy </td>
-      <td> Třebíč </td>
-      <td><a href="http://trebic.vzs.cz/galleries/25" class="btn btn-secondary btn-large" >foto</a></td>
-    </tr>
-
-    <tr>
-      <th>13. - 14. 9.<br />2012</th>
-      <td class="red">ukázka</td>
-      <td><a href="http://trebic.vzs.cz/galleries/17" > Součinnostní cvičení pro Hasičský záchraný sbor kraje Vysočina</a> Výcvik na volné vodě </td>
-      <td> Pelhřimov </td>
-      <td><a href="http://trebic.vzs.cz/galleries/17" class="btn btn-secondary btn-large" >foto</a></td>
-    </tr>
+  <% end %>
 </table>

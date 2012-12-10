@@ -1,4 +1,10 @@
-<%= title @event.name %>
+<%= title (@event.event_type + " " + @event.name).titleize %>
+<ul>
+  <li><strong>Kdy:</strong> <%=l @event.start_datetime, :format => :short %> - <%= l @event.end_datetime, :format => :short %></li>
+  <li><strong>Kde:</strong> <%= @event.place %></li>
+</ul>
 <p>
-<%= @event.description_html %>
+  <%= @event.description_html %>
 </p>
+
+<%= link_to "Více", @event.link %>
