@@ -1,11 +1,11 @@
 <%= title "Nejbližší Akce"%>
-<table cellpadding="10" cellspacing="10" class="table table-striped">
+<table class="table table-striped">
   <% @events.each do |event| %>
     <tr>
       <th><%= l event.start_datetime, :format => :short %></th>
-      <td class="red"><%= event.event_type %></td>
+      <td><%= event.event_type.capitalize %></td>
       <td><%= link_to event.name, event %></td>
-      <td><%= event.place %></td>
+      <td><%= event.place.capitalize %></td>
       <td>
         <!-- <%= link_to 'Přihlásit', '#', :class => "btn btn-primary btn-large" %> -->
       </td>
@@ -13,7 +13,7 @@
 </table>
 
 <p>
-  Přihlášení na akce je možné pouze pro členy.
+<%= link_to "Přihlášení na akce je možné pouze pro členy zde.", "http://akcevzs.herokuapp.com" %>
   V budoucnu bude převedeno přímo na tyto stránky.
 </p>
 
@@ -23,9 +23,9 @@
   <% @done_events.each do |event| %>
     <tr>
       <th><%= l event.start_datetime, :format => :short %></th>
-      <td class="red"><%= event.event_type %></td>
+      <td><%= event.event_type.capitalize %></td>
       <td><%= link_to event.name, event %></td>
-      <td> <%= event.place %> </td>
+      <td> <%= event.place.capitalize %> </td>
       <td></td>
     </tr>
   <% end %>
