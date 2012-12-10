@@ -1,0 +1,19 @@
+cs:
+  flash:
+    event:
+      create: Událost vytvořena
+      update: Událost upravena
+      destroy: Událost smazána
+  activerecord:
+    models:
+      event: Událost
+    attributes:
+      event:
+        name: Nadpis
+        description: Popis
+        start_datetime: Začátek
+        end_datetime: Konec
+        place: Kde
+        event_type: Typ události
+        link: Odkaz
+        public: Veřejná
