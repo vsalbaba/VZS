@@ -1,4 +1,5 @@
 <%= title @gallery.name%>
+
 <% context_menu do %>
   <%= link_back galleries_path, 'Seznam fotogalerií' %>
   <% if can? :edit, @gallery%>
@@ -6,6 +7,7 @@
     <%= link_delete @gallery, t('btn.delete'), 'Opravdu odstranit tuto galerii?' %>
   <% end %>
 <% end %>
+
 <div class="row vzs-article">
   <%= @gallery.description %>&nbsp;
   <% unless @gallery.article.nil? %>

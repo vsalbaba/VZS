@@ -1,9 +1,11 @@
 <%= title 'Upravit událost' %>
 
 <% context_menu do %>
-  <%= link_back events_path, 'Výpis všech článků' %>
+  <%= link_back events_path, 'Výpis všech událostí' %>
   <%= link_show @event, 'Zobrazit' %>
-  <%= link_delete @event, 'Smazat' %>
+  <% if can? :destroy, @event %>
+    <%= link_delete @event, 'Smazat' %>
+  <% end %>
 <% end %>
 
 <%= render 'form' %>

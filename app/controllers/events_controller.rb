@@ -1,12 +1,13 @@
 class EventsController < ApplicationController
-  before_filter :find_event, :only => ['show', 'edit', 'update', 'destroy']
+  load_and_authorize_resource
+
   def index
-    @events = Event.pending.order('start_datetime DESC')
-    @done_events = Event.actual.done.order('end_datetime DESC')
+    @pending_events = @events.pending.order('start_datetime DESC')
+    @done_events = @events.actual.done.order('end_datetime DESC')
   end
 
   def old
-    @events = Event.done.order('date DESC')
+    @events = @events.old.order('date DESC')
     render :action => "index"
   end
 
@@ -41,10 +42,5 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     redirect_to events_url, :notice => flash_message(:destroy, @event)
-  end
-
-  private
-  def find_event
-    @event = Event.find params[:id]
   end
 end

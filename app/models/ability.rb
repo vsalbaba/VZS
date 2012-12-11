@@ -16,9 +16,9 @@ class Ability
       return
     end
 
-
     page_rules(user)
     article_rules(user)
+    events_rules(user)
     comments_rules(user)
     attachments_rules(user)
     gallery_rules(user)
@@ -36,6 +36,18 @@ class Ability
       can :read, Article, :group => OUTSIDER
     else
       can :read, Article, :group => OUTSIDER # neprihlaseni smi cist clanky pro necleny
+    end
+  end
+
+  def events_rules(user)
+    if user.group? MEMBER
+      can :read, Event, :group => [nil, OUTSIDER, MEMBER]
+      can :create, Event, :group => [nil, OUTSIDER, MEMBER]
+      can [:update, :save, :destroy], Event, :group => [nil, OUTSIDER, MEMBER]
+    elsif user.group? OUTSIDER
+      can :read, Event, :group => [nil, OUTSIDER]
+    else
+      can :read, Event, :group => [nil, OUTSIDER] # neprihlaseni smi cist clanky pro necleny
     end
   end
 
@@ -81,14 +93,12 @@ class Ability
       can :read, Gallery, :group => OUTSIDER # neprihlaseni smi prohlizet galerie pro necleny
     end
 
-
     # :read, Photo nepotrebujeme - odkazy na fotky jdou primo
     unless user.group? OUTSIDER
       can [:create, :update, :save, :destroy], Photo do |p|
         user.group >= p.gallery.group
       end
     end
-
   end
 
   def user_rules(user)
@@ -99,10 +109,8 @@ class Ability
     # smi zobrazovat pouze sebe (show/index)
     can :read, User, :id => user.id
 
-
     if user.group >= MEMBER
       # clenove smi ...
-      
       # ... prohlizet seznam clenu
       can :read_members, User
       can :read, User

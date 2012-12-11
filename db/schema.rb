@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121207101242) do
+ActiveRecord::Schema.define(:version => 20121211113425) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20121207101242) do
     t.string   "place"
     t.string   "event_type"
     t.string   "link"
+    t.integer  "group"
   end
 
   create_table "galleries", :force => true do |t|

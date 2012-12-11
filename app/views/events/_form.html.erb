@@ -1,5 +1,15 @@
 <%= semantic_form_for @event do |f| %>
-  <%= f.inputs %>
+  <%= f.semantic_errors %>
+  <%= f.inputs do %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :start_datetime %>
+    <%= f.input :end_datetime %>
+    <%= f.input :place %>
+    <%= f.input :event_type %>
+    <%= f.input :link %>
+    <%= f.input :group, :as => :select, :collection => group_names, :include_blank => false %>
+  <% end %>
   <%= f.actions %>
 <% end  %>
 

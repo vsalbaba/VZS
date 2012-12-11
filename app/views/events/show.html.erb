@@ -1,12 +1,27 @@
 <%= title (@event.event_type + " " + @event.name).titleize %>
+
+<% context_menu do %>
+  <%= link_back events_path, 'Výpis všech událostí' %>
+  <% if can? :edit, @event %>
+    <%= link_show edit_event_path(@event), 'Upravit' %>
+  <% end %>
+  <% if can? :destroy, @event %>
+    <%= link_delete @event, 'Smazat' %>
+  <% end %>
+<% end %>
+
 <ul>
   <li><strong>Kdy:</strong> <%=l @event.start_datetime, :format => :short %> - <%= l @event.end_datetime, :format => :short %></li>
   <li><strong>Kde:</strong> <%= @event.place %></li>
 </ul>
+
 <p>
   <%= @event.description_html %>
 </p>
 
-<%= link_to "Více", @event.link %>
+<% unless @event.link.blank? %>
+  <%= link_to "Více", @event.link %>
+<% end %>
+
 <br />
 <%= link_to "Přihlášení na akce je možné pouze pro členy zde.", "http://akcevzs.herokuapp.com" %>
