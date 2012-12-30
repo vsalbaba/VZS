@@ -8,7 +8,7 @@
     <% end %>
     <%= render 'profiles/form', :f=>f %>
   <% end %>
-  <%= f.buttons do %>
+  <%= f.actions do %>
     <%= f.action :submit, :as => :button,
       :label => @user.id.nil? ? t('btn.register') : t('btn.save'),
       :button_html => { :class => 'btn btn-success' }   %>
