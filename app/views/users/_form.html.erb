@@ -1,16 +1,16 @@
 <%= semantic_form_for @user do |f| %>
-	<%= f.inputs do %>
-      <%= f.input :login %>
-      <%= f.input :password, :input_html => { :autocomplete => 'off' } %>
-      <%= f.input :password_confirmation, :input_html => { :autocomplete => 'off' } %>
-        <% if can? :manage, User %>
-          <%= f.input :group, :as => :select, :collection => group_names %>
-        <% end %>
+  <%= f.inputs do %>
+    <%= f.input :login %>
+    <%= f.input :password, :input_html => { :autocomplete => 'off' } %>
+    <%= f.input :password_confirmation, :input_html => { :autocomplete => 'off' } %>
+    <% if can? :manage, User %>
+      <%= f.input :group, :as => :select, :collection => group_names %>
+    <% end %>
     <%= render 'profiles/form', :f=>f %>
   <% end %>
-	<%= f.buttons do %>
-      <%= f.action :submit, :as => :button,
-        :label => @user.id.nil? ? t('btn.register') : t('btn.save'),
-        :button_html => { :class => 'btn btn-success' }   %>
-	<% end %>
+  <%= f.buttons do %>
+    <%= f.action :submit, :as => :button,
+      :label => @user.id.nil? ? t('btn.register') : t('btn.save'),
+      :button_html => { :class => 'btn btn-success' }   %>
+  <% end %>
 <% end %>
