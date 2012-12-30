@@ -34,13 +34,18 @@ ActiveRecord::Schema.define(:version => 20121211113425) do
     t.boolean  "approved"
   end
 
+  create_table "articles_galleries", :id => false, :force => true do |t|
+    t.integer "article_id"
+    t.integer "gallery_id"
+  end
+
   create_table "attachments", :force => true do |t|
     t.integer  "article_id"
     t.integer  "user_id"
     t.string   "name"
+    t.integer  "file_file_size"
     t.string   "file_file_name"
     t.datetime "file_updated_at"
-    t.integer  "file_file_size"
     t.string   "file_content_type"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
