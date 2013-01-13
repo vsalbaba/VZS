@@ -11,7 +11,7 @@
 <% end %>
 
 <ul>
-  <li><strong>Kdy:</strong> <%=l @event.start_datetime, :format => :short %> - <%= l @event.end_datetime, :format => :short %></li>
+  <li><strong>Kdy:</strong> <%=l @event.start_datetime, :format => :short %> <% if @event.end_datetime %>- <%= l @event.end_datetime, :format => :short %><%end%></li>
   <li><strong>Kde:</strong> <%= @event.place %></li>
 </ul>
 
