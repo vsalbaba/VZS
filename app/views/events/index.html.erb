@@ -11,7 +11,7 @@
     <tr>
       <th><%= l(event.start_datetime, :format => :short) if event.start_datetime %></th>
       <td><%= event.event_type.try(:capitalize) %></td>
-      <td><%= link_to event.name, event %></td>
+      <td><%= link_to_unless event.link.blank?, event.name, event.link %><% unless event.description.blank? %>, <%= event.description %><% end %></td>
       <td><%= event.place %></td>
       <td>
         <!-- <%= link_to 'Přihlásit', '#', :class => "btn btn-primary btn-large" %> -->
