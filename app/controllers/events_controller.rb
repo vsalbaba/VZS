@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @pending_events = @events.pending.order('start_datetime DESC')
+    @pending_events = @events.pending.order('start_datetime ASC')
     @done_events = @events.actual.done.order('end_datetime DESC')
   end
 
