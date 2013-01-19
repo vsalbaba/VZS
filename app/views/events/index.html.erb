@@ -21,16 +21,20 @@
         <% end %>
       </div>
       <h4 class="media-heading">
-        <%= l event.start_datetime.to_date, :format => :with_day %> -
-        <%= link_to_unless event.link.blank?, event.name, event.link %></h4>
+        <%= l event.start_datetime.to_date, :format => :with_day %>
+        <%= link_to_unless event.link.blank?, event.name, event.link %>
+        <small>(<%= event.event_type %>)</small>
+      </h4>
       <div class="row-fluid">
-        <div class="span2">
-          <%= l event.start_datetime, :format => :just_time %> 
-          <% if event.end_datetime %>
-            - <%= l event.end_datetime, :format => :just_time %>
-          <% end %>
+        <div class="span3">
+            <%= l event.start_datetime, :format => :just_time %> 
+            <% if event.end_datetime %>
+              - <%= l event.end_datetime, :format => :just_time %>
+            <% end %>
+          <br />
+          <%= event.place %>
         </div>
-        <div class="span9">
+        <div class="span8">
               <%= event.description_html %>
         </div>
       </div>
@@ -60,17 +64,19 @@
         <% end %>
       </div>
       <h4 class="media-heading">
-        <%= l event.start_datetime.to_date, :format => :with_day_and_year %> -
-        <%= link_to_unless event.link.blank?, event.name, event.link %></h4>
+        <%= l event.start_datetime.to_date, :format => :with_day_and_year %>
+        <%= link_to_unless event.link.blank?, event.name, event.link %>
+        <small>(<%= event.event_type %>)</small>
+      </h4>
       <div class="row-fluid">
-        <div class="span2">
+        <div class="span3">
           <%= l event.start_datetime, :format => :just_time %>
           <% if event.end_datetime %>
             - <%= l event.end_datetime, :format => :just_time %>
           <% end %>
         </div>
-        <div class="span9">
-              <%= event.description_html %>
+        <div class="span8">
+          <%= event.description_html %>
         </div>
       </div>
     </div>
