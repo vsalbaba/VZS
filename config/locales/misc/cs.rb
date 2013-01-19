@@ -49,6 +49,8 @@ end
         :default => "%d. %m. %Y",
         :short   => "%d %b",
         :long    => "%d. %B %Y",
+        :with_day => "%a %d. %m.",
+        :with_day_and_year => "%a %d. %m. %Y"
       },
       :day_names         => %w{Neděle Pondělí Úterý Středa Čtvrtek Pátek Sobota},
       :abbr_day_names    => %w{Ne Po Út St Čt Pá So},
