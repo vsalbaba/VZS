@@ -27,11 +27,15 @@
       </h4>
       <div class="row-fluid">
         <div class="span3">
-            <%= l event.start_datetime, :format => :just_time %> 
-            <% if event.end_datetime %>
-              - <%= l event.end_datetime, :format => :just_time %>
-            <% end %>
+          <% unless event.start_datetime.hour == 0 and event.start_datetime.min == 0 %>
+            <strong>
+              <%= l event.start_datetime, :format => :just_time %> 
+              <% if event.end_datetime %>
+                - <%= l event.end_datetime, :format => :just_time %>
+              <% end %>
+          </strong>
           <br />
+        <% end %>
           <%= event.place %>
         </div>
         <div class="span8">
@@ -70,9 +74,14 @@
       </h4>
       <div class="row-fluid">
         <div class="span3">
-          <%= l event.start_datetime, :format => :just_time %>
-          <% if event.end_datetime %>
-            - <%= l event.end_datetime, :format => :just_time %>
+          <% unless event.start_datetime.hour == 0 and event.start_datetime.min == 0 %>
+            <strong>
+              <%= l event.start_datetime, :format => :just_time %> 
+              <% if event.end_datetime %>
+                - <%= l event.end_datetime, :format => :just_time %>
+              <% end %>
+            </strong>
+            <br />
           <% end %>
         </div>
         <div class="span8">
