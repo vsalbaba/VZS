@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AttachmentsController < ApplicationController
   load_and_authorize_resource :except => :create
 

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module UsersHelper
   GROUP_NAMES = {
     User::GROUP[:OUTSIDER] => 'Nečlen',

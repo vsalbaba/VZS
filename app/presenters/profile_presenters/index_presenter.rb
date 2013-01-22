@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module ProfilePresenters
   class IndexPresenter
     def initialize

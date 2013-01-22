@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Vzs::Application.routes.draw do
 
   match 'pages/:id-:slug' => 'pages#show', :as => :page_seo, :via => :get

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'config/deploy_cap_db'
 require 'capistrano_colors'
 require 'capistrano/ext/multistage'

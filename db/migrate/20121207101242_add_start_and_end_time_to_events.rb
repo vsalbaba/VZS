@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddStartAndEndTimeToEvents < ActiveRecord::Migration
   def change
     add_column :events, :start_datetime, :datetime

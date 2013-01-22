@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Event < ActiveRecord::Base
   PENDING_CUTOF_IN_DAYS = 2
 

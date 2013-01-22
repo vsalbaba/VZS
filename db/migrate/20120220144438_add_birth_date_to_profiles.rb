@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddBirthDateToProfiles < ActiveRecord::Migration
   def change
     add_column :profiles, :birthdate, :date

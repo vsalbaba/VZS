@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module PagesHelper
   def menu_presence(page)
     present_in = []

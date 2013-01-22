@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ArticlesBelongsToGroup < ActiveRecord::Migration
   def up
 	  add_column :articles, :group_id, :integer, :default => 1

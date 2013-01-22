@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 ###
 ### copy this file into config/deploy/your_server.rb and specify following options
 ###   your_server can be whatever you want 
