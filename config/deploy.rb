@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
-require 'config/deploy_cap_db'
-require 'capistrano_colors'
+require './config/deploy_cap_db.rb'
+#require 'capistrano_colors'
 require 'capistrano/ext/multistage'
 require 'bundler/capistrano'
 require 'rvm/capistrano'
@@ -12,7 +12,7 @@ set :repository,  "git@github.com:friendlysystems/VZS.git"
 set :deploy_via, :remote_cache
 
 set :rvm_type, :system
-set :rvm_ruby_string, "1.8.7@deployvzs"
+set :rvm_ruby_string, "1.9.2@deployvzs"
 
 desc "Echoes server's uname"
 task :uname do
