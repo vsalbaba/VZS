@@ -26,6 +26,7 @@ group :development do
   gem 'quiet_assets'
   gem 'nifty-generators', '~> 0.4.6'
   gem 'sqlite3', '~> 1.3.6'
+  gem 'better_errors'
 end
 
 group :production do

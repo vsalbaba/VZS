@@ -36,6 +36,9 @@ GEM
     auto_html (1.6.0)
       redcarpet (~> 2.0)
       rinku (~> 1.5.0)
+    better_errors (0.3.2)
+      coderay (>= 1.0.0)
+      erubis (>= 2.7.0)
     bourne (1.1.2)
       mocha (= 0.10.5)
     builder (3.0.4)
@@ -244,6 +247,7 @@ DEPENDENCIES
   acts_as_list
   authlogic (~> 3.1.0)
   auto_html
+  better_errors
   cancan (~> 1.6.7)
   capistrano
   capistrano-ext
