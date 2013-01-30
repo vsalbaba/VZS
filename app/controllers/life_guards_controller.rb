@@ -1,0 +1,41 @@
+# -*- encoding : utf-8 -*-
+class LifeGuardsController < ApplicationController
+  before_filter :find_life_guarding_timespan
+  load_and_authorize_resource
+
+  def index
+  end
+
+  def show
+    @life_guard = @life_guarding_timespan.life_guards.find(params[:id])
+  end
+
+  def new
+    @life_guard = @life_guarding_timespan.life_guards.new params[:life_guard]
+  end
+
+  def create
+    if @life_guarding_timespan.save
+      redirect_to @life_guarding_timespan, :notice => flash_message(:create, @life_guarding_timespan)
+    else
+      render :action => "new"
+    end
+  end
+
+  def edit
+
+  end
+
+  def update
+
+  end
+
+  def destroy
+  end
+
+  private
+
+  def find_life_guarding_timespan
+    @life_guarding_timespan = LifeGuardingTimespan.find(params[:life_guarding_timespan_id])
+  end
+end

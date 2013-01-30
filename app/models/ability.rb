@@ -17,15 +17,22 @@ class Ability
       return
     end
 
-    page_rules(user)
     article_rules(user)
-    events_rules(user)
-    comments_rules(user)
     attachments_rules(user)
+    comments_rules(user)
+    events_rules(user)
     gallery_rules(user)
+    life_guarding_timespans_rules(user)
+    page_rules(user)
+    photo_rules(user)
     user_manager_rules(user)
     user_rules(user)
-    photo_rules(user)
+  end
+
+  def life_guarding_timespans_rules(user)
+    if user.group? MEMBER
+      can :read, LifeGuardingTimespan
+    end
   end
 
   def article_rules(user)

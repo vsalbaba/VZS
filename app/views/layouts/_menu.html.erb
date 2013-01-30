@@ -3,6 +3,9 @@
   <li><%= link_to 'Úvodní stránka', root_path %></li>
   <li><%= link_to 'Fotogalerie', galleries_path %></li>
   <li><%= link_to 'Plánované akce', events_path %></li>
+  <% if can?(:read, LifeGuardingTimespan)%>
+    <li><%= link_to 'Hlídání', current_life_guarding_timespans_path %></li>
+  <% end %>
   <% pages_for_menu.each do |page| %>
     <li><%= page_link page %></li>
   <% end %>

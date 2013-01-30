@@ -1,0 +1,25 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Datum</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% life_guarding_timespan.dates.each do |date| %>
+    <tr>
+      <th><%= l date %></th>
+      <% people = life_guarding_timespan.people_at(date) %>
+      <td>
+        <%= link_to "Prihlasit", new_life_guarding_timespan_life_guard_path(life_guarding_timespan, :life_guard => {:position => 1, :at => date}) %>
+      </td>
+      <td>Jana</td>
+      <td>Pavel</td>
+      <td>Ota</td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

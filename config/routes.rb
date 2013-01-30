@@ -4,6 +4,12 @@ Vzs::Application.routes.draw do
   match 'pages/:id-:slug' => 'pages#show', :as => :page_seo, :via => :get
 
   resources :pages
+  resources :life_guarding_timespans, :path => "hlidani" do
+    collection do
+      get :current
+    end
+    resources :life_guards
+  end
 
   resources :articles do
     collection do

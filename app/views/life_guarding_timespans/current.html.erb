@@ -1,0 +1,7 @@
+<%= title "Hlídání" %>
+<% context_menu do %>
+  <%= link_new new_life_guarding_timespan_path, "Nové hlídání" %>
+  <%= link_show life_guarding_timespans_path, "Seznam hlídání" %>
+<% end %>
+
+<%= render @life_guarding_timespan %>
