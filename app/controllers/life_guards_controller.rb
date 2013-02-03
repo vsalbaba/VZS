@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class LifeGuardsController < ApplicationController
   before_filter :find_life_guarding_timespan
+  respond_to :html, :js
   load_and_authorize_resource
 
   def index
@@ -20,6 +21,15 @@ class LifeGuardsController < ApplicationController
     else
       render :action => "new"
     end
+  end
+
+  def subscribe
+    @life_guard = @life_guarding_timespan.life_guards.new params[:life_guard]
+    @life_guard.at = params[:date]
+    @life_guard.position = params[:position]
+    @life_guard.profile = current_user.profile
+    @life_guard.save!
+    respond_with @life_guard
   end
 
   def edit

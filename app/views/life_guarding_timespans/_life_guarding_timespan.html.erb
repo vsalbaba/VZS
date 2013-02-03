@@ -13,12 +13,24 @@
     <tr>
       <th><%= l date %></th>
       <% people = life_guarding_timespan.people_at(date) %>
-      <td>
-        <%= link_to "Prihlasit", new_life_guarding_timespan_life_guard_path(life_guarding_timespan, :life_guard => {:position => 1, :at => date}) %>
-      </td>
-      <td>Jana</td>
-      <td>Pavel</td>
-      <td>Ota</td>
+      <% (1..4).each do |position| %>
+        <% if people[position].blank? %>
+          <%= content_tag :td, :class => "life_guard", :id => "life_guard-#{date.to_s}-#{position}" do %>
+            <%= link_to "Prihlasit",
+              subscribe_life_guarding_timespan_life_guards_path(life_guarding_timespan,
+                                                                :date => date,
+                                                                :position => position),
+              :method => :put,
+              :confirm=> "Opravdu se chcete přihlásit na #{l date}? Odhlásit Vás může jen předseda.",
+              :remote => true %>
+          <% end %>
+        <% else %>
+          <td>
+            <%= people[position].map{|e| e.profile.full_name}.to_sentence%>
+          </td>
+        <% end %>
+
+      <% end %>
     </tr>
   <% end %>
   </tbody>

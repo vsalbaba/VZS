@@ -8,7 +8,11 @@ Vzs::Application.routes.draw do
     collection do
       get :current
     end
-    resources :life_guards
+    resources :life_guards do
+      collection do
+        put :subscribe
+      end
+    end
   end
 
   resources :articles do
