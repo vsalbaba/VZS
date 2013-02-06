@@ -16,6 +16,6 @@ class LifeGuardingTimespan < ActiveRecord::Base
   end
 
   def people_at(date)
-    life_guards.where(:at => date).order("position DESC")
+    life_guards.where(:at => date).order("position DESC").group_by(&:position)
   end
 end

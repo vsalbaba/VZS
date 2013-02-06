@@ -4,4 +4,9 @@
   <%= link_show life_guarding_timespans_path, "Seznam hlídání" %>
 <% end %>
 
-<%= render @life_guarding_timespan %>
+Přihlašování na Hartvíkovice. Je dobré před přihlášením se domluvit s zodpovídajícím člověkem (záchranářem).
+Přihlašujte se s rozmyslem, ať to nemusíme ručně opravovat. Přihlašovat se mohou jen členi. Pokud se přihlásíte omylem na špatný termín, kontaktujte předsedu.
+
+<% if @life_guarding_timespan %>
+  <%= render @life_guarding_timespan %>
+<% end %>
