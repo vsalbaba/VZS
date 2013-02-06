@@ -11,7 +11,7 @@
   <tbody>
     <% life_guarding_timespan.dates.each do |date| %>
     <tr>
-      <th><%= l date %></th>
+      <th><%= l date, :format => :with_day %></th>
       <% people = life_guarding_timespan.people_at(date) %>
       <% (1..4).each do |position| %>
         <% if people[position].blank? %>
