@@ -39,6 +39,7 @@ GEM
     better_errors (0.3.2)
       coderay (>= 1.0.0)
       erubis (>= 2.7.0)
+    binding_of_caller (0.6.8)
     bourne (1.1.2)
       mocha (= 0.10.5)
     builder (3.0.4)
@@ -248,6 +249,7 @@ DEPENDENCIES
   authlogic (~> 3.1.0)
   auto_html
   better_errors
+  binding_of_caller
   cancan (~> 1.6.7)
   capistrano
   capistrano-ext
