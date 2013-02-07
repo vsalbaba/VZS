@@ -32,6 +32,8 @@ class Ability
   def life_guarding_timespans_rules(user)
     if user.group? MEMBER
       can :read, LifeGuardingTimespan
+      can :current, LifeGuardingTimespan
+      can :manage, LifeGuard
     end
   end
 
