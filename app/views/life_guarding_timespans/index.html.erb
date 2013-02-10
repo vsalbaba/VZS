@@ -1,0 +1,10 @@
+<%= title 'Seznam hlídání'%>
+
+<ul>
+<% @life_guarding_timespans.each do |life_guarding_timespan| %>
+  <li><%= link_to life_guarding_timespan do %>
+  <%= life_guarding_timespan.from %> - <%= life_guarding_timespan.to %>
+<% end %></li>
+<% end %>
+</ul>
+

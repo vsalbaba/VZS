@@ -29,7 +29,11 @@ class LifeGuardingTimespansController < ApplicationController
   end
 
   def update
-
+    if @life_guarding_timespan.update_attributes params[:life_guarding_timespan]
+      redirect_to @life_guarding_timespan, :notice => flash_message(:create, @life_guarding_timespan)
+    else
+      render :action => "edit"
+    end
   end
 
   def destroy
