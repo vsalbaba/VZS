@@ -27,7 +27,7 @@
               <div class="row">
                 <div class="span4">
                   <p>
-                    <% unless article.galleries.first.try(:photos).blank?%>
+                    <% unless article.galleries.accessible_by(current_ability).first.try(:photos).blank?%>
                       <%= link_to article do %>
                         <%= image_tag article.galleries.first.photos.first.image.url(:thumbnail), :class => "float right" %>
                       <% end %>

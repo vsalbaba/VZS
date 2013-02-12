@@ -7,7 +7,7 @@
         <div class="span12">
           <%=  @article.content_html %>
         </div>
-        <% @article.galleries.each do |gallery| %>
+        <% @article.galleries.accessible_by(current_ability).each do |gallery| %>
           <div class="span12">
             <ul class="thumbnails">
               <%= render 'galleries/gallery', :gallery => gallery %>
