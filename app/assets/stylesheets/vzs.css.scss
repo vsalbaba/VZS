@@ -12,6 +12,14 @@
     top:-124px;
 }
 
+.hero-unit h1 {
+  font-size: 40px;
+}
+
+.page-header {
+  margin-bottom: 0px;
+  border-bottom: 0px;
+}
 #vzs-main-title {
   padding-left:30px;
   position:relative;
@@ -35,6 +43,7 @@
 
 body {
   //background:transparent no-repeat 100% 10px;
+  padding-top: 25px;
   background:transparent;
   background-image:image-url("horni-lista-654x384.png"), image-url("prechod-min.gif");
   background-repeat:no-repeat, repeat-x;

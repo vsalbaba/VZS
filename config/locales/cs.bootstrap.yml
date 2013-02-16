@@ -1,0 +1,17 @@
+# Sample localization file for Czech Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  helpers:
+    actions: "Akce"
+    links:
+      back: "Zpět"
+      cancel: "Přerušit"
+      confirm: "Potvrdit"
+      destroy: "Smazat"
+      new: "Nový"
+    titles:
+      edit: "Upravit"
+      save: "Uložit"
+      new: "Nový"
+      delete: "Smazat"
