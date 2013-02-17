@@ -24,6 +24,8 @@
 //= require lightbox
 //= require photos
 //= require tooltips
+//= require jquery-scrollerspy.js
+//= require y-dynamic-navbar.js
 // DISABLED require bootstrap.js.coffee
 // DISABLED require user_sessions.js.coffee
 

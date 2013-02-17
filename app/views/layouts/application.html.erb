@@ -29,24 +29,19 @@
     -->
   </head>
   <body>
-
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <%= link_to 'VZS ČČK Třebíč', root_path, :class => 'brand' %>
-          <div class="container-fluid nav-collapse">
-            <%= render 'layouts/navbar' %>
-          </div><!--/.nav-collapse -->
+<div id="nav" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+      <%= link_to 'VZS ČČK Třebíč', root_path, :class => 'brand' %>
+            <div class="nav-collapse">
+              <%= render "layouts/navbar"%>
+            </div>
+            <!--/.nav-collapse -->
         </div>
-      </div>
     </div>
+</div>
 
-    <div class="container">
+    <div class="container vzs-main-page">
       <div class="row"> <!-- main header - logo + napis -->
         <div class="row vzs-header">
           <div class="span8 offset2" id="vzs-main-title"> <!-- Nadpis -->
@@ -73,7 +68,7 @@
               <%= link_to 'http://www.zpravodajedu.cz' do %>
                 <%= image_tag("dukovany_160x160_v02.gif", :class => "banner") %>
               <% end %>
-                
+
               </div><!--/.well -->
             </div><!--/span-->
 
