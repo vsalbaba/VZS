@@ -1,32 +1,18 @@
 <% title t('label.user.login') %>
-<h1>Přihlášení</h1>
-<div class="span8">
-  <%= semantic_form_for @user_session, :html => {:class => "form-horizontal" } do |form| %>  
-    <div class="control-group">
-      <div class="string clearfix required stringish" id="user_session_login_input">
-        <label class="control-label" for="user_session_login">Přihlašovací jméno<abbr title="Povinná položka">*</abbr></label>
-        <div class="input controls">
-          <input id="user_session_login" name="user_session[login]" type="text">
-        </div>
-      </div>
-    </div>
-    <div class="control-group">
-      <div class="password clearfix required stringish" id="user_session_password_input">
-        <label class="control-label" for="user_session_password">Heslo<abbr title="Povinná položka">*</abbr></label>
-        <div class="input controls">
-          <input id="user_session_password" name="user_session[password]" type="password">
-        </div>
-      </div>
-    </div>
-    <div class="control-group">
-      <div class="controls span4">
-        <input name="commit" type="submit" class="btn btn-block btn-primary span4" value="Přihlásit se" />
-      </div>
-    </div>
-  <% end %>  
-  <p>
-    <small>
-      Výchozím heslem je rodné číslo včetně lomítka
-    </small>
-  </p>
-</div>
+<%= form_for @user_session, :html => {:class => "form-signin" } do |form| %>
+  <h2 class="form-signin-heading">Přihlášení</h2>
+  <div class="input-append input-prepend">
+    <span class="add-on"><i class="icon-user"></i></span>
+    <input type="text" class="input-block-level" name="user_session[login]" placeholder="Přihlašovací jméno">
+    <span class="add-on"><abbr title="Výchozím uživatelským jménem je číslo průkazu"><i class="icon-question-sign"></i></abbr></span>
+  </div>
+  <div class="input-append input-prepend">
+    <span class="add-on"><i class="icon-lock" data-toggle="tooltip" title="first tooltip"></i></span>
+    <input type="password" class="input-block-level" name="user_session[password]" placeholder="Heslo">
+    <span class="add-on"><abbr title="Výchozím heslem je rodné číslo, včetně lomítka"><i class="icon-question-sign"></i></abbr></span>
+  </div>
+    <label class="checkbox">
+      <input type="checkbox" value="remember-me" name="user_session[remember_me]"> Zapamatovat
+    </label>
+    <button class="btn btn-primary" type="submit">Přihlásit</button>
+  <% end %>
