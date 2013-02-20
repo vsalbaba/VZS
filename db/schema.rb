@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130130194345) do
+ActiveRecord::Schema.define(:version => 20130220090820) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -35,18 +35,13 @@ ActiveRecord::Schema.define(:version => 20130130194345) do
     t.boolean  "approved"
   end
 
-  create_table "articles_galleries", :id => false, :force => true do |t|
-    t.integer "article_id"
-    t.integer "gallery_id"
-  end
-
   create_table "attachments", :force => true do |t|
     t.integer  "article_id"
     t.integer  "user_id"
     t.string   "name"
-    t.integer  "file_file_size"
     t.string   "file_file_name"
     t.datetime "file_updated_at"
+    t.integer  "file_file_size"
     t.string   "file_content_type"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
@@ -152,9 +147,16 @@ ActiveRecord::Schema.define(:version => 20130130194345) do
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.integer  "group"
+    t.integer  "login_count",        :default => 0, :null => false
+    t.integer  "failed_login_count", :default => 0, :null => false
+    t.datetime "last_request_at"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string   "current_login_ip"
+    t.string   "last_login_ip"
   end
 
 end
