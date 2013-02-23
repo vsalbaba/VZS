@@ -12,7 +12,7 @@
     <span class="add-on"><abbr title="Výchozím heslem je rodné číslo, včetně lomítka"><i class="icon-question-sign"></i></abbr></span>
   </div>
     <label class="checkbox">
-      <input type="checkbox" value="remember-me" name="user_session[remember_me]"> Zapamatovat
+      <%= form.check_box :remember_me %> Zůstat přihlášen(á) na tomto počítači
     </label>
     <button class="btn btn-primary" type="submit">Přihlásit</button>
   <% end %>
