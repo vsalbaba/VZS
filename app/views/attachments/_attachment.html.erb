@@ -1,6 +1,6 @@
 <li>
 <%= link_to attachment.name, attachment.file.url %>
-- <%= attachment.size %>B
+- <%= number_to_human_size attachment.size %>
 - by <%= attachment.user.full_name %>
   <% if can? :delete, attachment %>
     <%= link_to article_attachment_path(attachment.article, attachment),
