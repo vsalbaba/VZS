@@ -10,6 +10,9 @@
                   <th class="span3"><%= Profile.human_attribute_name(:email) %></th>
                   <th class="span1"><%= Profile.human_attribute_name(:age) %></th>
                   <th class="span2"><%= Profile.human_attribute_name(:telephone) %></th>
+                  <% if can? :inspect, UserSession %>
+                    <th class="span1"><%= User.human_attribute_name(:last_request_at)%></th>
+                  <% end %>
                 </tr>
               </thead>
               <tbody>

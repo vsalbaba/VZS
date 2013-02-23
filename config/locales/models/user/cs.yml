@@ -9,6 +9,7 @@ cs:
         password: 'Heslo'
         password_confirmation: 'Potvrzení hesla'
         full_name: Jméno
+        last_request_at: Poslední aktivita
   flash:
     user:
       create: Uživatel vytvořen

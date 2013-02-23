@@ -4,4 +4,7 @@
   <td><%= profile.email %></td>
   <td><%= profile.user_age %></td>
   <td><%= profile.telephone %></td>
+  <% if can? :inspect, UserSession %>
+    <td><%= profile.user.last_request_at ? l(profile.user.last_request_at) : '' %></td>
+  <% end %>
 </tr>

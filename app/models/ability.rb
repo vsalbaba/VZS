@@ -142,6 +142,10 @@ class Ability
         u.profile.address == user.profile.address
       end
     end
+
+    if user.group >= BOARD
+      can :inspect, UserSession
+    end
   end
 
   def page_rules(user)
