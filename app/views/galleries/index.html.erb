@@ -1,19 +1,26 @@
-<% title "Fotogalerie" %>
+<%= title "Fotogalerie" %>
 <% context_menu do %>
   <% if can? :create, Gallery %>
     <%= link_new new_gallery_path, t('label.gallery.new') %>
   <% end %>
 <% end %>
 
-<div class="row">
-  <% @galleries.each do |gallery| %>
-    <div class="row">
-      <div class="span8 offset1">
+
+<% @galleries.each do |gallery| %>
+  <div class="span8 well well-white">
+    <div class="row"> 
+      <div class="span1">
+        <% unless gallery.photos.empty? %>
+          <%= link_to gallery do %>
+            <%= image_tag gallery.photos.first.image.url(:thumbnail), :size => "90x90" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="span4">
         <h2><%= link_to gallery.name, gallery%> <small><%= gallery.description %></small></h2>
-        <%= render gallery %>
       </div>
     </div>
-  <% end %>
+  </div>
+<% end %>
 
 <%= will_paginate @galleries %>
-</div>

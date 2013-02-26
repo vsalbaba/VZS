@@ -26,4 +26,6 @@ class Gallery < ActiveRecord::Base
   attr_accessible :name, :description, :article_id, :user_id, :group, :photos_attributes
 
   accepts_nested_attributes_for :photos, :allow_destroy => true
+
+  self.per_page = 15
 end
