@@ -8,7 +8,7 @@
 
 <% @galleries.each do |gallery| %>
   <div class="span8 well well-white">
-    <div class="row"> 
+    <div class="row">
       <div class="span1">
         <% unless gallery.photos.empty? %>
           <%= link_to gallery do %>
@@ -16,8 +16,17 @@
           <% end %>
         <% end %>
       </div>
-      <div class="span4">
-        <h2><%= link_to gallery.name, gallery%> <small><%= gallery.description %></small></h2>
+      <div class="span7">
+        <div class="row">
+          <div class="span7">
+            <h2><%= link_to gallery.name, gallery%>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span7">
+            <small><%= gallery.description %></small></h2>
+          </div>
+        </div>
       </div>
     </div>
   </div>
