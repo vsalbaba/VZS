@@ -99,7 +99,18 @@
 
       <hr />
       <footer>
-      <p>&copy; FriendlySystems.cz 2012, verze <a class="#" class="tooltip" title="<%= REVISION%>"><%= CURRENT_VERSION%></a></p>
+      <p>
+      &copy;
+      FriendlySystems.cz 2012, verze <a class="#" class="tooltip" title="<%= REVISION%>"><%= CURRENT_VERSION%></a>
+        <span class="pull-right">
+      <% if current_user %>
+        <%= link_to t('btn.edit_profile'), edit_user_path(current_user) %> |
+        <%= link_to t('btn.logout'), logout_path %>
+      <% else %>
+      <%= link_to t('btn.login'), login_path %>
+    <% end %>
+      </span>
+      </p>
       </footer>
     </div> <!-- /container -->
 
