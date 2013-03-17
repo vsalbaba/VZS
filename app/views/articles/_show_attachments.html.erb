@@ -3,7 +3,7 @@
   <% unless @article.attachments.empty? %>
     <h3>Přílohy</h3>
     <ul>
-      <%= render @article.attachments %>
+      <%= render @article.attachments.order("name ASC") %>
     </ul>
   <% end %>
   <% @attachment ||= current_user.attachments.new :article_id => @article.id if current_user %>
