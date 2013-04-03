@@ -12,6 +12,9 @@ Vzs::Application.routes.draw do
       collection do
         put :subscribe
       end
+      member do
+        put :unsubscribe
+      end
     end
   end
 

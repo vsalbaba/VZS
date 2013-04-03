@@ -1,1 +1,2 @@
-$('#life_guard-<%=@life_guard.at%>-<%=@life_guard.position%>').text('<%= current_user.profile.full_name %>');
+var html = '<%= escape_javascript (render "entry", :life_guard => [@life_guard], :life_guarding_timespan => @life_guarding_timespan) %>';
+$('#life_guard-<%=@life_guard.at%>-<%=@life_guard.position%>').html(html);

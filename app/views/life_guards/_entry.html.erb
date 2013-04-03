@@ -1,0 +1,6 @@
+<%= life_guard.map{|e| e.profile.full_name}.to_sentence%>
+<% if can? :unsubscribe, :life_guard %>
+  <%= link_to unsubscribe_life_guarding_timespan_life_guard_path(life_guarding_timespan, life_guard.first), :method => :put do %>
+    <i class="icon-remove"></i>
+  <% end %>
+<% end %>

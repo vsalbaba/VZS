@@ -1,11 +1,11 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Datum</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
+      <th class="span2">Datum</th>
+      <th class="span2">1</th>
+      <th class="span2">2</th>
+      <th class="span2">3</th>
+      <th class="span2">4</th>
     </tr>
   </thead>
   <tbody>
@@ -26,7 +26,7 @@
             <% end %>
         <% else %>
           <td>
-            <%= people[position].map{|e| e.profile.full_name}.to_sentence%>
+            <%= render "life_guards/entry", :life_guard => people[position], :life_guarding_timespan => life_guarding_timespan %>
           </td>
         <% end %>
 

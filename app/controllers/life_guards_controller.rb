@@ -32,6 +32,11 @@ class LifeGuardsController < ApplicationController
     respond_with @life_guard
   end
 
+  def unsubscribe
+    @life_guard.destroy
+    redirect_to @life_guarding_timespan
+  end
+
   def edit
 
   end
