@@ -16,13 +16,18 @@
         <% (1..4).each do |position| %>
           <% if people[position].blank? %>
             <%= content_tag :td, :class => "life_guard", :id => "life_guard-#{date.to_s}-#{position}" do %>
-              <%= link_to "Přihlásit",
+              <%= link_to "Přihlásit se",
                 subscribe_life_guarding_timespan_life_guards_path(life_guarding_timespan,
                                                                   :date => date,
                                                                   :position => position),
                 :method => :put,
                 :confirm=> "Opravdu se chcete přihlásit na #{l date}? Odhlásit Vás může jen předseda.",
                 :remote => true %>
+              <% if can? :subscribe, :others %>
+                <%= link_to select_modal_life_guarding_timespan_path(@life_guarding_timespan, :date => date, :position => position), :data => {:toggle => "modal", :target => "#modal"} do %>
+                  <i class="icon-chevron-down pull-right"></i>
+                <% end %>
+              <% end %>
             <% end %>
         <% else %>
           <td>

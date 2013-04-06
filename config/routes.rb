@@ -8,11 +8,15 @@ Vzs::Application.routes.draw do
     collection do
       get :current
     end
+    member do
+      get :select_modal
+    end
     resources :life_guards do
       collection do
         put :subscribe
       end
       member do
+        put :subscribe
         put :unsubscribe
       end
     end

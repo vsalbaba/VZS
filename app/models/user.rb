@@ -46,6 +46,10 @@ class User < ActiveRecord::Base
     :crypted_password, :password_salt, :persistence_token,
     :profile, :profile_attributes
 
+  def self.members
+    where(["`users`.`group` > ?", GROUP[:OUTSIDER]])
+  end
+
   def is_member_or_more?
     self.group.to_i >= User::GROUP[:MEMBER]
   end

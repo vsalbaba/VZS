@@ -4,6 +4,8 @@
   <%= link_show life_guarding_timespans_path, "Seznam hlídání" %>
 <% end %>
 
+<%= render "modal_template"%>
+
 <% if @life_guarding_timespan %>
   <%= render @life_guarding_timespan %>
 <% end %>

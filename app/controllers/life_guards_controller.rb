@@ -27,7 +27,11 @@ class LifeGuardsController < ApplicationController
     @life_guard = @life_guarding_timespan.life_guards.new params[:life_guard]
     @life_guard.at = params[:date]
     @life_guard.position = params[:position]
-    @life_guard.profile = current_user.profile
+    if params[:user] then
+      @life_guard.profile = User.find(params[:user]).profile
+    else
+      @life_guard.profile = current_user.profile
+    end
     @life_guard.save!
     respond_with @life_guard
   end

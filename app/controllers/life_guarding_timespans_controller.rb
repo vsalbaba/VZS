@@ -38,4 +38,11 @@ class LifeGuardingTimespansController < ApplicationController
 
   def destroy
   end
+
+  def select_modal
+    @members = User.members
+    @date = params[:date]
+    @position = params[:position]
+    render :layout => false
+  end
 end
