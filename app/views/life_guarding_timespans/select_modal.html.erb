@@ -3,7 +3,7 @@
     <li>
     <%= link_to subscribe_life_guarding_timespan_life_guards_path(@life_guarding_timespan, :user => member.id, :date => @date, :position => @position),
       :method => :put, :remote => true, :data => {:dismiss => "modal"} do %>
-    <%= member.profile.full_name %>
+    <%= member.profile.try(:full_name) %>
     <% end %>
   </li>
 <% end %>
