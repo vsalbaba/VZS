@@ -1,0 +1,12 @@
+  <%= link_to "Přihlásit se",
+                subscribe_life_guarding_timespan_life_guards_path(life_guarding_timespan,
+                                                                  :date => date,
+                                                                  :position => position),
+                :method => :put,
+                :confirm=> "Opravdu se chcete přihlásit na #{l date}? Odhlásit Vás může jen předseda.",
+    :remote => true %>
+  <% if can? :subscribe, :others %>
+    <%= link_to select_modal_life_guarding_timespan_path(life_guarding_timespan, :date => date, :position => position), :data => {:toggle => "modal", :target => "#modal"} do %>
+      <i class="icon-chevron-down pull-right"></i>
+    <% end %>
+  <% end %>

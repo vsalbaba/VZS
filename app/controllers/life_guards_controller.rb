@@ -38,7 +38,12 @@ class LifeGuardsController < ApplicationController
 
   def unsubscribe
     @life_guard.destroy
-    redirect_to @life_guarding_timespan
+    respond_to do |format|
+      format.html {
+        redirect_to @life_guarding_timespan
+      }
+      format. js
+    end
   end
 
   def edit

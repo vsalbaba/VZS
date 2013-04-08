@@ -10,31 +10,17 @@
   </thead>
   <tbody>
     <% life_guarding_timespan.dates.each do |date| %>
-      <tr <% if date.cwday-1 == Date::DAYS_INTO_WEEK[:sunday]%> class="info" <%elsif date.cwday-1 == Date::DAYS_INTO_WEEK[:saturday]%> class="error" <%end%>>
+      <tr <% if (date+1).cweek.odd?%> class="info" <%else%> class="error" <%end%>>
         <td><strong><%= l date, :format => :with_day %></strong></td>
         <% people = life_guarding_timespan.people_at(date) %>
         <% (1..4).each do |position| %>
+          <%= content_tag :td, :class => "life_guard", :id => "life_guard-#{date.to_s}-#{position}" do %>
           <% if people[position].blank? %>
-            <%= content_tag :td, :class => "life_guard", :id => "life_guard-#{date.to_s}-#{position}" do %>
-              <%= link_to "Přihlásit se",
-                subscribe_life_guarding_timespan_life_guards_path(life_guarding_timespan,
-                                                                  :date => date,
-                                                                  :position => position),
-                :method => :put,
-                :confirm=> "Opravdu se chcete přihlásit na #{l date}? Odhlásit Vás může jen předseda.",
-                :remote => true %>
-              <% if can? :subscribe, :others %>
-                <%= link_to select_modal_life_guarding_timespan_path(@life_guarding_timespan, :date => date, :position => position), :data => {:toggle => "modal", :target => "#modal"} do %>
-                  <i class="icon-chevron-down pull-right"></i>
-                <% end %>
-              <% end %>
-            <% end %>
+            <%= render "empty", :life_guarding_timespan => @life_guarding_timespan, :date => date, :position => position %>
         <% else %>
-          <td>
             <%= render "life_guards/entry", :life_guard => people[position], :life_guarding_timespan => life_guarding_timespan %>
-          </td>
         <% end %>
-
+<% end %>
       <% end %>
     </tr>
   <% end %>
