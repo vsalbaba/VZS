@@ -40,7 +40,7 @@ class LifeGuardingTimespansController < ApplicationController
   end
 
   def select_modal
-    @members = User.members
+    @members = User.members.includes(:profile).order("`profiles`.`second_name`, `profiles`.`first_name` ASC")
     @date = params[:date]
     @position = params[:position]
     render :layout => false
