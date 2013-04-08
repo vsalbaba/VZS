@@ -1,2 +1,2 @@
 var html = '<%= escape_javascript (render "life_guarding_timespans/empty", :life_guarding_timespan => @life_guard.life_guarding_timespan,  :date => @life_guard.at, :position => @life_guard.position ) %>';
-$('#life_guard-<%= @life_guard.at %>-<%=@life_guard.position%>').html(html);
+$('#life_guard-<%= @life_guard.at %>-<%=@life_guard.position%>').html(html).show("highlight");
