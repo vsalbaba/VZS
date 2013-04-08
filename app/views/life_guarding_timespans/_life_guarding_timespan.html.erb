@@ -10,7 +10,7 @@
   </thead>
   <tbody>
     <% life_guarding_timespan.dates.each do |date| %>
-      <tr <% if (date+1).cweek.odd?%> class="info" <%else%> class="error" <%end%>>
+      <tr <% if (date+1).cweek.odd?%> class="info"<%end%> >
         <td><strong><%= l date, :format => :with_day %></strong></td>
         <% people = life_guarding_timespan.people_at(date) %>
         <% (1..4).each do |position| %>
