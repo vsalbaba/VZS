@@ -25,6 +25,8 @@ gem "shadchan"
 
 gem 'auto_html'
 
+gem 'newrelic_rpm'
+
 group :development do
   gem 'wirble'
   gem 'quiet_assets'
