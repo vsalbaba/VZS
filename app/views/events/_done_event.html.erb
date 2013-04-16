@@ -8,7 +8,9 @@
         <% end %>
         |
       <% end %>
-      <%= render "participates" %>
+      <% if current_user.participates?(event) %>
+        <%= render "participates" %>
+      <% end %>
     <% end %>
     </div>
     <h4 class="media-heading">
