@@ -4,6 +4,7 @@ require './config/deploy_cap_db.rb'
 require 'capistrano/ext/multistage'
 require 'bundler/capistrano'
 require 'rvm/capistrano'
+require 'new_relic/recipes'
 
 set :application, "vzs"
 
@@ -55,4 +56,5 @@ namespace :newrelic do
 end
 
 after "deploy:migrate", "deploy:db:seed"
+after "deploy:update", "newrelic:notice_deployment"
 
