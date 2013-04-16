@@ -11,9 +11,6 @@
   <% end %>
 </ul>
 <ul class="nav nav-tabs nav-stacked">
-  <% if can? :manage, Work %>
-    <li>Brigády</li>
-  <% end %>
   <% if can?(:create, Article) or can?(:read_members, User) %>
   <% end %>
    <% if can? :approve, Article %>
