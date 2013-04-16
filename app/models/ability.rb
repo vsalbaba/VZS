@@ -54,6 +54,7 @@ class Ability
       can :read, Event, :group => [nil, OUTSIDER, MEMBER]
       can :create, Event, :group => [nil, OUTSIDER, MEMBER]
       can [:update, :save, :destroy], Event, :group => [nil, OUTSIDER, MEMBER]
+      can :participate, Event
     elsif user.group? OUTSIDER
       can :read, Event, :group => [nil, OUTSIDER]
     else

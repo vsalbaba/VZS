@@ -7,43 +7,7 @@
 <% end %>
 
 <% @pending_events.each do |event| %>
-  <div class="media well well-small well-white">
-    <div class="media-body">
-      <div class="pull-right">
-        <% if can? :edit, event %>
-          <%= link_to edit_event_path(event) do %>
-            Upravit
-          <% end %>
-          |
-        <% end %>
-        <%= link_to "http://akcevzs.herokuapp.com" do %>
-          Přihlášení
-        <% end %>
-      </div>
-      <h4 class="media-heading">
-        <%= l event.start_datetime.to_date, :format => :with_day %>
-        <%= link_to_unless event.link.blank?, event.name, event.link %>
-        <small>(<%= event.event_type %>)</small>
-      </h4>
-      <div class="row-fluid">
-        <div class="span3">
-          <% unless event.start_datetime.hour == 0 and event.start_datetime.min == 0 %>
-            <strong>
-              <%= l event.start_datetime, :format => :just_time %> 
-              <% if event.end_datetime %>
-                - <%= l event.end_datetime, :format => :just_time %>
-              <% end %>
-          </strong>
-          <br />
-        <% end %>
-          <%= event.place %>
-        </div>
-        <div class="span8">
-              <%= event.description_html %>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render "pending_event", :event => event %>
 <% end %>
 
 <p>
@@ -54,40 +18,5 @@
 <h1> Proběhlé akce</h1>
 
 <% @done_events.each do |event| %>
-  <div class="media well well-small well-white">
-    <div class="media-body">
-      <div class="pull-right">
-        <% if can? :edit, event %>
-          <%= link_to edit_event_path(event) do %>
-            Upravit
-          <% end %>
-          |
-        <% end %>
-        <%= link_to "http://akcevzs.herokuapp.com" do %>
-          Akce
-        <% end %>
-      </div>
-      <h4 class="media-heading">
-        <%= l event.start_datetime.to_date, :format => :with_day_and_year %>
-        <%= link_to_unless event.link.blank?, event.name, event.link %>
-        <small>(<%= event.event_type %>)</small>
-      </h4>
-      <div class="row-fluid">
-        <div class="span3">
-          <% unless event.start_datetime.hour == 0 and event.start_datetime.min == 0 %>
-            <strong>
-              <%= l event.start_datetime, :format => :just_time %> 
-              <% if event.end_datetime %>
-                - <%= l event.end_datetime, :format => :just_time %>
-              <% end %>
-            </strong>
-            <br />
-          <% end %>
-        </div>
-        <div class="span8">
-          <%= event.description_html %>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render "done_event", :event => event %>
 <% end %>

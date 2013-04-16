@@ -2,6 +2,14 @@
 class EventsController < ApplicationController
   load_and_authorize_resource
 
+  def participate
+    @event.participants << current_user.profile
+    redirect_to events_path
+  end
+
+  def not_participate
+  end
+
   def index
     @pending_events = @events.pending.order('start_datetime ASC')
     @done_events = @events.actual.done.order('end_datetime DESC')

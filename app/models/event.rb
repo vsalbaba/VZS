@@ -9,9 +9,8 @@ class Event < ActiveRecord::Base
     simple_format
   end
 
-  has_many :brigades
-  has_many :users, :through => :brigades
-
+  has_many :participations
+  has_many :participants, :through => :participations, :class_name => "Profile", :foreign_key => "profile_id"
   validates :name, :presence => true
   validates :group, :presence => true, :inclusion => {:in => User::GROUP.values}
   validates :start_datetime, :presence => true

@@ -50,6 +50,10 @@ class User < ActiveRecord::Base
     where(["`users`.`group` > ?", GROUP[:OUTSIDER]])
   end
 
+  def participates?(event)
+    event.participants.include? self.profile
+  end
+
   def is_member_or_more?
     self.group.to_i >= User::GROUP[:MEMBER]
   end

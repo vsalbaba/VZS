@@ -40,6 +40,9 @@ Vzs::Application.routes.draw do
     collection do
       get 'old'
     end
+    member do
+      get :participate
+    end
   end
 
   get "user_sessions/new"

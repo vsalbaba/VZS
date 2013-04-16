@@ -1,0 +1,45 @@
+<div class="media well well-small well-white">
+  <div class="media-body">
+    <% if current_user %>
+    <div class="pull-right">
+      <% if can? :edit, event %>
+        <%= link_to edit_event_path(event) do %>
+          Upravit
+        <% end %>
+        |
+      <% end %>
+      <%= render "participates" %>
+    <% end %>
+    </div>
+    <h4 class="media-heading">
+      <%= l event.start_datetime.to_date, :format => :with_day_and_year %>
+      <%= link_to_unless event.link.blank?, event.name, event.link %>
+      <small>(<%= event.event_type %>)</small>
+    </h4>
+    <div class="row">
+      <div class="span2">
+        <div class="row">
+          <div class="span2">
+            <% unless event.start_datetime.hour == 0 and event.start_datetime.min == 0 %>
+              <strong>
+                <%= l event.start_datetime, :format => :just_time %> 
+                <% if event.end_datetime %>
+                  - <%= l event.end_datetime, :format => :just_time %>
+                <% end %>
+              </strong>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span2">
+            place place place
+            <%= event.place %>
+          </div>
+        </div>
+      </div>
+      <div class="span6">
+        <%= event.description_html %>
+      </div>
+    </div>
+  </div>
+</div>

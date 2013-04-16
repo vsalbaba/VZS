@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130220090820) do
+ActiveRecord::Schema.define(:version => 20130415201738) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -35,13 +35,18 @@ ActiveRecord::Schema.define(:version => 20130220090820) do
     t.boolean  "approved"
   end
 
+  create_table "articles_galleries", :id => false, :force => true do |t|
+    t.integer "article_id"
+    t.integer "gallery_id"
+  end
+
   create_table "attachments", :force => true do |t|
     t.integer  "article_id"
     t.integer  "user_id"
     t.string   "name"
+    t.integer  "file_file_size"
     t.string   "file_file_name"
     t.datetime "file_updated_at"
-    t.integer  "file_file_size"
     t.string   "file_content_type"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
@@ -102,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20130220090820) do
     t.date     "at"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
+    t.string   "person_text"
   end
 
   create_table "pages", :force => true do |t|
@@ -110,6 +116,14 @@ ActiveRecord::Schema.define(:version => 20130220090820) do
     t.text     "content"
     t.boolean  "navbar"
     t.boolean  "menu"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "participations", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "profile_id"
+    t.integer  "position"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -157,6 +171,17 @@ ActiveRecord::Schema.define(:version => 20130220090820) do
     t.datetime "last_login_at"
     t.string   "current_login_ip"
     t.string   "last_login_ip"
+  end
+
+  create_table "works", :force => true do |t|
+    t.string   "text"
+    t.integer  "ammount"
+    t.integer  "work_type"
+    t.integer  "profile_id"
+    t.integer  "event_id"
+    t.datetime "at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

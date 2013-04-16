@@ -43,7 +43,7 @@ namespace :newrelic do
   desc "Setup newrelic configuration for this application"
   task :setup, roles: :web do
     run "mkdir -p #{shared_path}/config"
-    run "touch #{shared_path}/confing/newrelic.yml"
+    run "touch #{shared_path}/config/newrelic.yml"
   end
   after "deploy:setup", "newrelic:setup"
 
