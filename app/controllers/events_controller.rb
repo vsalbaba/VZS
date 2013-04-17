@@ -18,7 +18,7 @@ class EventsController < ApplicationController
 
   def index
     @pending_events = @events.pending.order('start_datetime ASC')
-    @done_events = @events.actual.done.order('end_datetime DESC')
+    @done_events = @events.actual.done.order('start_datetime DESC')
   end
 
   def old
