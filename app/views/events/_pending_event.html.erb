@@ -1,4 +1,4 @@
-<div class="media well well-small well-white">
+<div class="media well well-small well-white <%= "well-yes" if current_user.participates?(event) %>">
   <div class="media-body">
     <div class="pull-right">
       <% if current_user %>
