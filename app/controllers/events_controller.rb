@@ -10,6 +10,12 @@ class EventsController < ApplicationController
   def not_participate
   end
 
+  def unparticipate
+    participant = Profile.find(params[:participant_id])
+    @event.participants.delete participant
+    redirect_to events_path
+  end
+
   def index
     @pending_events = @events.pending.order('start_datetime ASC')
     @done_events = @events.actual.done.order('end_datetime DESC')

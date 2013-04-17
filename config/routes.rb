@@ -41,7 +41,8 @@ Vzs::Application.routes.draw do
       get 'old'
     end
     member do
-      get :participate
+      put :participate
+      put :unparticipate
     end
   end
 

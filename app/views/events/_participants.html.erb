@@ -1,0 +1,14 @@
+<% if can? :see_participants, event %>
+  <ol>
+    <% event.participants.each do |participant| %>
+      <%= content_tag_for :li, participant do %>
+        <%= participant.full_name %>
+        <% if can? :unparticipate, Event %>
+          <%= link_to unparticipate_event_path(event, :participant_id => participant.id), :method => :put do %>
+            <%= glyph :remove %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </ol>
+<% end %>

@@ -43,20 +43,7 @@
         </div>
         <div class="row">
           <div class="span3">
-            <% if current_user %>
-            <ol>
-              <% event.participants.each do |participant| %>
-                <li>
-                <%= participant.full_name %> 
-                <% if can? :unparticipate, Event %>
-                  <%= link_to '#' do %>
-                    <%= glyph :remove %>
-                  <% end %> 
-                <% end %>
-                </li>
-              <% end %>
-            </ol>
-          <% end %>
+            <%= render "participants", :event => event %>
           </div>
         </div>
       </div>
