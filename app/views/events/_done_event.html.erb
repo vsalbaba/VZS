@@ -7,7 +7,7 @@
             Upravit
           <% end %>
         <% end %>
-        <% if current_user.participates?(event) %>
+        <% if current_user.try(:participates?, event) %>
           | <%= render "participates" %>
         <% end %>
       </div>

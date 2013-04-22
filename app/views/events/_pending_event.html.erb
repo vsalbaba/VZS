@@ -1,4 +1,4 @@
-<div class="media well well-small well-white <%= "well-yes" if current_user.participates?(event) %>">
+<div class="media well well-small well-white <%= "well-yes" if current_user.try(:participates?, event) %>">
   <div class="media-body">
     <div class="pull-right">
       <% if current_user %>
@@ -9,7 +9,7 @@
           |
         <% end %>
         <span id="participation_box">
-          <% if current_user.participates?(event) %>
+          <% if current_user.try(:participates?, event) %>
             <%= render "participates" %>
           <%else %>
             <%= render "participation_buttons", :event => event %>
