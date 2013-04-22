@@ -5,7 +5,6 @@ require 'capistrano/ext/multistage'
 require 'bundler/capistrano'
 require 'rvm/capistrano'
 require 'new_relic/recipes'
-require 'capistrano-log'
 
 set :application, "vzs"
 

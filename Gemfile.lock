@@ -1,10 +1,3 @@
-GIT
-  remote: git@git.friendlysystems.cz:capistrano/capistrano-log.git
-  revision: 99156433343e2c444ad518d61110607ebdec617c
-  specs:
-    capistrano-log (0.0.1)
-      capistrano
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -263,7 +256,6 @@ DEPENDENCIES
   cancan (~> 1.6.7)
   capistrano
   capistrano-ext
-  capistrano-log!
   capistrano_colors
   coffee-rails (~> 3.2.1)
   factory_girl_rails (~> 1.2)
