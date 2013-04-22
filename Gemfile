@@ -67,6 +67,7 @@ group :deploy do
  gem 'capistrano'
  gem 'capistrano-ext'
  gem 'capistrano_colors'
+ gem 'capistrano-log', :git => "git@git.friendlysystems.cz:capistrano/capistrano-log.git"
  gem 'rvm-capistrano'
 end
 
