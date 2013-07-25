@@ -21,8 +21,6 @@ gem 'acts_as_list'
 
 gem "phony" # formatuje cisla na telefoni cisla
 
-gem "shadchan"
-
 gem 'auto_html'
 
 gem 'newrelic_rpm'
