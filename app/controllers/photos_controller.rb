@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class PhotosController < ApplicationController
-  load_and_authorize_resource :except => :create
+  load_and_authorize_resource :except => [:create]
 
   def create
     result = { :status => true, :errors => nil }
@@ -28,6 +28,13 @@ class PhotosController < ApplicationController
   end
 
   def edit
+  end
+
+  def sort
+    params[:photo].each_with_index do |id, index|
+      Photo.update_all({position: index+1}, {id: id})
+    end
+    render nothing: true
   end
 
   def update

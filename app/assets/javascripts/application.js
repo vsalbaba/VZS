@@ -26,10 +26,11 @@
 //= require tooltips
 //= require jquery-scrollerspy.js
 //= require y-dynamic-navbar.js
+//= require sortable
 // DISABLED require bootstrap.js.coffee
 // DISABLED require user_sessions.js.coffee
 
 // Po kazdem schovani modalu smazat jeho obsah. Jinak modaly plnene vzdalene zobrazuji stale stejna data.
 $('body').on('hidden', '.modal', function () {
-  $(this).removeData('modal');
+  $(this).removeData('moal');
 });

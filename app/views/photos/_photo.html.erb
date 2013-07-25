@@ -1,13 +1,9 @@
-<% if photo_counter % 4 == 0 %>
-  <div class="row">
-<% end %>
-  <div class="span2">
-    <a href="<%= photo.image.url(:large) %>" rel="lightbox[]">
-      <%= image_tag photo.image.url(:small) %>
-    </a>
-      <h5>
-        <% photo.name.truncate(10) %>
-    <% if current_user %>
+<%= content_tag_for :li, photo, class: "span2" do %>
+  <a href="<%= photo.image.url(:large) %>" rel="lightbox[]">
+    <%= image_tag photo.image.url(:gallery), class: "img-polaroid"%>
+  </a>
+  <div>
+    <% if current_user %> <!-- stazeni originalu a smazani fotky -->
       <a class="btn pull-right" href="<%= photo.image.url(:original)%>" >
         <i class="icon-download"></i>
       </a>
@@ -17,11 +13,5 @@
         <% end %>
       <% end %>
     <% end %>
-    </h5>
   </div>
-<% if photo_counter % 4 == 3 %>
-  </div>
-  <br />
 <% end %>
-
-

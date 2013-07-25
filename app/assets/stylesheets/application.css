@@ -11,4 +11,5 @@
  *= require formtastic
  *= require formtastic_changes
  *= require formtastic-bootstrap
+ *= require gallery
 */

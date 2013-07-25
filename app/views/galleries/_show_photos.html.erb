@@ -1,6 +1,3 @@
-<div class="span8">
+<%= content_tag_for :ul, @gallery, :class => ((can? :sort, Photo) ? "sortable" : ""), :data => {"update-url" => sort_gallery_photos_url(@gallery)} do %>
   <%= render @gallery.photos %>
-  <% unless @gallery.photos.count % 4 == 3 %>
-    </div>
-  <% end %>
-</div>
+<% end %>

@@ -84,13 +84,12 @@ class Ability
   end
 
   def photo_rules(user)
+    can "sort", "photos"
     if user.admin? or user.board? then
       can :manage, Photo
     else
+      cannot :create, Photo
       can :read, Photo
-      can :manage, Photo do |p|
-        p.gallery.user == user
-      end
     end
   end
 
@@ -101,6 +100,8 @@ class Ability
       can [:update, :save, :destroy], Gallery, :group => [OUTSIDER, MEMBER], :user_id => user.id
     elsif user.group? OUTSIDER
       can :read, Gallery, :group => OUTSIDER
+    elsif user.group >= BOARD
+      can :manage, Gallery
     else
       can :read, Gallery, :group => OUTSIDER # neprihlaseni smi prohlizet galerie pro necleny
     end

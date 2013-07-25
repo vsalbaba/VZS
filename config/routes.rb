@@ -31,7 +31,9 @@ Vzs::Application.routes.draw do
   end
 
   resources :galleries do
-    resources :photos
+    resources :photos do
+      collection {post  :sort}
+    end
   end
 
   resources :articles
