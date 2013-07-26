@@ -25,6 +25,8 @@ gem 'auto_html'
 
 gem 'newrelic_rpm'
 
+gem 'shareable'
+
 group :development do
   gem 'wirble'
   gem 'quiet_assets'
