@@ -29,17 +29,17 @@
     -->
   </head>
   <body>
-<div id="nav" class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-      <%= link_to 'VZS ČČK Třebíč', root_path, :class => 'brand' %>
-            <div class="nav-collapse">
-              <%= render "layouts/navbar"%>
-            </div>
-            <!--/.nav-collapse -->
+    <div id="nav" class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= link_to 'VZS ČČK Třebíč', root_path, :class => 'brand' %>
+          <div class="nav-collapse">
+            <%= render "layouts/navbar"%>
+          </div>
+          <!--/.nav-collapse -->
         </div>
+      </div>
     </div>
-</div>
 
     <div class="container vzs-main-page">
       <div class="row"> <!-- main header - logo + napis -->
@@ -54,34 +54,37 @@
           <div class="row">
             <div class="span3" id="vzs-left-menu"> <!-- Menu -->
               <div class="sidebar-nav">
-                  <%= link_to root_path, :class => 'vzs-main-logo-container' do %>
-                    <%= image_tag("znakVZS_150x150.gif", :size => "150x150", :class => "vzs-main-logo img-circle") %>
-                  <% end %>
-                 <%= render 'layouts/menu' %>
-                 <%= render 'layouts/treninky' %>
+                <%= link_to root_path, :class => 'vzs-main-logo-container' do %>
+                  <%= image_tag("znakVZS_150x150.gif", :size => "150x150", :class => "vzs-main-logo img-circle") %>
+                <% end %>
+                <%= render 'layouts/menu' %>
+                <%= render 'layouts/treninky' %>
 
+                <%= link_to 'http://www.cez.cz' do %>
+                  <%= image_tag("logo-skupina-cez.jpg", :class => "banner") %>
+                <% end %>
 
-               <%= link_to 'http://www.cez.cz' do %>
-                <%= image_tag("logo-skupina-cez.jpg", :class => "banner") %>
-              <% end %>
+                <%= link_to 'http://www.vzp.cz' do %>
+                  <%= image_tag("VZP_modul-A_barva.png", :class => "banner", :size => "180x38") %>
+                <% end %>
 
-              <%= link_to 'http://www.zpravodajedu.cz' do %>
-                <%= image_tag("dukovany_160x160_v02.gif", :class => "banner") %>
-              <% end %>
+                <%= link_to 'http://www.zpravodajedu.cz' do %>
+                  <%= image_tag("dukovany_160x160_v02.gif", :class => "banner") %>
+                <% end %>
 
               </div><!--/.well -->
             </div><!--/span-->
 
             <div class="span9"  id="vzs-main-content">
               <% if content_for? :context_menu %>
-              <div class="row">
+                <div class="row">
                   <div class="pull-right">
                     <div class="btn-group">
                       <%= yield(:context_menu) %>
                     </div>
                   </div>
                 </div>
-                <% end %>
+              <% end %>
 
               <% flash.each do |name, msg| %>
                 <%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert alert-#{name == :notice ? 'success' : 'error'} " %>
@@ -102,13 +105,13 @@
       <p>
       &copy;
       FriendlySystems.cz 2012, verze <a class="#" class="tooltip" title="<%= REVISION%>"><%= CURRENT_VERSION%></a>
-        <span class="pull-right">
-      <% if current_user %>
-        <%= link_to t('btn.edit_profile'), edit_user_path(current_user) %> |
-        <%= link_to t('btn.logout'), logout_path %>
-      <% else %>
-      <%= link_to t('btn.login'), login_path %>
-    <% end %>
+      <span class="pull-right">
+        <% if current_user %>
+          <%= link_to t('btn.edit_profile'), edit_user_path(current_user) %> |
+          <%= link_to t('btn.logout'), logout_path %>
+        <% else %>
+          <%= link_to t('btn.login'), login_path %>
+        <% end %>
       </span>
       </p>
       </footer>
