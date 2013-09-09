@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130723181300) do
+ActiveRecord::Schema.define(:version => 20130909190521) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -35,18 +35,13 @@ ActiveRecord::Schema.define(:version => 20130723181300) do
     t.boolean  "approved"
   end
 
-  create_table "articles_galleries", :id => false, :force => true do |t|
-    t.integer "article_id"
-    t.integer "gallery_id"
-  end
-
   create_table "attachments", :force => true do |t|
     t.integer  "article_id"
     t.integer  "user_id"
     t.string   "name"
-    t.integer  "file_file_size"
     t.string   "file_file_name"
     t.datetime "file_updated_at"
+    t.integer  "file_file_size"
     t.string   "file_content_type"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
@@ -155,6 +150,16 @@ ActiveRecord::Schema.define(:version => 20130723181300) do
     t.date     "birthdate"
     t.string   "birthnumber"
     t.string   "vzs_id"
+  end
+
+  create_table "profiles_trainings", :force => true do |t|
+    t.integer "profile_id"
+    t.integer "training_id"
+  end
+
+  create_table "trainings", :force => true do |t|
+    t.datetime "date"
+    t.string   "program"
   end
 
   create_table "users", :force => true do |t|

@@ -3,7 +3,32 @@ Vzs::Application.routes.draw do
 
   match 'pages/:id-:slug' => 'pages#show', :as => :page_seo, :via => :get
 
-  resources :pages
+  resources :articles
+  resources :articles do
+    collection do
+      get :pending
+    end
+    resources :comments
+    resources :attachments
+  end
+
+  resources :events do
+    collection do
+      get 'old'
+    end
+    member do
+      put :participate
+      put :unparticipate
+    end
+  end
+
+  resources :galleries
+  resources :galleries do
+    resources :photos do
+      collection {post  :sort}
+    end
+  end
+
   resources :life_guarding_timespans, :path => "hlidani" do
     collection do
       get :current
@@ -22,29 +47,11 @@ Vzs::Application.routes.draw do
     end
   end
 
-  resources :articles do
-    collection do
-      get :pending
-    end
-    resources :comments
-    resources :attachments
-  end
+  resources :pages
 
-  resources :galleries do
-    resources :photos do
-      collection {post  :sort}
-    end
-  end
-
-  resources :articles
-  resources :galleries
-  resources :events do
-    collection do
-      get 'old'
-    end
+  resources :trainings do
     member do
-      put :participate
-      put :unparticipate
+      get :train
     end
   end
 

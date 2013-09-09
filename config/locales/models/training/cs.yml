@@ -1,0 +1,8 @@
+cs:
+  activerecord:
+    models:
+      training: Trénink
+    attributes:
+      training:
+        date: Datum
+        couches: Trenéři

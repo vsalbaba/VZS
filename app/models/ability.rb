@@ -27,6 +27,13 @@ class Ability
     photo_rules(user)
     user_manager_rules(user)
     user_rules(user)
+    training_rules(user)
+  end
+
+  def training_rules(user)
+    if (user.group? BOARD)
+      can :manage, Training
+    end
   end
 
   def life_guarding_timespans_rules(user)

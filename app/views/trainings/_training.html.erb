@@ -1,0 +1,11 @@
+<tr>
+  <td><%= l training.date, :format => :default %></td>
+  <td><%= training.profiles.map(&:full_name).to_sentence %></td>
+  <td>
+    <% unless training.profiles.include? current_user.profile %>
+      <%= link_to train_training_path(training) do %>
+        <i class="icon-plus-sign"></i> Budu trenovat!
+      <% end %>
+    <% end %>
+  </td>
+</tr>

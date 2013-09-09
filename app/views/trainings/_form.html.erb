@@ -1,0 +1,9 @@
+<%= semantic_form_for @training do |f| %>
+  <%= f.semantic_errors %>
+    <%= f.inputs do %>
+      <%= f.input :date, :as => :datetime  %>
+    <% end %>
+    <%= f.actions do %>
+      <%= f.action :submit, :as => :button, :label => t('btn.save'), :button_html => { :class => 'btn btn-success' } %>
+    <% end %>
+<% end %>

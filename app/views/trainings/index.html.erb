@@ -1,0 +1,17 @@
+<% title t('label.training.index') %>
+<% context_menu do %>
+  <%= link_new new_training_path, t('label.training.new') %>
+<% end %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= t('activerecord.attributes.training.date') %></th>
+      <th><%= t('activerecord.attributes.training.couches') %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @trainings %>
+  </tbody>
+</table>
