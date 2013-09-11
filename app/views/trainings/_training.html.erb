@@ -1,11 +1,15 @@
-<tr>
+<%= content_tag_for :tr, training do %>
   <td><%= l training.date, :format => :default %></td>
   <td><%= training.profiles.map(&:full_name).to_sentence %></td>
   <td>
-    <% unless training.profiles.include? current_user.profile %>
-      <%= link_to train_training_path(training) do %>
-        <i class="icon-plus-sign"></i> Budu trenovat!
+    <% if training.profiles.include? current_user.profile %>
+      <%= link_to make_up_your_mind_training_path(training), :remote => true, :method => :put, :class => "btn btn-mini btn-danger", :confirm => "Nezapomeň za sebe zajistit náhradu!" do %>
+        <%= glyph :remove %> Něco mi do toho vlezlo
+      <% end %>
+    <% else %>
+      <%= link_to train_training_path(training), :remote => true, :method => :put, :class => "btn btn-mini btn-primary" do %>
+        <%= glyph :ok%> Budu trénovat!
       <% end %>
     <% end %>
   </td>
-</tr>
+<% end %>

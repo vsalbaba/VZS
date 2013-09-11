@@ -51,7 +51,8 @@ Vzs::Application.routes.draw do
 
   resources :trainings do
     member do
-      get :train
+      put :train
+      put :make_up_your_mind
     end
   end
 

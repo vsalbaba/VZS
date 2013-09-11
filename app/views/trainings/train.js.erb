@@ -1,0 +1,2 @@
+var html = '<%= escape_javascript (render "training", :training => @training) %>';
+$("tr.training#training_<%=@training.id%>").replaceWith(html);

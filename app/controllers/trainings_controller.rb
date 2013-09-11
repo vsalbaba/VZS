@@ -28,8 +28,12 @@ class TrainingsController < ApplicationController
 
   def train
     @training = Training.find params[:id]
-    @training.profiles << current_user.profile
-    redirect_to :action => 'index'
+    @training.profiles << current_user.profile unless @training.profiles.include?(current_user.profile)
+  end
+
+  def make_up_your_mind
+    @training = Training.find params[:id]
+    @training.profiles.delete current_user.profile
   end
 
   def update
