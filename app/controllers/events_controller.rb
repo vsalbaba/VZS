@@ -30,7 +30,7 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new
+    @event = Event.new :start_datetime => Time.now, :end_datetime => Time.now
   end
 
   def create

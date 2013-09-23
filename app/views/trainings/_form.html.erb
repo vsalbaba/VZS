@@ -1,7 +1,7 @@
 <%= semantic_form_for @training do |f| %>
   <%= f.semantic_errors %>
     <%= f.inputs do %>
-      <%= f.input :date, :as => :datetime  %>
+      <%= f.input :date, :as => :string,  :input_html => {:value => l(@training.date, :format => :short), :class => "input-datetime",:type => :datetime} %>
     <% end %>
     <%= f.actions do %>
       <%= f.action :submit, :as => :button, :label => t('btn.save'), :button_html => { :class => 'btn btn-success' } %>

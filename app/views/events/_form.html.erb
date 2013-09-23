@@ -3,8 +3,8 @@
   <%= f.inputs do %>
     <%= f.input :name %>
     <%= f.input :description %>
-    <%= f.input :start_datetime %>
-    <%= f.input :end_datetime %>
+    <%= f.input :start_datetime, :as => :string, :input_html => {:value => l(@event.start_datetime, :format => :short), :class => "input-datetime", :type => :datetime} %>
+    <%= f.input :end_datetime, :as => :string, :input_html => {:value => l(@event.end_datetime, :format => :short), :class => "input-datetime", :type => :datetime} %>
     <%= f.input :place %>
     <%= f.input :event_type %>
     <%= f.input :link %>
