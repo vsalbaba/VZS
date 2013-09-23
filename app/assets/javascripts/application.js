@@ -44,3 +44,14 @@ $(document).ready(function() {
    autoclose: true,
    weekStart: 1});
 });
+
+$(document).ready(function() {
+  $('.input-birthdate').datetimepicker({
+    language: 'cs',
+    format: 'yyyy-mm-dd',
+    weekStart: 1,
+    autoclose: true,
+    startView: 'decade',
+    minView: 'month'}
+  )
+})

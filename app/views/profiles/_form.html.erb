@@ -5,7 +5,7 @@
   <%= p.input :telephone %>
   <%= p.input :im_jabber %>
   <% if can? :update_extended, @user.profile %>
-  <%= p.input :birthdate, :as => :string, :input_html => {:type => :date}  %>
+    <%= p.input :birthdate, :as => :string, :input_html => {:type => :date, :class => "input-birthdate"}  %>
     <%= p.input :birthnumber %>
     <%= p.input :vzs_id %>
     <%= render 'addresses/form', :f => p %>
