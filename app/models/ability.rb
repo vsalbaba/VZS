@@ -33,6 +33,9 @@ class Ability
   def training_rules(user)
     if (user.group? BOARD)
       can :manage, Training
+    elsif (user.group? MEMBER and user.profile.user_age_group == :adults)
+      can :read,  Training
+      can :index, Training
     end
   end
 

@@ -3,6 +3,7 @@ class TrainingsController < ApplicationController
 
   def index
     @trainings = Training.order('date ASC').where(['`date` > ?', Date.today - 7])
+    authorize!(:index, Training)
   end
 
   def show

@@ -1,6 +1,8 @@
 <% title t('label.training.index') %>
 <% context_menu do %>
-  <%= link_new new_training_path, t('label.training.new') %>
+  <% if can? :create, Training %>
+    <%= link_new new_training_path, t('label.training.new') %>
+  <% end %>
 <% end %>
 
 <table class="table table-striped">
