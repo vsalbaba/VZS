@@ -38,3 +38,5 @@ cs:
             edit: 'Editace galerie'
         comment:
             edit: 'Editace komentáře'
+        training:
+            index: 'Tréninky'
