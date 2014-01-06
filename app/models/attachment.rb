@@ -27,7 +27,6 @@ class Attachment < ActiveRecord::Base
   validates :name, :presence => true
   validates_attachment_presence :file
   validates :user_id, :presence => true
-  validates :article_id, :presence => true
 
 
   def file_name

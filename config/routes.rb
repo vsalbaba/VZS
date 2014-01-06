@@ -22,6 +22,8 @@ Vzs::Application.routes.draw do
     end
   end
 
+  resources :files
+
   resources :galleries
   resources :galleries do
     resources :photos do

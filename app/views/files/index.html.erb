@@ -1,0 +1,29 @@
+<%= title 'Nahrané soubory' %>
+<% context_menu do %>
+  <%= link_new new_file_path, 'Nahrát soubor' %>
+<% end %>
+
+<div class='row-fluid' id='fileList'>
+  <table class="table">
+    <thead>
+        <tr>
+          <th>Název</th>
+          <th>Soubor</th>
+          <th>Velikost</th>
+          <th>Článek</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <% @files.each do |file| %>
+              <td><%= link_to file.name, file.file.url %></td>
+              <td><%= file.file_name %></td>
+              <td><%= number_to_human_size(file.size) %></td>
+              <td><%= file.article.try(:title) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <ul>
+  </ul>
+</div>
