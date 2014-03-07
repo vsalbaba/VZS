@@ -14,6 +14,7 @@ class Ability
     if user.group == ADMIN or user.group == BOARD
       can :manage, :all
       can :approve, Article
+      can :see, "files"
       return
     end
 

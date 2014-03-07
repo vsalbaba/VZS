@@ -1,5 +1,6 @@
 class FilesController < ApplicationController
   def index
+    authorize! :see, "files"
     @files = Attachment.all
   end
 
