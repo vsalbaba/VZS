@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 if Rails.env == 'production' then
-  CURRENT_VERSION=`git describe --abbrev=0`.strip
+  CURRENT_VERSION=`git describe --tags`.strip
 else
   CURRENT_VERSION=`git rev-parse HEAD`.strip
 end 
