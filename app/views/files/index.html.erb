@@ -1,8 +1,9 @@
 <%= title 'Nahrané soubory' %>
+<% if can? :upload, "files" %>
 <% context_menu do %>
   <%= link_new new_file_path, 'Nahrát soubor' %>
 <% end %>
-
+<% end %>
 <div class='row-fluid' id='fileList'>
   <table class="table">
     <thead>

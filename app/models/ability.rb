@@ -18,6 +18,7 @@ class Ability
       return
     end
 
+    file_rules(user)
     article_rules(user)
     attachments_rules(user)
     comments_rules(user)
@@ -29,6 +30,9 @@ class Ability
     user_manager_rules(user)
     user_rules(user)
     training_rules(user)
+  end
+
+  def file_rules(user)
   end
 
   def training_rules(user)

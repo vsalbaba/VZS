@@ -5,10 +5,12 @@ class FilesController < ApplicationController
   end
 
   def new
+    authorize! :upload, "files"
     @file = Attachment.new
   end
 
   def create
+    authorize! :upload, "files"
     @file = current_user.attachments.new params[:attachment]
 
     if @file.save!

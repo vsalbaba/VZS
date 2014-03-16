@@ -27,4 +27,8 @@
   <% if can? :manage, Page %>
     <li><%= link_to raw('Správa stránek <br /> <small>Pro administrátora</small>'), pages_path %></li>
   <% end %>
+  <% if can? :see, "files" %>
+    <li><%= link_to 'Soubory ke stažení', files_path %></li>
+  <% end %>
+
 </ul>
