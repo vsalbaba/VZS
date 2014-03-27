@@ -33,7 +33,7 @@ class LifeGuardsController < ApplicationController
       @life_guard.profile = current_user.profile
     end
     @life_guard.save!
-    respond_with @life_guard
+    respond_with @life_guarding_timespan
   end
 
   def unsubscribe
@@ -42,7 +42,7 @@ class LifeGuardsController < ApplicationController
       format.html {
         redirect_to @life_guarding_timespan
       }
-      format. js
+      format.js
     end
   end
 

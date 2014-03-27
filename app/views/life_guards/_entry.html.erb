@@ -1,4 +1,4 @@
-  <%= life_guard.map{|e| e.profile.full_name}.to_sentence%>
+  <%= life_guard.map{|e| e.life_guard_text}.to_sentence%>
   <% if can? :unsubscribe, :life_guard %>
     <%= link_to unsubscribe_life_guarding_timespan_life_guard_path(life_guarding_timespan, life_guard.first), :method => :put, :remote => true, :confirm => "Opravdu odhlásit #{life_guard.first.profile.full_name}?" do %>
       <i class="icon-remove"></i>
