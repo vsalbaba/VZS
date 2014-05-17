@@ -24,9 +24,11 @@ class Profile < ActiveRecord::Base
     :im_jabber, :birthdate,
     :birthnumber,
     :address, :address_attributes, :vzs_id
-
+  audited
   belongs_to :user, :inverse_of => :profile
   has_and_belongs_to_many :trainigs
+  has_many :qualifications, :through => :valid_qualifications
+  has_many :valid_qualifications
 
   has_one :address, :dependent => :destroy, :inverse_of => :profile
   accepts_nested_attributes_for :address

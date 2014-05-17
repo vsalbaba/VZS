@@ -1,0 +1,18 @@
+<% context_menu do %>
+    <%= link_back qualifications_path, t('label.qualification.index') %>
+    <%= link_edit edit_qualification_path, t('label.qualification.edit') %>
+    <%= link_delete @qualification, t('btn.delete'), 'Opravdu odstranit kvalifikaci ' + @qualification.name + '?' %>
+<% end %>
+
+<div class="row-fluid vzs-page">
+    <%= title @qualification.name %>
+    <strong>Popis:</strong>
+    <p>
+        <%= @qualification.description %>
+    </p>
+    <br />
+    <strong>Kvalifikovaní</strong>
+    <p>
+        Vypis vsech lidi kteri maji tuto kvalifikaci
+    </p>
+</div>

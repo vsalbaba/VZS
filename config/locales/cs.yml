@@ -40,3 +40,7 @@ cs:
             edit: 'Editace komentáře'
         training:
             index: 'Tréninky'
+        qualification:
+          new: "Nová kvalifikace"
+          index: "Seznam kvalifikací"
+          edit: "Upravit kvalifikaci"

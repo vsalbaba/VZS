@@ -1,0 +1,9 @@
+cs:
+  activerecord:
+    models:
+      qualification: Kvalifikace
+    attributes:
+      qualification:
+        description: Popis
+        abbreviation: Zkratka
+        name: Název
