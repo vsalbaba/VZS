@@ -99,9 +99,15 @@ class Ability
   end
 
   def photo_rules(user)
-    can "sort", "photos"
     if user.admin? or user.board? then
       can :manage, Photo
+    end
+    if user.is_member_or_more?
+      can "sort", "photos"
+      can :create, Photo
+      can :destroy, Photo do |photo|
+        photo.gallery && photo.gallery.user_id == user.id
+      end
     else
       cannot :create, Photo
       can :read, Photo
@@ -112,7 +118,8 @@ class Ability
     if user.group? MEMBER
       can :read, Gallery, :group => [OUTSIDER, MEMBER]
       can :create, Gallery, :group => [nil, OUTSIDER, MEMBER], :user_id => user.id
-      can [:update, :save, :destroy], Gallery, :group => [OUTSIDER, MEMBER], :user_id => user.id
+      can [:update, :save], Gallery, :group => [OUTSIDER, MEMBER]
+      can :destroy, Gallery, :user_id => user.id
     elsif user.group? OUTSIDER
       can :read, Gallery, :group => OUTSIDER
     elsif user.group >= BOARD
@@ -123,7 +130,7 @@ class Ability
 
     # :read, Photo nepotrebujeme - odkazy na fotky jdou primo
     unless user.group? OUTSIDER
-      can [:create, :update, :save, :destroy], Photo do |p|
+      can [:create, :update, :save], Photo do |p|
         user.group >= p.gallery.group
       end
     end

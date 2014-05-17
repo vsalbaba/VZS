@@ -4,7 +4,9 @@
   <%= link_back galleries_path, 'Seznam fotogalerií' %>
   <% if can? :edit, @gallery%>
     <%= link_edit edit_gallery_path(@gallery), t('btn.edit') %>
+        <% if can? :destroy, @gallery %>
     <%= link_delete @gallery, t('btn.delete'), 'Opravdu odstranit tuto galerii?' %>
+            <% end %>
   <% end %>
 <% end %>
 

@@ -7,7 +7,7 @@
       <a class="btn pull-right" href="<%= photo.image.url(:original)%>" >
         <i class="icon-download"></i>
       </a>
-      <% if can? :destroy, photo %>
+      <% if can? :destroy, photo  %>
         <%= link_to [photo.gallery, photo], :method=>:delete, :class=> 'btn btn-danger pull-right', :confirm => "Opravdu smazat fotografii?" do %>
         <i class="icon-trash"></i>
         <% end %>
