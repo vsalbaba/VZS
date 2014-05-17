@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130909190521) do
+ActiveRecord::Schema.define(:version => 20140517102139) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -40,12 +40,33 @@ ActiveRecord::Schema.define(:version => 20130909190521) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "file_file_name"
-    t.datetime "file_updated_at"
-    t.integer  "file_file_size"
     t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
+
+  create_table "audits", :force => true do |t|
+    t.integer  "auditable_id"
+    t.string   "auditable_type"
+    t.integer  "associated_id"
+    t.string   "associated_type"
+    t.integer  "user_id"
+    t.string   "user_type"
+    t.string   "username"
+    t.string   "action"
+    t.text     "audited_changes"
+    t.integer  "version",         :default => 0
+    t.string   "comment"
+    t.string   "remote_address"
+    t.datetime "created_at"
+  end
+
+  add_index "audits", ["associated_id", "associated_type"], :name => "associated_index"
+  add_index "audits", ["auditable_id", "auditable_type"], :name => "auditable_index"
+  add_index "audits", ["created_at"], :name => "index_audits_on_created_at"
+  add_index "audits", ["user_id", "user_type"], :name => "user_index"
 
   create_table "brigades", :force => true do |t|
     t.integer  "event_id"
@@ -157,6 +178,14 @@ ActiveRecord::Schema.define(:version => 20130909190521) do
     t.integer "training_id"
   end
 
+  create_table "qualifications", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "abbreviation"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "trainings", :force => true do |t|
     t.datetime "date"
     t.string   "program"
@@ -177,6 +206,16 @@ ActiveRecord::Schema.define(:version => 20130909190521) do
     t.datetime "last_login_at"
     t.string   "current_login_ip"
     t.string   "last_login_ip"
+  end
+
+  create_table "valid_qualification", :force => true do |t|
+    t.integer  "profile_id"
+    t.integer  "qualification_id"
+    t.date     "valid_from"
+    t.date     "valid_to"
+    t.integer  "created_by"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "works", :force => true do |t|

@@ -17,7 +17,7 @@ gem 'will_paginate', '~> 3.0.3'
 gem 'paperclip', '~> 2.0'
 
 gem 'acts_as_list'
-#gem "audited", "~> 3.0.0.rc2"
+gem 'audited-activerecord', '~> 3.0'
 
 gem "phony" # formatuje cisla na telefoni cisla
 

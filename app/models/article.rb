@@ -17,6 +17,7 @@
 #
 
 class Article < ActiveRecord::Base
+  audited
   auto_html_for :content do
     image
     youtube(:width => 474, :height => 300)
