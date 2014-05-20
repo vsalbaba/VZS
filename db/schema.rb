@@ -208,12 +208,11 @@ ActiveRecord::Schema.define(:version => 20140517102139) do
     t.string   "last_login_ip"
   end
 
-  create_table "valid_qualification", :force => true do |t|
+  create_table "valid_qualifications", :force => true do |t|
     t.integer  "profile_id"
     t.integer  "qualification_id"
     t.date     "valid_from"
     t.date     "valid_to"
-    t.integer  "created_by"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end

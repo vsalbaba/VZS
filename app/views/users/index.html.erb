@@ -6,6 +6,9 @@
   <% if can? :view, :emails %>
     <%= link_new emails_users_path, 'Emaily' %>
   <% end %>
+  <% if can? :manage, Qualification %>
+        <%= link_new qualifications_path, "Kvalifikace" %>
+<% end %>
 <% end %>
 
 <div class="row-fluid" id="userList">

@@ -30,6 +30,13 @@ class Ability
     user_manager_rules(user)
     user_rules(user)
     training_rules(user)
+    qualification_rules(user)
+  end
+
+  def qualification_rules(user)
+    if user.group? ADMIN
+      can :manage, Qualification
+    end
   end
 
   def file_rules(user)

@@ -21,8 +21,9 @@ Vzs::Application.routes.draw do
     end
   end
 
-  resources :qualifications
-
+  resources :qualifications do
+    resources :valid_qualifications
+  end
   resources :files
 
   resources :galleries

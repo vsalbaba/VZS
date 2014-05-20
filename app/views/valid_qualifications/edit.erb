@@ -1,0 +1,9 @@
+<%= title t('label.valid_qualification.edit') %>
+<%= semantic_form_for [@qualification, @valid_qualification] do  |f| %>
+    <%= f.semantic_errors %>
+    <%= f.inputs do %>
+        <%= f.input :valid_from, :as => :string, :input_html => {:type => :date, :class => "input-birthdate"} %>
+        <%= f.input :valid_to, :as => :string, :input_html => {:type => :date, :class => "input-birthdate"} %>
+    <% end %>
+    <%= f.actions %>
+<% end %>

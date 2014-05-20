@@ -1,3 +1,29 @@
+<div class="modal fade" id="people-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Přidat kvalifikovaného</h4>
+            </div>
+            <div class="modal-body">
+                <%= semantic_form_for [@qualification, @valid_qualification] do |f| %>
+                    <%= f.semantic_errors %>
+                    <%= f.inputs do %>
+                        <%= f.input :valid_from, :as => :string, :input_html => {:type => :date, :class => "input-birthdate"} %>
+                        <%= f.input :valid_to, :as => :string, :input_html => {:type => :date, :class => "input-birthdate"} %>
+                        <%= f.input :profile %>
+                    <% end %>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                <% end %>
+                </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <% context_menu do %>
     <%= link_back qualifications_path, t('label.qualification.index') %>
     <%= link_edit edit_qualification_path, t('label.qualification.edit') %>
@@ -7,12 +33,38 @@
 <div class="row-fluid vzs-page">
     <%= title @qualification.name %>
     <strong>Popis:</strong>
+
     <p>
         <%= @qualification.description %>
     </p>
-    <br />
+    <br/>
     <strong>Kvalifikovaní</strong>
+    <button class="btn btn-default" data-toggle="modal" data-target="#people-modal">
+        <i class="icon-plus"></i> Přidat
+    </button>
     <p>
-        Vypis vsech lidi kteri maji tuto kvalifikaci
+    <table>
+        <thead>
+        <tr>
+            <th>Jméno</th>
+            <th>Platné od</th>
+            <th>Platné do</th>
+            <th>Akce</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @qualified_people.each do |valid_qualification| %>
+
+            <tr>
+                <td><%= valid_qualification.profile.full_name %></td>
+                <td><%= valid_qualification.valid_from %></td>
+                <td><%= valid_qualification.valid_to %></td>
+                <td><%= link_edit edit_qualification_valid_qualification_path(@qualification, valid_qualification), "Upravit" %></td>
+            </tr>
+        <% end %>
+
+        </tbody>
+    </table>
+
     </p>
 </div>

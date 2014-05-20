@@ -6,6 +6,9 @@ class QualificationsController < ApplicationController
 
   def show
     @qualification = Qualification.find(params[:id])
+    @qualified_people = @qualification.valid_qualifications.includes(:profile)
+    @people = User.members.map(&:profile)
+    @valid_qualification = ValidQualification.new(:qualification => @qualification)
   end
 
   def new

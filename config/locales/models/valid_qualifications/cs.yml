@@ -1,0 +1,17 @@
+cs:
+  activerecord:
+    models:
+      valid_qualification: Platná kvalifikace
+    attributes:
+      valid_qualification:
+        valid_from: 'Platné od'
+        valid_to: 'Platné do'
+        profile: 'Osoba'
+  flash:
+    valid_qualification:
+      create: Kvalifikace přidána
+      update: Kvalifikace upravena
+      destroy: Kvalifikace odebrána
+  label:
+    valid_qualification:
+      edit: Upravit kvalifikaci
