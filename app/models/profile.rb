@@ -58,7 +58,9 @@ class Profile < ActiveRecord::Base
 
   def user_age
     return nil if birthdate.nil?
-    (Time.now.to_date - birthdate.to_date).to_i / 365
+    now = Time.now.utc.to_date
+    now.year - birthdate.year - ((now.month > birthdate.month || (now.month == birthdate.month && now.day >= birthdate.day)) ? 0 : 1)
+    #(Time.now.to_date - birthdate.to_date).to_i / 365
   end
 
   def user_age_group
