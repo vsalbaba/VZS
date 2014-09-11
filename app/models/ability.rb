@@ -81,7 +81,10 @@ class Ability
     elsif user.group? OUTSIDER
       can :read, Event, :group => [nil, OUTSIDER]
     else
-      can :read, Event, :group => [nil, OUTSIDER] # neprihlaseni smi cist clanky pro necleny
+      can :read, Event, :group => [nil, OUTSIDER]
+    end
+    can :finish, Event do |event|
+      event.responsible_person_id == user.id or user.role == ADMIN
     end
   end
 

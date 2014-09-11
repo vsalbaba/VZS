@@ -18,3 +18,5 @@ cs:
         link: Odkaz
         public: Veřejná
         group: Viditelnost
+        default_hours_of_work: Odhadovaný počet hodin
+        responsible_person: Odpovědná osoba

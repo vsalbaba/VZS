@@ -8,8 +8,10 @@
     <%= f.input :place %>
     <%= f.input :event_type %>
     <%= f.input :link %>
+    <%= f.input :responsible_person %>
+    <%= f.input :default_hours_of_work %>
     <%= f.input :group, :as => :select, :collection => group_names, :include_blank => false %>
   <% end %>
   <%= f.actions %>
-<% end  %>
+<% end %>
 

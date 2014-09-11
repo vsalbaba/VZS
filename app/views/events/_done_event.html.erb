@@ -1,50 +1,58 @@
 <div class="media well well-small well-white">
-  <div class="media-body">
-    <% if current_user %>
-      <div class="pull-right">
-        <% if can? :edit, event %>
-          <%= link_to edit_event_path(event) do %>
-            Upravit
-          <% end %>
-        <% end %>
-        <% if current_user.try(:participates?, event) %>
-          | <%= render "participates" %>
-        <% end %>
-      </div>
-    <% end %>
-    <h4 class="media-heading">
-      <%= l event.start_datetime.to_date, :format => :with_day_and_year %>
-      <%= link_to_unless event.link.blank?, event.name, event.link %>
-      <small>(<%= event.event_type %>)</small>
-    </h4>
-    <div class="row">
-      <div class="span3">
-        <div class="row">
-          <div class="span3">
-            <% unless event.start_datetime.hour == 0 and event.start_datetime.min == 0 %>
-              <strong>
-                <%= l event.start_datetime, :format => :just_time %> 
-                <% if event.end_datetime %>
-                  - <%= l event.end_datetime, :format => :just_time %>
+    <div class="media-body">
+        <% if current_user %>
+          <div class="pull-right">
+              <% if can? :edit, event %>
+                <%= link_to edit_event_path(event) do %>
+                  Upravit
                 <% end %>
-              </strong>
-            <% end %>
+              <% end %>
+              <% if current_user.try(:participates?, event) %>
+                | <%= render "participates" %>
+              <% end %>
           </div>
-        </div>
+        <% end %>
+        <h4 class="media-heading">
+            <%= l event.start_datetime.to_date, :format => :with_day_and_year %>
+            <%= link_to_unless event.link.blank?, event.name, event.link %>
+            <small>
+                <% unless event.event_type.blank? %>
+                  (<%= event.event_type %>)
+                <% end %>
+            </small>
+        </h4>
         <div class="row">
-          <div class="span3">
-            <%= event.place %>
-          </div>
+            <div class="span3">
+                <div class="row">
+                    <div class="span3">
+                        <% unless event.start_datetime.hour == 0 and event.start_datetime.min == 0 %>
+                          <strong>
+                              <%= l event.start_datetime, :format => :just_time %>
+                              <% if event.end_datetime %>
+                                - <%= l event.end_datetime, :format => :just_time %>
+                              <% end %>
+                          </strong>
+                          <br />
+                        <% end %>
+                        <% if (event.responsible_person.try(:full_name)) %>
+                          Vedoucí: <%= event.responsible_person.full_name %>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span3">
+                        <%= event.place %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span3">
+                        <%= render "participants", :event => event %>
+                    </div>
+                </div>
+            </div>
+            <div class="span5">
+                <%= event.description_html %>
+            </div>
         </div>
-        <div class="row">
-          <div class="span3">
-            <%= render "participants", :event => event %>
-          </div>
-        </div>
-      </div>
-      <div class="span5">
-        <%= event.description_html %>
-      </div>
     </div>
-  </div>
 </div>

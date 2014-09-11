@@ -1,62 +1,69 @@
 <div class="media well well-small well-white <%= "well-yes" if current_user.try(:participates?, event) %>">
-  <div class="media-body">
-    <div class="pull-right">
-      <% if current_user %>
-        <% if can? :edit, event %>
-          <%= link_to edit_event_path(event) do %>
-            Upravit
-          <% end %>
-          |
-        <% end %>
-        <span id="participation_box">
+    <div class="media-body">
+        <div class="pull-right">
+            <% if current_user %>
+              <% if can? :edit, event %>
+                <%= link_to edit_event_path(event) do %>
+                  Upravit
+                <% end %>
+                |
+              <% end %>
+              <span id="participation_box">
           <% if current_user.try(:participates?, event) %>
             <%= render "participates" %>
-          <%else %>
+          <% else %>
             <%= render "participation_buttons", :event => event %>
           <% end %>
         </span>
-      <% end %>
+            <% end %>
+        </div>
+        <h4 class="media-heading">
+            <%= l event.start_datetime.to_date, :format => :with_day %>
+            <% if event.end_datetime.to_date != event.start_datetime.to_date %>
+              - <%= l(event.end_datetime.to_date) %>
+            <% end %>
+            <%= link_to_unless event.link.blank?, event.name, event.link %>
+            <small>
+                <% unless event.event_type.blank? %>
+                  (<%= event.event_type %>)
+                <% end %>
+            </small>
+        </h4>
+        <div class="row">
+            <div class="span3">
+                <div class="row">
+                    <div class="span3">
+                        <% unless event.start_datetime.hour == 0 and event.start_datetime.min == 0 %>
+                          <strong>
+                              <%= l event.start_datetime, :format => :just_time %>
+                              <% if event.end_datetime %>
+                                <% if event.end_datetime.to_date == event.start_datetime.to_date %>
+                                  - <%= l event.end_datetime, :format => :just_time %>
+                                <% else %>
+                                  - <%= l event.end_datetime, :format => :short %>
+                                <% end %>
+                              <% end %>
+                          </strong>
+                        <% end %>
+                        <% if (event.responsible_person.try(:full_name)) %>
+                          Vedoucí: <%= event.responsible_person.full_name %>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span3">
+                        <%= event.place %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span3">
+                        <%= render "participants", :event => event %>
+                    </div>
+                </div>
+            </div>
+            <div class="span5">
+                <%= event.description_html %>
+            </div>
+        </div>
     </div>
-    <h4 class="media-heading">
-      <%= l event.start_datetime.to_date, :format => :with_day %>
-      <% if event.end_datetime.to_date != event.start_datetime.to_date %>
-      - <%= l(event.end_datetime.to_date) %>
-  <% end %>
-  <%= link_to_unless event.link.blank?, event.name, event.link %>
-  <small>(<%= event.event_type %>)</small>
-</h4>
-<div class="row">
-  <div class="span3">
-    <div class="row">
-      <div class="span3">
-        <% unless event.start_datetime.hour == 0 and event.start_datetime.min == 0 %>
-          <strong>
-            <%= l event.start_datetime, :format => :just_time %> 
-            <% if event.end_datetime %>
-              <% if event.end_datetime.to_date == event.start_datetime.to_date %>
-                - <%= l event.end_datetime, :format => :just_time %>
-            <% else %>
-              - <%= l event.end_datetime, :format => :short %>
-          <% end %>
-        <% end %>
-      </strong>
-    <% end %>
-  </div>
-</div>
-<div class="row">
-  <div class="span3">
-    <%= event.place %>
-  </div>
-</div>
-<div class="row">
-  <div class="span3">
-    <%= render "participants", :event => event %>
-  </div>
-</div>
-    </div>
-    <div class="span5">
-      <%= event.description_html %>
-    </div>
-  </div>
-</div>
 </div>

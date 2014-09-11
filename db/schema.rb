@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140517102139) do
+ActiveRecord::Schema.define(:version => 20140701132042) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -87,14 +87,17 @@ ActiveRecord::Schema.define(:version => 20140517102139) do
   create_table "events", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.datetime "start_datetime"
     t.datetime "end_datetime"
     t.string   "place"
     t.string   "event_type"
     t.string   "link"
     t.integer  "group"
+    t.integer  "responsible_person_id"
+    t.float    "default_hours_of_work"
+    t.boolean  "finished"
   end
 
   create_table "galleries", :force => true do |t|
