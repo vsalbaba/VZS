@@ -9,7 +9,7 @@
                 |
               <% end %>
               <span id="participation_box">
-          <% if current_user.try(:participates?, event) %>
+          <% if current_profile.try(:participates?, event) %>
             <%= render "participates" %>
           <% else %>
             <%= render "participation_buttons", :event => event %>

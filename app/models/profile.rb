@@ -55,7 +55,9 @@ class Profile < ActiveRecord::Base
   validates :birthnumber,
     :presence => :true,
     :if => :is_member_or_more?
-
+  def participates?(event)
+    !event.participants.where("profile_id" => self.id).empty?
+  end
   def user_age
     return nil if birthdate.nil?
     now = Time.now.utc.to_date
