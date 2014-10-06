@@ -2,8 +2,14 @@
 class TrainingsController < ApplicationController
 
   def index
-    @trainings = Training.order('date ASC').where(['`date` > ?', Date.today - 7])
+    @trainings = Training.order('date ASC').where(['`date` > ?', Date.today - 2])
     authorize!(:index, Training)
+  end
+
+  def all
+    @trainings = Training.order('date ASC')
+    authorize!(:index, Training)
+    render :action => "index"
   end
 
   def show

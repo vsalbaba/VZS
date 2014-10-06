@@ -1,5 +1,5 @@
-<%= content_tag_for :tr, training do %>
-  <td><%= l training.date, :format => :default %></td>
+<%= content_tag_for :tr, training, :class => training.date <= Date.today ? "past": "future" do %>
+  <td><%= link_to_if can?(:manage, training), l(training.date, :format => :default), training_path(training) %></td>
   <td><%= training.profiles.map(&:full_name).to_sentence %></td>
   <td>
     <% if training.profiles.include? current_user.profile %>

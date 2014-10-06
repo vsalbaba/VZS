@@ -1,0 +1,10 @@
+
+<% context_menu do %>
+  <% if can? :manage, Training %>
+    <%= link_back trainings_path, 'Seznam treninku' %>
+    <%= link_edit edit_training_path(@training), t('btn.edit') %>
+    <%= link_delete @training, t('btn.delete'), 'Opravdu odstranit trenink ' + h(@training.date) + '?' %>
+  <% end %>
+<% end %>
+
+Trenink <%= @training.date %>
