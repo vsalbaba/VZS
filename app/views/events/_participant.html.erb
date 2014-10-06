@@ -1,5 +1,9 @@
 <%= content_tag_for :li, participant do %>
-  <%= participant.full_name %>
+  <% if no_can_do then %>
+    <del><%= participant.full_name %></del>
+  <% else %>
+    <%= participant.full_name %>
+  <% end %>
   <% if can? :unparticipate, Event %>
     <%= link_to unparticipate_event_path(event, :participant_id => participant.id), :method => :put do %>
       <%= glyph :remove %>

@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   end
 
   def participates?(event)
-    event.participants.include? self.profile
+    !event.participants.where("profile_id" => self.id).empty?
   end
 
   def is_member_or_more?

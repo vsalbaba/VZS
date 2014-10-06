@@ -3,16 +3,24 @@ class EventsController < ApplicationController
   load_and_authorize_resource
 
   def participate
-    @event.participants << current_user.profile
+    @event.participations.where(:profile_id => current_user.profile.id).destroy_all
+    participation = Participation.will_do.build(:event => @event, :participant => current_user.profile)
+    participation.save!
     redirect_to events_path
   end
 
   def not_participate
   end
 
+  def no_can_do
+    no_can_do = Participation.no_can_dos.build(:event => @event, :participant => current_user.profile)
+    no_can_do.save!
+    redirect_to events_path
+  end
+
   def unparticipate
     participant = Profile.find(params[:participant_id])
-    @event.participants.delete participant
+    @event.participations.where(:profile_id => participant.id).destroy_all
     redirect_to events_path
   end
 
@@ -43,6 +51,12 @@ class EventsController < ApplicationController
   end
 
   def edit
+  end
+
+  def finish
+    @event = Event.find(params[:id])
+    @event.finish
+    redirect_to :action => 'index'
   end
 
   def update

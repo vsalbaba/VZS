@@ -1,7 +1,13 @@
 <% if can? :see_participants, event %>
   <ol>
     <% event.participants.each do |participant| %>
-      <%= render "participant", :participant => participant, :event => event %>
+      <%= render "participant", :participant => participant.participant, :event => event, :no_can_do => false %>
     <% end %>
+  </ol>
+
+  <ol>
+      <% event.no_can_dos.each do |no_can_do| %>
+      <%= render "participant", :participant => no_can_do.participant, :event => event, :no_can_do => true %>
+      <% end %>
   </ol>
 <% end %>
