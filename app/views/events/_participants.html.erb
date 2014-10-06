@@ -4,10 +4,12 @@
       <%= render "participant", :participant => participant.participant, :event => event, :no_can_do => false %>
     <% end %>
   </ol>
-
-  <ol>
+  <% unless event.no_can_dos.empty? %>
+    Odmítli:
+  <ul class="unstyled">
       <% event.no_can_dos.each do |no_can_do| %>
       <%= render "participant", :participant => no_can_do.participant, :event => event, :no_can_do => true %>
       <% end %>
-  </ol>
+  </ul>
+    <% end %>
 <% end %>

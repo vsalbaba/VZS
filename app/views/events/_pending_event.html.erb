@@ -47,7 +47,7 @@
                           <br />
                         <% end %>
                         <% if (event.responsible_person.try(:full_name)) %>
-                          Vedoucí: <%= event.responsible_person.full_name %>
+                          Vedoucí: <strong><%= event.responsible_person.full_name %></strong>
                         <% end %>
                     </div>
                 </div>
