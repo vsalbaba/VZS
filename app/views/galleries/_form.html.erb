@@ -4,7 +4,7 @@
       <%= f.input :name %>
       <%= f.input :description %>
       <%= f.input :user %>
-      <%= f.input :article, :as => :select, :include_blank => true %>
+      <%= f.input :article, :as => :select, :include_blank => true, :collection => Article.order("created_at desc") %>
       <%= f.input :group, :as => :select, :collection => group_names, :include_blank => false %>
       <%= f.file_field 'gallery_photos_image', :multiple => "multiple", :name => "gallery[photos_attributes][][image]" %>
     <% end %>
