@@ -33,25 +33,42 @@
 // DISABLED require user_sessions.js.coffee
 
 // Po kazdem schovani modalu smazat jeho obsah. Jinak modaly plnene vzdalene zobrazuji stale stejna data.
-$('body').on('hidden', '.modal', function () {
-  $(this).removeData('moal');
-});
-
-$(document).ready(function() {
- $('.input-datetime').datetimepicker({
-   language: 'cs',
-   format: "dd. mm. yyyy hh:ii",
-   autoclose: true,
-   weekStart: 1});
-});
-
-$(document).ready(function() {
-  $('.input-birthdate').datetimepicker({
-    language: 'cs',
-    format: 'yyyy-mm-dd',
-    weekStart: 1,
-    autoclose: true,
-    startView: 'decade',
-    minView: 'month'}
-  )
+$(document).ready(function () {
+    "use strict";
+    $('.modal-remote').on('hidden', function () {
+        $(this).removeData('modal');
+    });
 })
+
+
+$('#myModal').on('hidden', function () {
+    "use strict";
+    $(this).removeData('modal');
+});
+
+
+$(document).ready(function () {
+    "use strict";
+    $('.input-datetime').datetimepicker(
+        {
+            language: 'cs',
+            format: "dd. mm. yyyy hh:ii",
+            autoclose: true,
+            weekStart: 1
+        }
+    );
+});
+
+$(document).ready(function () {
+    "use strict";
+    $('.input-birthdate').datetimepicker(
+        {
+            language: 'cs',
+            format: 'yyyy-mm-dd',
+            weekStart: 1,
+            autoclose: true,
+            startView: 'decade',
+            minView: 'month'
+        }
+    );
+});
