@@ -37,6 +37,10 @@ class Article < ActiveRecord::Base
 
   self.per_page = 10
 
+  def touch
+    self.created_at = DateTime.now
+  end
+
   def to_param
     self.id.to_s + "-" + title.parameterize
   end

@@ -3,6 +3,7 @@
   <%= link_back articles_path, 'Výpis všech článků' %>
   <%= link_show @article, 'Zobrazit' %>
   <%= link_delete @article, 'Smazat' %>
+  <%= link_to "Nastavit článek jako nejnovější", touch_article_path(@article), :class => "btn", :confirm => "Opravdu chcete manuálně nastavit tento článek jako nejnovější?"%>
 <% end %>
 
 <%= render 'form' %>

@@ -7,6 +7,9 @@ Vzs::Application.routes.draw do
     collection do
       get :pending
     end
+    member do
+      get :touch
+    end
     resources :comments
     resources :attachments
   end

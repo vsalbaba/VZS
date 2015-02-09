@@ -28,6 +28,16 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def touch
+    @article = Article.find params[:id]
+    @article.touch
+    if @article.save
+      redirect_to @article, :notice => "Článek jako by byl vytvořen právě teď"
+    else
+      render :action => 'edit'
+    end
+  end
+
   def edit
   end
 
