@@ -13,7 +13,7 @@ set :repository,  "git@github.com:friendlysystems/VZS.git"
 set :deploy_via, :remote_cache
 
 set :rvm_type, :system
-set :rvm_ruby_string, "1.9.2"
+set :rvm_ruby_string, "1.9.2-p330"
 
 desc "Echoes server's uname"
 task :uname do

@@ -266,8 +266,8 @@ DEPENDENCIES
   capistrano_colors
   coffee-rails (~> 3.2.1)
   factory_girl_rails (~> 1.2)
-  formtastic
-  formtastic-bootstrap
+  formtastic (~> 2.2.1)
+  formtastic-bootstrap (~> 2.0.0)
   guard
   guard-rspec
   jquery-rails (~> 2.0.2)

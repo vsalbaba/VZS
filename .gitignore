@@ -27,3 +27,21 @@
 /tmp
 
 /config/newrelic.yml
+/.idea/compiler.xml
+/.idea/copyright/profiles_settings.xml
+/.idea/dataSources.ids
+/.idea/dataSources.xml
+/.idea/encodings.xml
+/.idea/.generators
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/.name
+/.idea/.rakeTasks
+/.idea/scopes/scope_settings.xml
+/.idea/uiDesigner.xml
+/.idea/vcs.xml
+/.idea/workspace.xml
+/.idea/codeStyleSettings.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/jsLinters/jslint.xml
