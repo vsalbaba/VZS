@@ -29,9 +29,13 @@ class Profile < ActiveRecord::Base
   has_and_belongs_to_many :trainigs
   has_many :qualifications, :through => :valid_qualifications
   has_many :valid_qualifications
-
   has_one :address, :dependent => :destroy, :inverse_of => :profile
   accepts_nested_attributes_for :address
+
+  def self.sorted_members
+    joins(:user).where("`users`.`group` > 0").order("second_name ASC, first_name ASC")
+  end
+
   validates :address,
     :presence => true,
     :if => :is_member_or_more?
