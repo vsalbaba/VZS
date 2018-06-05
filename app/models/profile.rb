@@ -89,5 +89,9 @@ class Profile < ActiveRecord::Base
   def email_address
     "\"#{full_name}\" <#{email}>" unless email.blank?
   end
+
+  def to_json
+    super({:only => [:id, :vzs_id, :first_name, :second_name, :email, :telephone]})
+  end
 end
 

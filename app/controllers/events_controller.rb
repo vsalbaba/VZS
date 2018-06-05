@@ -22,7 +22,10 @@ class EventsController < ApplicationController
   def unparticipate
     participant = Profile.find(params[:participant_id])
     @event.participations.where(:profile_id => participant.id).destroy_all
-    redirect_to events_path
+    respond_to do |format|
+    	format.html {redirect_to events_path}
+	format.json {render :json => @event}
+    end
   end
 
   def index
@@ -36,6 +39,10 @@ class EventsController < ApplicationController
   end
 
   def show
+	respond_to do |format|
+		format.html
+		format.json {render :json => @event.to_json({:include => {:responsible_person => {:only => [:id, :vzs_id, :first_name, :second_name, :telephone, :email]}}, :methods => :participants})}
+	end
   end
 
   def new
