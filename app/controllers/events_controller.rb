@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class EventsController < ApplicationController
   load_and_authorize_resource
+  respond_to :html, :json
 
   def participate
     @event.participations.where(:profile_id => current_user.profile.id).destroy_all
