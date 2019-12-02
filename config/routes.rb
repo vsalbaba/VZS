@@ -76,7 +76,7 @@ Vzs::Application.routes.draw do
     end
   end
   resources :user_sessions
-  match 'register' => 'Users#new', :as => :register
+#  match 'register' => 'Users#new', :as => :register
 
   # vypis osob
   match 'clenove' => 'Users#index', :as => :members
