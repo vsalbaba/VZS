@@ -29,6 +29,7 @@ class Profile < ActiveRecord::Base
   has_and_belongs_to_many :trainings
   has_many :qualifications, :through => :valid_qualifications
   has_many :valid_qualifications
+  has_many :life_guards, dependent: :destroy, inverse_of: :profile
   has_one :address, :dependent => :destroy, :inverse_of => :profile
   accepts_nested_attributes_for :address
 
