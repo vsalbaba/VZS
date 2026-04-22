@@ -1,0 +1,16 @@
+.git
+.gitignore
+.idea
+.bundle
+.dockerignore
+Dockerfile
+docker-compose.yml
+DESIGN_DOCUMENT.md
+CLAUDE.md
+tmp/*
+log/*
+db/*.sqlite3
+public/system/*
+*.swp
+*.swo
+*~

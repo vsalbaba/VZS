@@ -1,0 +1,37 @@
+services:
+  web:
+    build: .
+    ports:
+      - "9000:3000"
+    volumes:
+      - ./config/database.docker.yml:/app/config/database.yml:Z
+      - ./app/assets:/app/app/assets:Z
+      - ./app/views:/app/app/views:Z
+    environment:
+      - RAILS_ENV=development
+    depends_on:
+      db:
+        condition: service_healthy
+    command: >
+      bash -c "
+        mv spec/factories /tmp/_factories 2>/dev/null;
+        bundle exec rake db:schema:load db:seed 2>/dev/null;
+        mv /tmp/_factories spec/factories 2>/dev/null;
+        bundle exec rails server -b 0.0.0.0 -p 3000
+      "
+
+  db:
+    image: mysql:5.5
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_czech_ci
+    env_file: .env
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./dump:/docker-entrypoint-initdb.d:Z
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  mysql_data:
