@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def feed
     # this will be the name of the feed displayed on the feed reader
-    @title = "MS VZS ČČK Třebíč"
+    @title = "VZS ČČK Třebíč"
 
     # the news items
     @news_items = Article.accessible_by(current_ability).order("created_at desc")
