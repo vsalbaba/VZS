@@ -2,7 +2,7 @@ services:
   web:
     build: .
     ports:
-      - "9000:3000"
+      - "${BIND_ADDRESS}:9000:3000"
     volumes:
       - ./config/database.docker.yml:/app/config/database.yml:Z
       - ./app/assets:/app/app/assets:Z
