@@ -7,16 +7,22 @@ services:
       - ./config/database.docker.yml:/app/config/database.yml:Z
       - ./app/assets:/app/app/assets:Z
       - ./app/views:/app/app/views:Z
+      - ./public/system:/app/public/system:Z
     environment:
-      - RAILS_ENV=development
+      - RAILS_ENV=${RAILS_ENV:-development}
     depends_on:
       db:
         condition: service_healthy
     command: >
       bash -c "
-        mv spec/factories /tmp/_factories 2>/dev/null;
-        bundle exec rake db:schema:load db:seed 2>/dev/null;
-        mv /tmp/_factories spec/factories 2>/dev/null;
+        if [ \"$$RESET_DB\" = '1' ]; then
+          mv spec/factories /tmp/_factories 2>/dev/null;
+          bundle exec rake db:schema:load db:seed 2>/dev/null;
+          mv /tmp/_factories spec/factories 2>/dev/null;
+        fi;
+        if [ \"$$RAILS_ENV\" = 'production' ]; then
+          bundle exec rake assets:precompile 2>/dev/null;
+        fi;
         bundle exec rails server -b 0.0.0.0 -p 3000
       "
 
