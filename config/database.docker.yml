@@ -15,3 +15,12 @@ test:
   port: 3306
   username: <%= ENV['MYSQL_USER'] || 'vzs' %>
   password: <%= ENV['MYSQL_PASSWORD'] || 'vzs' %>
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  database: <%= ENV['MYSQL_DATABASE'] %>
+  host: db
+  port: 3306
+  username: <%= ENV['MYSQL_USER'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
