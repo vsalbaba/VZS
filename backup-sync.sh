@@ -106,18 +106,18 @@ if [ "$WEEKDAY" -eq 7 ]; then
 fi
 
 # --- 4. Import into new server's running DB container ---
-if ! podman ps --format '{{.Names}}' | grep -q "^${DB_CONTAINER}$"; then
-    log "ERROR: Container $DB_CONTAINER is not running — skipping import"
-    exit 1
-fi
-log "Importing dump into container $DB_CONTAINER"
-NEW_DB_USER=$(grep '^MYSQL_USER=' "$NEW_APP_DIR/.env" | cut -d= -f2)
-NEW_DB_PASS=$(grep '^MYSQL_PASSWORD=' "$NEW_APP_DIR/.env" | cut -d= -f2)
-NEW_DB_NAME=$(grep '^MYSQL_DATABASE=' "$NEW_APP_DIR/.env" | cut -d= -f2)
+if podman ps --format '{{.Names}}' | grep -q "^${DB_CONTAINER}$"; then
+    log "Importing dump into container $DB_CONTAINER"
+    NEW_DB_USER=$(grep '^MYSQL_USER=' "$NEW_APP_DIR/.env" | cut -d= -f2)
+    NEW_DB_PASS=$(grep '^MYSQL_PASSWORD=' "$NEW_APP_DIR/.env" | cut -d= -f2)
+    NEW_DB_NAME=$(grep '^MYSQL_DATABASE=' "$NEW_APP_DIR/.env" | cut -d= -f2)
 
-gunzip -c "$DUMP_FILE" \
-    | podman exec -i "$DB_CONTAINER" mysql -u"$NEW_DB_USER" -p"$NEW_DB_PASS" "$NEW_DB_NAME"
-log "Database import complete"
+    gunzip -c "$DUMP_FILE" \
+        | podman exec -i "$DB_CONTAINER" mysql -u"$NEW_DB_USER" -p"$NEW_DB_PASS" "$NEW_DB_NAME"
+    log "Database import complete"
+else
+    log "WARNING: Container $DB_CONTAINER is not running — skipping import"
+fi
 
 # --- 5. Sync Paperclip uploads ---
 log "Syncing uploads"
