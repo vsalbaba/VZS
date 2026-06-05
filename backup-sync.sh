@@ -58,9 +58,6 @@ fi
 command -v podman  &>/dev/null || preflight_fail "podman not found"
 command -v rsync   &>/dev/null || preflight_fail "rsync not found"
 command -v gunzip  &>/dev/null || preflight_fail "gunzip not found"
-podman ps --format '{{.Names}}' | grep -q "^${DB_CONTAINER}$" \
-    || preflight_fail "Container $DB_CONTAINER is not running"
-
 # Remote (deployvzs) checks
 log "Running preflight checks (remote)"
 ssh -o ConnectTimeout=10 "$OLD_SSH_HOST" "echo ok" &>/dev/null \
@@ -109,6 +106,10 @@ if [ "$WEEKDAY" -eq 7 ]; then
 fi
 
 # --- 4. Import into new server's running DB container ---
+if ! podman ps --format '{{.Names}}' | grep -q "^${DB_CONTAINER}$"; then
+    log "ERROR: Container $DB_CONTAINER is not running — skipping import"
+    exit 1
+fi
 log "Importing dump into container $DB_CONTAINER"
 NEW_DB_USER=$(grep '^MYSQL_USER=' "$NEW_APP_DIR/.env" | cut -d= -f2)
 NEW_DB_PASS=$(grep '^MYSQL_PASSWORD=' "$NEW_APP_DIR/.env" | cut -d= -f2)
