@@ -121,8 +121,10 @@ fi
 
 # --- 5. Sync Paperclip uploads ---
 log "Syncing uploads"
-rsync -az --delete "$OLD_SSH_HOST:$OLD_UPLOADS_DIR/" "$NEW_APP_DIR/public/system/"
-log "Upload sync complete"
+RSYNC_OUT=$(rsync -az --delete --stats "$OLD_SSH_HOST:$OLD_UPLOADS_DIR/" "$NEW_APP_DIR/public/system/")
+TRANSFERRED=$(echo "$RSYNC_OUT" | grep 'Number of regular files transferred:' | awk '{print $NF}')
+TOTAL_SIZE=$(echo "$RSYNC_OUT" | grep 'Total transferred file size:' | sed 's/.*: //')
+log "Upload sync complete: $TRANSFERRED files transferred ($TOTAL_SIZE)"
 
 # --- 6. Cleanup old backups ---
 log "Cleaning up old backups"
